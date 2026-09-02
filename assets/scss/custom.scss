@@ -34,19 +34,24 @@ h6 {
 // Step-downs are measured against the mobile frames: the hero drops 64 -> 36
 // and section headings 36 -> 24, so headings shrink faster than the theme's
 // flat x0.9 / x0.8 multipliers did.
+// Each entry: (size, <=991px, <=767px, weight).
+// h4 is a deliberate departure from the Figma ladder, which has it at 28px
+// Medium: requested at 22px Regular. $fs-h4 still holds the design value so
+// the token file stays a faithful mirror of the AIMS Typography collection.
 $heading-scale: (
-  1: ($fs-h1, 48px, 36px),
-  2: ($fs-h2, 38px, 30px),
-  3: ($fs-h3, 30px, 24px),
-  4: ($fs-h4, 25px, 22px),
-  5: ($fs-h5, 22px, 20px),
-  6: ($fs-h6, 19px, 18px)
+  1: ($fs-h1, 48px, 36px, $fw-medium),
+  2: ($fs-h2, 38px, 30px, $fw-medium),
+  3: ($fs-h3, 30px, 24px, $fw-medium),
+  4: (22px, 21px, 20px, $fw-regular),
+  5: ($fs-h5, 22px, 20px, $fw-medium),
+  6: ($fs-h6, 19px, 18px, $fw-medium)
 );
 
 @each $level, $sizes in $heading-scale {
   h#{$level},
   .h#{$level} {
     font-size: nth($sizes, 1);
+    font-weight: nth($sizes, 4);
     line-height: if($level <= 3, $lh-tight, $lh-snug);
     margin-bottom: 0.65em; // carried over from the theme block this replaces
 
@@ -811,6 +816,17 @@ $heading-scale: (
 // a 69px navbar gave 100px.
 .navigation {
   padding: 7px 0;
+}
+
+// The mobile toggler borrows the .h4 utility to size its icon, so it tracks
+// the h4 step. At 20px that left a 44x34 hit area; hold it to the 44px
+// minimum touch target independently of the type scale.
+.navbar-toggler {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
