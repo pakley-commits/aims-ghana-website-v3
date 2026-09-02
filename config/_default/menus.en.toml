@@ -282,13 +282,13 @@ url = "/outreach/"
 weight = 4
 
 [[footer_middle]]
-name = "Admissions"
-url = "/academics/admissions/"
+name = "Newsroom"
+url = "/news/"
 weight = 1
 
 [[footer_middle]]
-name = "Our Programs"
-url = "/academics/programs/"
+name = "Work at AIMS"
+url = "/careers/"
 weight = 2
 
 [[footer_middle]]
@@ -297,18 +297,18 @@ url = "/who-we-are/impact-and-reports/"
 weight = 3
 
 [[footer_middle]]
-name = "Careers"
-url = "/careers/"
+name = "Our Programs"
+url = "/academics/programs/"
 weight = 4
 
 [[footer_right]]
-name = "Latest News"
+name = "News"
 url = "/news/"
 weight = 1
 
 [[footer_right]]
-name = "Events"
-url = "/news/events/"
+name = "Admissions"
+url = "/academics/admissions/"
 weight = 2
 
 [[footer_right]]

@@ -6,10 +6,16 @@
       <!-- navbar brand/logo -->
      
       <a class="navbar-brand" href="{{ site.BaseURL | relLangURL }}">
+        {{/* Home puts a transparent nav over the dark hero, so it uses the
+             white logo (site.Params.logo). Every interior page uses the white
+             nav from Navigation/Variant3, so it needs the dark logo. Both go
+             through the images module partial: the previous /images/... path
+             was a static URL, but this project has no static/ directory, so it
+             404'd on all 32 non-home pages. */}}
         {{ if .IsHome }}
           {{ partial "logo.html" }}
         {{ else }}
-          <img src="/images/logo-other.png" alt="Logo" height="47">
+          {{ partial "logo.html" (dict "Src" "images/logo-other.png") }}
         {{ end }}
       </a>
 

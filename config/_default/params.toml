@@ -8,7 +8,7 @@ logo_other = "images/logo-other.png"
 logo_darkmode = "images/logo-other.png"
 # use `px` or `x` with logo_width, example: "100px".
 # Note: logo_width is not work with .svg file
-logo_width = "180px"
+logo_width = "216px"
 # if logo_webp set false, will not generate WEBP version of logo | default is true
 logo_webp = true
 # logo text will only show when logo is missing.
@@ -37,6 +37,11 @@ footer_donate_label = "Donate"
 footer_donate_link = "donate/"
 footer_organization = "African Institute for Mathematical Sciences"
 
+# Footer link-column headings, per the Figma Footer component.
+footer_menu_left = "Explore"
+footer_menu_middle = "Sitemap"
+footer_menu_right = "Connect"
+
 # preloader
 # preloader module: https://github.com/gethugothemes/hugo-modules/tree/master/components/preloader
 [preloader]
@@ -46,7 +51,7 @@ preloader = "" # use jpg, png, svg or gif format. example - "images/preloader.gi
 # Navigation button
 [navigation_button]
 enable = true
-label = "DONATE"
+label = "Donate"
 link = "donate/"
 
 # crisp chat

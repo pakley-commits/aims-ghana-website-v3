@@ -797,12 +797,20 @@ $heading-scale: (
     //   color: $c-gold !important;
     // }
 
+    // Navigation/Variant3 marks the active item in maroon. The white pill
+    // below is the transparent home nav's treatment, where it reads against
+    // the hero photo; on the white bar it was a white pill on white with
+    // near-black text, i.e. no visible active state at all.
     .nav-item.active .nav-link {
-      color: $c-ink-strong !important;
-      background: $c-white;
-      border-radius: $r-sm;
+      color: $c-maroon !important;
     }
   }
+}
+
+// Navigation/Variant3 is 84px tall. The theme's 15px vertical padding around
+// a 69px navbar gave 100px.
+.navigation {
+  padding: 7px 0;
 }
 
 
