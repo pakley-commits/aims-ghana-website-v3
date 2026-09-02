@@ -25,11 +25,58 @@ h6 {
   font-weight: $fw-medium;
 }
 
+// Heading sizes come from the design's type ladder, not the theme's modular
+// scale. themes/.../_typography.scss compounds $font-size * $font-scale (1.25)
+// six times, giving 20 / 25 / 31.25 / 39.06 / 48.83 / 61.04 — only h6 happens
+// to land on the design. Figma's AIMS Typography collection defines
+// 56 / 44 / 36 / 28 / 24 / 20, which is what these tokens hold.
+//
+// Step-downs are measured against the mobile frames: the hero drops 64 -> 36
+// and section headings 36 -> 24, so headings shrink faster than the theme's
+// flat x0.9 / x0.8 multipliers did.
+$heading-scale: (
+  1: ($fs-h1, 48px, 36px),
+  2: ($fs-h2, 38px, 30px),
+  3: ($fs-h3, 30px, 24px),
+  4: ($fs-h4, 25px, 22px),
+  5: ($fs-h5, 22px, 20px),
+  6: ($fs-h6, 19px, 18px)
+);
+
+@each $level, $sizes in $heading-scale {
+  h#{$level},
+  .h#{$level} {
+    font-size: nth($sizes, 1);
+    line-height: if($level <= 3, $lh-tight, $lh-snug);
+    margin-bottom: 0.65em; // carried over from the theme block this replaces
+
+    @include desktop {
+      font-size: nth($sizes, 2);
+    }
+
+    @include tablet {
+      font-size: nth($sizes, 3);
+    }
+  }
+}
+
 // Bootstrap's .display-* utilities carry font-weight: 300, which outranks the
 // element selector above. The impact figures use .display-5, and the design
 // sets them in Space Grotesk Medium like every other display heading.
 .impact-stat {
+  // .display-5 also sets a fluid font-size (48px >=1200, calc(1.425rem + 2.1vw)
+  // below), which outranks the h1..h6 ladder. The design sets the impact
+  // figures in Space Grotesk Medium at the h1 step.
   font-weight: $fw-medium;
+  font-size: $fs-h1;
+
+  @include desktop {
+    font-size: 44px;
+  }
+
+  @include tablet {
+    font-size: 36px;
+  }
 }
 
 // banner

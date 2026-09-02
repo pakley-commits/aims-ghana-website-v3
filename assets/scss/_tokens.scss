@@ -37,7 +37,7 @@ $fs-xs: 13px;
 
 // Fluid variants, for the blocks that already scale with the viewport rather
 // than stepping at breakpoints. Ranges match the ladder above.
-$fs-display-fluid: clamp(2.75rem, 4.8vw, 4rem); // 44 -> 64px
+$fs-display-fluid: clamp(2.25rem, 4.8vw, 4rem); // 36 -> 64px, per the mobile hero
 $fs-h1-fluid: clamp(2.5rem, 4.4vw, 3.5rem); // 40 -> 56px
 $fs-h2-fluid: clamp(2rem, 2.5vw, 2.25rem); // 32 -> 36px
 $fs-h3-fluid: clamp(1.75rem, 2.25vw, 2.25rem); // 28 -> 36px
