@@ -2192,15 +2192,34 @@ $heading-scale: (
   white-space: nowrap;
 }
 
+// Pill link button, per Figma Button (Primary / With Icon): white pill,
+// Space Grotesk Bold 14px in maroon, trailing arrow.
+// The markup previously reached this look via `btn bg-white text-light
+// btn-lg rounded-pill` plus inline styles. `.text-light` only rendered maroon
+// because this theme maps Bootstrap's $light to #880000, which is a trap.
 .btn-white-arrow {
-  border: none;
   position: relative;
-  padding-right: 2.5rem;
-  background: white;
+  border: none;
+  border-radius: $r-pill;
+  background: $c-white;
+  color: $c-maroon;
+  font-family: $font-display;
+  font-size: $fs-sm;
+  font-weight: $fw-bold;
+  padding: $s-2 $s-10 $s-2 $s-6;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: $c-surface-alt;
+    color: $c-maroon;
   }
+}
+
+// Solid primary action. The design uses a 9px radius here; $r-sm (8px) is the
+// nearest token and is used instead of reintroducing a magic number.
+.btn-aims-primary {
+  border-radius: $r-sm;
+  white-space: nowrap;
 }
 
 /* Arrow icon styling */
@@ -2217,7 +2236,7 @@ $heading-scale: (
   border-color: white !important;
 }
 
-/* Newsletter button */
+/* Newsletter submit, per Figma Button/Primary/With Icon: gold fill, dark ink */
 .btn-newsletter {
   background-color: $c-gold;
   border-radius: $r-sm;

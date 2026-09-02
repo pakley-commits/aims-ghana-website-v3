@@ -175,9 +175,9 @@
           <p class="fs-5 mb-4 u-text-muted">
             {{ .quote2 }}
           </p>
-          <a href="{{ .link | safeURL }}" class="btn  bg-white  text-light btn-lg rounded-pill" style="border: none; position: relative; padding-right: 2.5rem;">
+          <a href="{{ .link | safeURL }}" class="btn btn-white-arrow btn-lg">
             Read more here
-            <span style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%) rotate(-45deg); display: inline-block;">
+            <span class="arrow-icon" aria-hidden="true">
     &#10132;
   </span>
           </a>
@@ -300,11 +300,11 @@
           <hr>
 
           <div class="text-start mt-4 d-flex gap-3">
-  <a href="/academics/admissions/" class="btn btn-primary btn-lg  " style="border-radius:9px; white-space: nowrap;">
+  <a href="/academics/admissions/" class="btn btn-primary btn-lg btn-aims-primary">
     Apply Now
   </a>
 
-  <a href="/academics/programs/" class="btn btn-outline-primary btn-lg  " style="border-radius:9px; white-space: nowrap;">
+  <a href="/academics/programs/" class="btn btn-outline-primary btn-lg btn-aims-primary">
     Explore Programs
   </a>
 </div>
@@ -457,9 +457,9 @@
       <!-- <a href="{{ .more_link | safeURL }}" class="btn btn-lg rounded-pill">
         View More Alumni here 
       </a> -->
-      <a href="{{ .more_link | safeURL }}" class="btn  bg-white  text-light btn-lg rounded-pill" style="border: none; position: relative; padding-right: 2.5rem;">
+      <a href="{{ .more_link | safeURL }}" class="btn btn-white-arrow btn-lg">
             View More Alumni here 
-            <span style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%) rotate(-45deg); display: inline-block;">
+            <span class="arrow-icon" aria-hidden="true">
     &#10132;
   </span>
           </a>
@@ -517,7 +517,7 @@
           </p>
 
           <!-- Read More Link -->
-          <a href="{{ .RelPermalink }}" class="text-primary fw-medium" style="text-decoration: none;">
+          <a href="{{ .RelPermalink }}" class="text-primary fw-medium text-decoration-none">
             Read More →
           </a>
         </div>
@@ -553,8 +553,7 @@
       </div>
 
       <div class="col-md-2 d-grid">
-        <button type="submit" class="btn btn-primary btn-lg"
-                style="background-color: #F2960C; border-radius: 9px; color: #1E1E1E; white-space: nowrap;" aria-label="{{ .form.button_text }}">
+        <button type="submit" class="btn btn-lg btn-newsletter" aria-label="{{ .form.button_text }}">
           {{ .form.button_text }}
         </button>
       </div>
