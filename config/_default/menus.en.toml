@@ -1,47 +1,95 @@
-# main menu
+# Main navigation for AIMS Ghana.
+# GENERATED from the URL taxonomy — every entry resolves to a real page.
+# Nav labels mirror the Figma section grouping:
+#   Home | Who we are | Academics | Research & Innovation | Outreach | News
+
+############################### main menu ###############################
+
 [[main]]
 name = "Home"
-url = ""
+url = "/"
 weight = 1
 
 [[main]]
-weight = 4
 name = "Who we are"
+weight = 10
 hasChildren = true
 
 [[main]]
 parent = "Who we are"
-name = "Message from the Centre President"
-url = "/message-from-the-centre-president"
-weight = 4
-
-[[main]]
-parent = "Who we are"
 name = "About AIMS Ghana"
-url = "/about"
+url = "/who-we-are/about/"
 weight = 1
 
 [[main]]
 parent = "Who we are"
-name = "Governance (Board of Trustees)"
-url = "/team"
-weight = 8
+name = "Message from the Centre President"
+url = "/who-we-are/centre-president/"
+weight = 2
+
+[[main]]
+parent = "Who we are"
+name = "Governance"
+url = "/who-we-are/governance/"
+weight = 3
+
+[[main]]
+parent = "Who we are"
+name = "Academic Council"
+url = "/who-we-are/academic-council/"
+weight = 4
 
 [[main]]
 parent = "Who we are"
 name = "Administrative Team"
-url = "/career"
-weight = 9
+url = "/who-we-are/administrative-team/"
+weight = 5
+
+[[main]]
+parent = "Who we are"
+name = "Lecturers"
+url = "/who-we-are/lecturers/"
+weight = 6
+
+[[main]]
+parent = "Who we are"
+name = "Tutors"
+url = "/who-we-are/tutors/"
+weight = 7
 
 [[main]]
 parent = "Who we are"
 name = "Our Students"
-url = "/career/sr-executive-service-assurance"
+url = "/who-we-are/students/"
+weight = 8
+
+[[main]]
+parent = "Who we are"
+name = "Alumni"
+url = "/who-we-are/alumni/"
+weight = 9
+
+[[main]]
+parent = "Who we are"
+name = "Partnerships"
+url = "/who-we-are/partnerships/"
 weight = 10
 
 [[main]]
-weight = 6
+parent = "Who we are"
+name = "Policies"
+url = "/who-we-are/policies/"
+weight = 11
+
+[[main]]
+parent = "Who we are"
+name = "Impact & Reports"
+url = "/who-we-are/impact-and-reports/"
+weight = 12
+
+[[main]]
 name = "Academics"
+weight = 20
 hasChildren = true
 [main.params]
 isMenuLarge = true
@@ -49,208 +97,226 @@ isMenuLarge = true
 [[main]]
 parent = "Academics"
 name = "Our Programs"
-url = "/programs"
-weight = 0
-
-[[main]]
-parent = "Academics"
-name = "Regular Masters"
-#pre = "<i class='dropdown-icon fas fa-users'></i>"
-#post = "<small class='dropdown-subtitle'>Convert leads and close sales deals faster.</small>"
-url = "/products/product-1"
+url = "/academics/programs/"
 weight = 1
 
 [[main]]
 parent = "Academics"
-name = "MMST"
-#pre = "<i class='dropdown-icon fas fa-dice-d6'></i>"
-#post = "<small class='dropdown-subtitle'>Software to deliver great customer support.</small>"
-url = "/products/product-2"
+name = "Regular Master's"
+url = "/academics/regular-masters/"
 weight = 2
 
 [[main]]
 parent = "Academics"
-name = "COOP"
-#pre = "<i class='dropdown-icon fas fa-laptop-house'></i>"
-#post = "<small class='dropdown-subtitle'>Application built to improve productivity.</small>"
-url = "/products/product-3"
+name = "CO-OP"
+url = "/academics/co-op/"
 weight = 3
 
 [[main]]
 parent = "Academics"
-name = "Application"
-#pre = "<i class='dropdown-icon fas fa-chart-bar'></i>"
-#post = "<small class='dropdown-subtitle'>Create custom reports from any data set.</small>"
-url = "/products/product-4"
+name = "MMST"
+url = "/academics/mmst/"
 weight = 4
 
-#[[main]]
-###parent = "Academics"
-#name = "View All Product"
-#pre = "<i class='dropdown-icon text-primary fas fa-arrow-right'></i>"
-#url = "/products"
-#weight = 5
-
+[[main]]
+parent = "Academics"
+name = "Admissions"
+url = "/academics/admissions/"
+weight = 5
 
 [[main]]
-weight = 13
 name = "Research & Innovation"
+weight = 30
 hasChildren = true
 
 [[main]]
 parent = "Research & Innovation"
 name = "Research Centre"
-url = "/pricing"
+url = "/research/centre/"
 weight = 1
 
 [[main]]
 parent = "Research & Innovation"
-name = "Research Chair"
-url = "/case-studies"
-weight = 4
+name = "Research Areas"
+url = "/research/areas/"
+weight = 2
 
 [[main]]
 parent = "Research & Innovation"
-name = "Visiting Researcher Program"
-url = "/case-studies/case-1"
-weight = 5
+name = "Research Chairs"
+url = "/research/chairs/"
+weight = 3
+
+[[main]]
+parent = "Research & Innovation"
+name = "Visiting Researchers"
+url = "/research/visiting-researchers/"
+weight = 4
 
 [[main]]
 parent = "Research & Innovation"
 name = "InnovAIMS"
-url = "/contact"
-weight = 10
+url = "/research/innovaims/"
+weight = 5
 
 [[main]]
 parent = "Research & Innovation"
 name = "Workshops & Conferences"
-url = "/faq"
-weight = 16
+url = "/research/conferences/"
+weight = 6
 
-#[[main]]
-#parent = "Research & Innovation"
-#name = "Privacy Policy"
-#url = "/privacy-policy"
-#weight = 20
+[[main]]
+parent = "Research & Innovation"
+name = "Researchers"
+url = "/research/researchers/"
+weight = 7
 
-#[[main]]
-#parent = "Research & Innovation"
-#name = "Terms & Conditions"
-#url = "/terms-conditions"
-#weight = 24
+[[main]]
+parent = "Research & Innovation"
+name = "Projects & Resources"
+url = "/research/projects-and-resources/"
+weight = 8
+
+[[main]]
+parent = "Research & Innovation"
+name = "Publications"
+url = "/research/publications/"
+weight = 9
 
 [[main]]
 name = "Outreach"
-url = "/contact"
-weight = 15
+weight = 40
+hasChildren = true
+
+[[main]]
+parent = "Outreach"
+name = "Overview"
+url = "/outreach/"
+weight = 1
 
 [[main]]
 parent = "Outreach"
 name = "AIMS GMSP"
-url = "/terms-conditions"
-weight = 16
+url = "/outreach/gmsp/"
+weight = 2
 
 [[main]]
 parent = "Outreach"
-name = "Mastercard Foundation Outreach Program"
-url = "/terms-conditions"
-weight = 18
+name = "Mastercard Foundation"
+url = "/outreach/mastercard-foundation/"
+weight = 3
 
 [[main]]
 parent = "Outreach"
-name = "Other Events"
-url = "/terms-conditions"
-weight = 22
+name = "Public Engagement"
+url = "/outreach/public-engagement/"
+weight = 4
 
 [[main]]
-weight = 30
 name = "News"
+weight = 50
 hasChildren = true
 
 [[main]]
 parent = "News"
-name = "Latest Stories"
-url = "/blog"
-weight = 3
+name = "Latest News"
+url = "/news/"
+weight = 1
 
 [[main]]
 parent = "News"
 name = "Impact Stories"
-url = "/blog/post-1"
-weight = 8
+url = "/news/impact-stories/"
+weight = 2
 
 [[main]]
 parent = "News"
 name = "Events"
-url = "/author"
-weight = 11
+url = "/news/events/"
+weight = 3
 
 [[main]]
 parent = "News"
-name = "Podcast / Interviews"
-url = "/author/awab-husameldin"
-weight = 12
+name = "Listen & Watch"
+url = "/news/listen-and-watch/"
+weight = 4
 
-# footer menu left
+[[main]]
+parent = "News"
+name = "Press Releases"
+url = "/news/press-releases/"
+weight = 5
+
+[[main]]
+parent = "News"
+name = "Newsletters"
+url = "/news/newsletters/"
+weight = 6
+
+[[main]]
+parent = "News"
+name = "Media Resources"
+url = "/news/media-resources/"
+weight = 7
+
+############################## footer menus ##############################
+
 [[footer_left]]
-name = "Who We Are"
-url = "/about"
+name = "Who we are"
+url = "/who-we-are/"
 weight = 1
 
 [[footer_left]]
-name = "Academic"
-url = "/programs"
+name = "Academics"
+url = "/academics/"
 weight = 2
 
 [[footer_left]]
 name = "Research & Innovation"
-url = "/pricing"
+url = "/research/"
 weight = 3
 
 [[footer_left]]
 name = "Outreach"
-url = "/contact"
+url = "/outreach/"
 weight = 4
 
-
-# footer menu middle
 [[footer_middle]]
-name = "Our Centres"
-url = "/about"
+name = "Admissions"
+url = "/academics/admissions/"
 weight = 1
 
 [[footer_middle]]
-name = "FAQs"
-url = "/faq"
+name = "Our Programs"
+url = "/academics/programs/"
 weight = 2
 
 [[footer_middle]]
-name = "Newsroom"
-url = "/blog"
+name = "Impact & Reports"
+url = "/who-we-are/impact-and-reports/"
 weight = 3
 
 [[footer_middle]]
-name = "Work at AIMS"
-url = "/career"
+name = "Careers"
+url = "/careers/"
 weight = 4
 
-# footer menu right
 [[footer_right]]
-name = "News"
-url = "/blog"
+name = "Latest News"
+url = "/news/"
 weight = 1
 
 [[footer_right]]
-name = "Admissions"
-url = "/products/product-4"
+name = "Events"
+url = "/news/events/"
 weight = 2
 
 [[footer_right]]
 name = "Donate"
-url = "/get-demo"
+url = "/donate/"
 weight = 3
 
 [[footer_right]]
 name = "Contact Us"
-url = "/contact"
+url = "/contact/"
 weight = 4

@@ -1,16 +1,9 @@
 ---
-title: "Contact Us"
-subtitle: ""
-# meta description
-description: "This is meta description"
+title: "Contact"
+description: "Get in touch with AIMS Ghana."
+figma_frame: ""
+build_phase: 0
+build_status: "undesigned"
+layout: "stub"
 draft: false
-layout: "contact"
 ---
-
-
-#### Why you should contact us!
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit recusandae voluptates doloremque veniam temporibus porro culpa ipsa, nisi soluta minima saepe laboriosam debitis nesciunt.
-
-* **Phone: +88 125 256 452** 
-* **Mail: info@bigspring.com**
-* **Address: 360 Main rd, Rio, Brazil**

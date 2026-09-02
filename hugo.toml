@@ -14,8 +14,6 @@ summaryLength = 10 # see https://gohugo.io/content-management/excerpts/
 disableLanguages = [
   "de", "zh-cn","fr"
 ] # example: ["de"] for disable deutsch language. see https://gohugo.io/content-management/multilingual/
-# Ignore accidentally duplicated English content nested inside the active English contentDir.
-ignoreFiles = ['(^|[/\\])content[/\\]english[/\\]english[/\\]']
 hasCJKLanguage = true # If hasCJKLanguage true, auto-detect Chinese/Japanese/Korean Languages in the content.
 
 ########################### Services #############################

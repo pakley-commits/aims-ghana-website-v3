@@ -1,8 +1,12 @@
 ---
+figma_frame: "Homepage"
+build_phase: 2
+build_status: "partial"
+draft: false
 ####################### Banner #########################
 banner:
   title : "In Africa’s Youth the Future of Science"
-  image : "images/Hero.jpg"
+  image : "images/home_hero.png"
   #content : "Create a best strategic tool, share it with your team and ensure it’s on track with intuitive dashboards. <br> Simple enough with the sophistication and flexibility to meet the needs of large enterprises"
   #button:
     #enable : true
@@ -61,7 +65,7 @@ success_story:
   enable: true
   quote1: "At AIMS Ghana, we’re shaping thinkers and innovators who will define Africa’s scientific future."
   quote2: "At AIMS Ghana, academic excellence is at the heart of everything we do. We deliver a world-class curriculum designed to meet the fast-evolving demands of a globalised society."
-  link: "/message-from-the-centre-president/"
+  link: "/who-we-are/centre-president/"
   image: "images/drprince.jpg"
   person_name: "Dr. Prince K. Osei"
   person_title: "Centre President, AIMS Ghana"
@@ -109,7 +113,7 @@ lecturers:
   button:
     enable: true
     label: "View all Lecturers here"
-    link: "/lecturers"
+    link: "/who-we-are/lecturers/"
 
 ########################## Alumni #########################
 
@@ -117,42 +121,54 @@ lecturers:
 alumni:
   enable: true
   intro: "Meet our graduates shaping policy, technology, and education across the continent."
-  more_link: "/alumni"
+  more_link: "/who-we-are/alumni/"
   list:
-    - name: "Ama K. Mensah"
-      position: "Data Scientist, Google"
-      image: "images/alum1.png"
-      link: "/alumni/ama-mensah"
-    - name: "Kwame Boateng"
-      position: "AI Researcher, IBM"
-      image: "images/alum2.png"
-      link: "/alumni/kwame-boateng"
-    - name: "Yaa Asantewaa"
-      position: "Quant Analyst, Standard Bank"
-      image: "images/alum3.png"
-      link: "/alumni/yaa-asantewaa"
-
+    - name: "Dr. Fadekemi Janet Osaye"
+      position: "Assistant Professor of Mathematics, Alabama State University"
+      image: "images/alumni/fadekemi-osaye.jpg"
+      link: "/who-we-are/alumni/"
+    - name: "Emmanuel Owusu Ahenkan"
+      position: "Artificial Intelligence Engineer, ParallelScore"
+      image: "images/alumni/emmanuel-owusu-ahenkan.jpg"
+      link: "/who-we-are/alumni/"
+    - name: "Stephen K. Amponsah"
+      position: "IT Officer, Collateral Registry Department, Bank of Ghana"
+      image: "images/alumni/stephen-amponsah.jpg"
+      link: "/who-we-are/alumni/"
 
 ########################## Clients Logo Slider #########################
 partners_logo_slider:
   enable : true
   title: "Partners & Network"
   logos:
-  - "images/brands/01-colored.png"
-  - "images/brands/02-colored.png"
-  - "images/brands/03-colored.png"
-  - "images/brands/04-colored.png"
-  - "images/brands/05-colored.png"
-  - "images/brands/06-colored.png"
-  - "images/brands/03-colored.png"
-  - "images/brands/01-colored.png"
-  - "images/brands/02-colored.png"
-  - "images/brands/04-colored.png"
-  - "images/brands/05-colored.png"
-  - "images/brands/06-colored.png"
-
-
-
+  - name: "Government of Ghana"
+    image: "images/partners/government-of-ghana.png"
+  - name: "UNESCO"
+    image: "images/partners/unesco.png"
+  - name: "Mastercard Foundation"
+    image: "images/partners/mastercard-foundation.png"
+  - name: "Google"
+    image: "images/partners/google.png"
+  - name: "DAAD"
+    image: "images/partners/daad.png"
+  - name: "Alexander von Humboldt Foundation"
+    image: "images/partners/humboldt-foundation.png"
+  - name: "IDRC / CRDI"
+    image: "images/partners/idrc.png"
+  - name: "Facebook"
+    image: "images/partners/facebook.png"
+  - name: "KNUST"
+    image: "images/partners/knust.jpg"
+  - name: "University of Ghana"
+    image: "images/partners/university-of-ghana.png"
+  - name: "University of Cape Coast"
+    image: "images/partners/university-of-cape-coast.png"
+  - name: "Durham University"
+    image: "images/partners/durham-university.png"
+  - name: "Heriot-Watt University"
+    image: "images/partners/heriot-watt-university.png"
+  - name: "Perimeter Institute"
+    image: "images/partners/perimeter-institute.png"
 
 newsletter:
     enable: true

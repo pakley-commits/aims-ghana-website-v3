@@ -1,0 +1,44 @@
+{{ define "main" }}
+{{/*
+  Placeholder for a page whose URL and navigation are live but whose design
+  has not been built yet. Deliberately plain: a stub must never be mistaken
+  for a finished page. Replaced phase by phase as each archetype lands.
+*/}}
+<section class="stub">
+  <div class="container">
+    <p class="stub__eyebrow">
+      {{ with .CurrentSection }}{{ if ne .Title $.Title }}{{ .Title }}{{ end }}{{ end }}
+    </p>
+    <h1 class="stub__title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="stub__desc">{{ . }}</p>{{ end }}
+
+    <dl class="stub__meta">
+      {{ if eq .Params.build_status "undesigned" }}
+        <div>
+          <dt>Status</dt>
+          <dd>No design yet &mdash; this page has no Figma frame.</dd>
+        </div>
+      {{ else }}
+        <div>
+          <dt>Status</dt>
+          <dd>Designed, not yet built</dd>
+        </div>
+        <div>
+          <dt>Figma frame</dt>
+          <dd>{{ .Params.figma_frame }}</dd>
+        </div>
+        <div>
+          <dt>Scheduled</dt>
+          <dd>Phase {{ .Params.build_phase }}</dd>
+        </div>
+      {{ end }}
+      <div>
+        <dt>URL</dt>
+        <dd>{{ .RelPermalink }}</dd>
+      </div>
+    </dl>
+
+    {{ with .Content }}<div class="stub__body">{{ . }}</div>{{ end }}
+  </div>
+</section>
+{{ end }}

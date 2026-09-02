@@ -12,12 +12,12 @@ logo_width = "180px"
 # if logo_webp set false, will not generate WEBP version of logo | default is true
 logo_webp = true
 # logo text will only show when logo is missing.
-logo_text = "Bigspring"
+logo_text = "AIMS Ghana"
 # theme-mode
 theme_switcher = false
 theme_default = "system" # available options [light/dark/system]
 # Main Sections
-mainSections = ["blog"]
+mainSections = ["news"]
 # contact form action
 contact_form_action = "#!" # contact form works with [https://airform.io/] or [https://formspree.io]
 # demo form action
@@ -34,7 +34,7 @@ copyright = "&copy; 2026 AIMS Ghana. All Rights Reserved."
 footer_tagline_first = "Africa’s Youth"
 footer_tagline_second = "The Future of Science"
 footer_donate_label = "Donate"
-footer_donate_link = "get-demo/"
+footer_donate_link = "donate/"
 footer_organization = "African Institute for Mathematical Sciences"
 
 # preloader
@@ -47,7 +47,7 @@ preloader = "" # use jpg, png, svg or gif format. example - "images/preloader.gi
 [navigation_button]
 enable = true
 label = "DONATE"
-link = "get-demo/"
+link = "donate/"
 
 # crisp chat
 # crisp chat module: https://github.com/gethugothemes/hugo-modules/tree/master/components/crisp-chat
