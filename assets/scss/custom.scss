@@ -474,6 +474,9 @@ $heading-scale: (
   text-align: center;
 }
 
+// Person-card names sit in a fixed-height block above the role text, so a
+// name that wraps to two lines shifts the role out of alignment across the
+// grid. 22px Regular keeps the longest names in the set on one line.
 .governance-board-card__content h3 {
   min-height: 60px;
   display: flex;
@@ -482,10 +485,19 @@ $heading-scale: (
   margin: 0 0 6px;
   color: $c-white;
   font-family: $font-display;
-  font-size: $fs-h5;
+  font-size: 22px;
   line-height: 30px;
-  font-weight: $fw-medium;
+  font-weight: $fw-regular;
   letter-spacing: 0;
+}
+
+// The Academic Council page builds the same card differently: an <h4> carrying
+// class="h5", which wins on specificity over the h4 ladder. Match it here so
+// both person cards share one name treatment.
+.card-img-overlay.overlay-text h4 {
+  font-family: $font-display;
+  font-size: 22px;
+  font-weight: $fw-regular;
 }
 
 .governance-board-card__content p {

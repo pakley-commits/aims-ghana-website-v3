@@ -88,6 +88,12 @@ url = "/who-we-are/impact-and-reports/"
 weight = 12
 
 [[main]]
+parent = "Who we are"
+name = "Our Centres"
+url = "/who-we-are/centres/"
+weight = 13
+
+[[main]]
 name = "Academics"
 weight = 20
 hasChildren = true
@@ -282,23 +288,23 @@ url = "/outreach/"
 weight = 4
 
 [[footer_middle]]
+name = "Our Centres"
+url = "/who-we-are/centres/"
+weight = 1
+
+[[footer_middle]]
+name = "FAQs"
+url = "/faqs/"
+weight = 2
+
+[[footer_middle]]
 name = "Newsroom"
 url = "/news/"
-weight = 1
+weight = 3
 
 [[footer_middle]]
 name = "Work at AIMS"
 url = "/careers/"
-weight = 2
-
-[[footer_middle]]
-name = "Impact & Reports"
-url = "/who-we-are/impact-and-reports/"
-weight = 3
-
-[[footer_middle]]
-name = "Our Programs"
-url = "/academics/programs/"
 weight = 4
 
 [[footer_right]]
