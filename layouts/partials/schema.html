@@ -1,0 +1,73 @@
+<!-- Organization Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AIMS Ghana",
+  "alternateName": "African Institute for Mathematical Sciences - Ghana",
+  "url": "{{ .Site.BaseURL }}",
+  "logo": "{{ "images/logo.png" | absURL }}",
+  "description": "{{ .Site.Params.metadata.description }}",
+  "sameAs": [
+    "https://www.facebook.com/aimsghana/",
+    "https://twitter.com/aimsghana/",
+    "https://www.linkedin.com/company/aims-ghana/"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "General Support",
+    "email": "info@aims.edu.gh"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "GH",
+    "addressLocality": "Accra",
+    "addressRegion": "Ghana"
+  }
+}
+</script>
+
+<!-- Breadcrumb Schema -->
+{{ if not .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ .Site.BaseURL }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+  ]
+}
+</script>
+{{ end }}
+
+<!-- Homepage Schema -->
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "{{ .Site.Params.metadata.description }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ .Site.BaseURL }}search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{{ end }}

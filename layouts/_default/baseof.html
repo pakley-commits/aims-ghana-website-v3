@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale | default `en-US` }}" itemscope itemtype="http://schema.org/WebPage">
+
+<head>
+	<!-- head (don't cache it) -->
+	{{ partial "head.html" . }}
+
+	<!-- cache partial only in production -->
+	{{ if hugo.IsProduction }}
+	{{ partialCached "style.html" . }}
+	{{ else }}
+	{{ partial "style.html" . }}
+	{{ end }}
+</head>
+
+<body>
+	<!-- Skip to main content link for keyboard navigation -->
+	<a href="#main-content" class="skip-to-main-link">Skip to main content</a>
+
+	<!-- cache partial only in production -->
+	{{ if hugo.IsProduction }}
+	{{ partialCached "preloader.html" . }}
+	{{ partialCached "gtm-noscript.html" . }}
+	{{ else }}
+	{{ partial "preloader.html" . }}
+	{{ end }}
+	
+	<!-- header (don't cache it) -->
+	{{ partial "header.html" . }}
+
+	<main id="main-content">
+		{{ block "main" . }}{{ end }}
+	</main>
+
+	<!-- cache partial only in production -->
+	{{ if hugo.IsProduction }}
+	{{ partialCached "footer.html" . .RelPermalink }}
+	{{ partialCached "script.html" . }}
+	{{ else }}
+	{{ partial "footer.html" . }}
+	{{ partial "script.html" . }}
+	{{ end }}
+</body>
+
+</html>

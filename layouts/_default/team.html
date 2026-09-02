@@ -1,0 +1,42 @@
+{{ define "main" }}
+
+{{ with .Params.governance }}
+<section class="governance-hero">
+  <div class="governance-container governance-hero__inner">
+    <h1>{{ .title | markdownify }}</h1>
+    <p>{{ .content | markdownify }}</p>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.board }}
+<section class="governance-board">
+  <div class="governance-board__container">
+    <div class="governance-board__header">
+      <h2>{{ .title | markdownify }}</h2>
+      <p>{{ .content | markdownify }}</p>
+    </div>
+
+    {{ with $.Params.team_members }}
+    <div class="governance-board__grid">
+      {{ range . }}
+      <article class="governance-board-card">
+        {{ $photo := resources.Get .image }}
+        {{ if $photo }}
+        {{ $photo = $photo | fingerprint "sha256" }}
+        <img src="{{ $photo.RelPermalink }}" alt="{{ .name }}" class="governance-board-card__image">
+        {{ end }}
+        <div class="governance-board-card__overlay"></div>
+        <div class="governance-board-card__content">
+          <h3>{{ .name | markdownify }}</h3>
+          <p>{{ .designation | markdownify }}</p>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

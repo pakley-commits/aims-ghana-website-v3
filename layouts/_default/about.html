@@ -1,0 +1,293 @@
+{{ define "main" }}
+
+<!-- {{with .Params.about}}
+<section class="section">
+  <div class="container">
+    <div class="row g-6 align-items-center justify-content-between">
+      <div class="col-lg-6">
+        <div class="pe-0 pe-lg-5">
+          <h1 class="section-title h2">{{.title | markdownify}}</h1>
+          <p class="mb-0">{{.content | markdownify}}</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        {{ partial "image" (dict "Src" .image "alt" "About image" "Class" "w-100 rounded-1") }}
+      </div>
+    </div>
+  </div>
+</section>
+{{end}} -->
+
+
+<!-- purpose -->
+{{ with .Params.about }}
+
+<section class="section bg-light text-white">
+  <div class=" container container-wrapper mx-auto">
+    <div class="row  gy-5">
+      <div class="col-lg-6 order-lg-0 order-1">
+        <div class="pe-0 pe-lgy-5">
+          <h1 class="section-title text-white h3">{{ .title | markdownify }}</h1>
+         
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1 order-0">
+       <div class="pe-0 pe-lgy-5">
+          <!-- <h2 class="section-title h3">{{ .title | markdownify }}</h2> -->
+          <p class="mb-4">{{ .content| markdownify }}</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}
+
+<!-- /purpose -->
+
+{{ with .Params.excellence }}
+<section class="excellence py-5">
+  <div class="container container-wrapper mx-auto">
+    <div class="row ">
+
+      <!-- Text Column -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h2 class="mb-3">{{ .title | markdownify }}</h2>
+        <p class="mb-4 text-black">{{ .content | markdownify }}</p>
+
+        {{ if .button.enable }}
+          {{ with .button }}
+            <a href="{{ .link | safeURL }}" class="btn btn-primary">{{ .label }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+
+      <!-- Image Column -->
+      <div class="col-lg-6">
+        {{ partial "image" (dict "Src" .image "Alt" "Excellence image" "Class" "img-fluid ps-5") }}
+      </div>
+
+    </div>
+  </div>
+</section>
+{{ end }}
+<!-- excellence -->
+
+
+<!-- vision -->
+{{ with .Params.vision }}
+<section class="vision position-relative w-100 ">
+
+  <!-- Image wrapper -->
+  <div class="position-relative w-100 overflow-hidden " style="height: clamp(250px, 85vh, 600px);">
+
+    <!-- Full width image -->
+    {{ partial "image" (dict "Src" .image "Alt" "Vision image" "Class" "w-100 object-fit-cover object-position-bottom") }}
+
+    <!-- Bottom gradient overlay -->
+    <div class="position-absolute bottom-0 start-0 w-100" 
+         style="background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0)); height: 50%;"></div>
+
+    <!-- Text at bottom -->
+    <div class="position-absolute bottom-0 text-white w-100 px-3 px-md-5 pb-3">
+      <h2 class="mb-2 text-white u-text-h2">
+        {{ .title | markdownify }}
+      </h2>
+      <p class="mb-2 w-50 u-text-lead">
+        {{ .content | markdownify }}
+      </p>
+    </div>
+
+  </div>
+
+</section>
+{{ end }}
+
+<!--mission-model -->
+<!-- mission-model -->
+{{ with .Params.mission_model }}
+<section class="mission-model py-5 ">
+  <div class="container container-wrapper px-lg-5 mx-auto">
+    <div class="row">
+
+      <!-- Mission Column -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h2 class="mb-3">{{ .mission_title | markdownify }}</h2>
+        <p class="mb-0 w-75">{{ .mission_text | markdownify }}</p>
+      </div>
+
+      <!-- Vision For Africa Column -->
+      <div class="col-lg-6">
+        <h2 class="mb-3">{{ .vision_title | markdownify }}</h2>
+        <p class="mb-0 w-75">{{ .vision_text | markdownify }}</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+{{ end }}
+
+
+<!--Core values -->
+{{ with .Params.corevalues }}
+<section class="core-values py-5" style="background-color: #D9D9D9; justify-content: center;">
+  <div class="container container-wrapper mt-5 mx-auto">
+    <h2 class=" mb-3">{{ .title | markdownify }}</h2>
+
+    <div class="row g-5">
+
+      <!--Core values grid-->
+      {{ range .values }}
+       {{ $img := resources.Get (printf "images/%s" .image) }}
+      <div class="col-6 col-md-3">
+        <div class="core-value-box text-black d-flex text-center p-3 flex-column align-items-center justify-content-center" style="height: 240px; background-color: #FFFFFF ; border-radius: 24px;">
+          <img src = "{{ $img.RelPermalink }}" alt = "{{ .name }}" class = "img-fluid mb-3" >
+          <span class="fs-5 fw-bold">{{ .name }}</span>
+        </div>
+      </div>
+      {{ end }}
+
+    </div>
+  </div>
+</section>
+{{ end }}
+
+
+ <!--AIMS model section-->
+ {{with .Params.aims_model}}
+  {{if .enable}}
+ <section class="section">
+  <div class="container  container-wrapper mx-auto">
+    <div class="row align-items-start">
+      <div class="col-lg-4 col-md-12 mb-4 ">
+        <h2 class="section-title h3 text-light">{{.model_title | markdownify}}</h2>
+        <p class="mb-4 text-black w-75">{{.model_text | markdownify}}</p>
+      </div>
+
+  <!-- AIMS model grid -->
+      <div class="col-lg-8 col-md-10">
+        <div class="row g-3 d-flex">
+          {{range .model}}
+            {{$img := resources.Get (printf "images/%s" .icon)}}
+          <div class="col-6 mx-auto">
+            <div class="card p-4 rounded-2 border h-100 ">
+              <p class="mb-0 flex text-black align-items-center">
+                <img src="{{$img.RelPermalink}}" alt="icon" class="me-2" style="height: 24px;">
+                {{.brief | markdownify}}</p>
+            </div>
+          </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+
+
+<!--
+<section class="section bg-light">
+  <div class="container">
+    <div class="row gy-5 justify-content-center">
+      {{with .Params.founders_quote}}
+      <div class="col-lg-8 text-center mx-auto mb-5">
+        <p class="lead text-dark">{{.content | markdownify}}</p>
+        {{ partial "image" (dict "Src" .image "Alt" .name "Size" "100x" "Class" "rounded-circle mt-3") }}
+        <h3 class="section-title h5 mt-3 mb-2">{{.name | markdownify}}</h3>
+        <p class="mb-0">{{.subtitle | markdownify}}</p>
+      </div>
+      {{end}}
+
+      {{with .Params.who_we_are}}
+      <div class="col-lg-6">
+        <div class="bg-white px-4 py-5 px-lg-6 rounded-2">
+          <h2 class="section-title h3">{{.title | markdownify}}</h2>
+          <p class="mb-0">{{.content | markdownify}}</p>
+        </div>
+      </div>
+      {{end}}
+      {{with .Params.our_mission}}
+      <div class="col-lg-6">
+        <div class="bg-white px-4 py-5 px-lg-6 rounded-2">
+          <h2 class="section-title h3">{{.title | markdownify}}</h2>
+          <p class="mb-0">{{.content | markdownify}}</p>
+        </div>
+      </div>
+      {{end}}
+    </div>
+  </div>
+</section>
+
+
+
+
+
+{{if .Params.features_box.enable}}
+{{with .Params.features_box}}
+<section class="section bg-light">
+  <div class="container">
+    <div class="row gy-4">
+      {{range .features_box_item}}
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card is-hoverable py-5 bg-white rounded-1 text-center">
+          <div class="mt-3 bg-primary text-white mx-auto rounded-1 shadow h5 mb-5 d-flex align-items-center justify-content-center" style="height:65px;width:65px">
+            <i class="{{.icon}}"></i>
+          </div>
+          <h3 class="h5 mb-3">{{.title | markdownify}}</h3>
+          <p class="mb-3">{{.content | markdownify}}</p>
+        </div>
+      </div>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+
+{{if .Params.office_culture.enable}}
+{{with .Params.office_culture}}
+<section class="section">
+  <div class="container">
+    <div class="row gy-4 justify-content-center">
+      <div class="col-xl-3 col-lg-6 mb-5">
+        <h2 class="section-title h3">{{.title | markdownify}}</h2>
+        <p>{{.content | markdownify}}</p>
+      </div>
+
+      {{range .images}}
+      {{if eq .column "6"}}
+      <div class="col-xl-{{.column}} col-lg-6 col-sm-6">
+        {{ partial "image" (dict "Src" .image "Alt" .title "Size" "850x" "Class" "w-100 rounded-1 h-100 fit-cover") }}
+      </div>
+      {{end}}
+      {{if eq .column "3"}}
+      <div class="col-xl-{{.column}} col-lg-4 col-sm-6">
+        {{ partial "image" (dict "Src" .image "Alt" .title "Size" "500x" "Class" "w-100 rounded-1 h-100 fit-cover") }}
+      </div>
+      {{end}}
+      {{end}}
+      
+      {{ with .join_our_team }}
+      <div class="col-xl-5 col-lg-10 align-self-center mx-auto">
+        <div class="mt-5 mt-xl-0 text-center text-xl-start">
+          <h2 class="section-title h3">{{ .title | markdownify }}</h2>
+          {{with .content }}<p class="mb-4">{{ . | markdownify }}</p>{{ end }}
+          {{ if .button.enable }}
+          {{ with .button }}
+          <a href="{{ .link | relLangURL }}" title="{{ .label }}" class="btn btn-sm btn-outline-primary">{{ .label }}</a>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}-->
+
+{{ end }}

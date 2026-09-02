@@ -1,0 +1,23 @@
+kind: wasmer.io/App.v0
+owner: leuma
+name: aims-ghana-website
+description: AIMS Ghana static website
+package: leuma/aims-ghana-website
+
+redirect:
+  force_https: true
+
+capabilities:
+  cdn_cache:
+    enabled: true
+
+health_checks:
+  - http:
+      method: get
+      path: /
+      interval: 30s
+      timeout: 10s
+      unhealthy_threshold: 2
+      healthy_threshold: 1
+      expected_status_codes:
+        - 200

@@ -1,0 +1,20 @@
+[package]
+name = "leuma/aims-ghana-website"
+version = "0.1.0"
+description = "AIMS Ghana Hugo static website"
+entrypoint = "script"
+
+[dependencies]
+"wasmer/static-web-server" = "^1"
+
+[fs]
+"/public" = "public"
+"/settings" = "settings"
+
+[[command]]
+name = "script"
+module = "wasmer/static-web-server:webserver"
+runner = "https://webc.org/runner/wasi"
+
+[command.annotations.wasi]
+main-args = ["-w", "/settings/config.toml"]

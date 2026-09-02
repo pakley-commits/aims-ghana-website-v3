@@ -1,0 +1,13 @@
+[general]
+host = "::"
+port = 8080
+root = "/public"
+log-level = "error"
+
+cache-control-headers = true
+compression = true
+compression-static = true
+directory-listing = false
+redirect-trailing-slash = true
+index-files = "index.html"
+page404 = "./404.html"

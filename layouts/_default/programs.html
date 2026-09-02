@@ -1,0 +1,117 @@
+{{ define "main" }}
+
+<div class="programs-page">
+  {{ $arrowStem := resources.Get (.Params.program_link_icon.stem | default "images/programs/arrow-stem.svg") }}
+  {{ $arrowHead := resources.Get (.Params.program_link_icon.head | default "images/programs/arrow-head.svg") }}
+
+  {{ with .Params.hero }}
+  <section class="programs-hero">
+    <div class="programs-container programs-hero__grid">
+      <div class="programs-hero__intro">
+        <h1>{{ .title | markdownify }}</h1>
+        {{ with .subtitle }}
+        <p class="programs-hero__subtitle">{{ . | markdownify }}</p>
+        {{ end }}
+      </div>
+      <div class="programs-hero__copy">
+        {{ .content | markdownify }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.programs }}
+  <section class="programs-list" aria-label="AIMS Ghana programmes">
+    <div class="programs-container programs-list__grid">
+      {{ range . }}
+      <article class="program-card">
+        <div class="program-card__media" aria-hidden="true"></div>
+        <div class="program-card__body">
+          <h2>{{ .title | markdownify }}</h2>
+          <div class="program-card__meta">
+            {{ with .duration }}
+            <p><strong>Duration:</strong> {{ . }}</p>
+            {{ end }}
+            {{ with .partnership }}
+            <p><strong>Partnership:</strong> {{ . }}</p>
+            {{ end }}
+          </div>
+          {{ with .link }}
+          <a class="program-card__link" href="{{ . | relLangURL }}">
+            <span>Learn More</span>
+            <span class="program-card__arrow" aria-hidden="true">
+              {{ with $arrowStem }}
+              {{ $stem := . | fingerprint "sha256" }}
+              <img src="{{ $stem.RelPermalink }}" alt="" class="program-card__arrow-stem">
+              {{ end }}
+              {{ with $arrowHead }}
+              {{ $head := . | fingerprint "sha256" }}
+              <img src="{{ $head.RelPermalink }}" alt="" class="program-card__arrow-head">
+              {{ end }}
+            </span>
+          </a>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.learning }}
+  <section class="programs-learning">
+    <div class="programs-container">
+      <div class="programs-learning__grid">
+        <div class="programs-learning__content">
+          {{ with .eyebrow }}
+          <p class="programs-learning__eyebrow">{{ . | markdownify }}</p>
+          {{ end }}
+          <h2>{{ .title | markdownify }}</h2>
+          {{ with .points }}
+          {{ $checkIcon := resources.Get ($.Params.learning.check_icon | default "images/programs/check-circle.svg") }}
+          <ul class="programs-learning__list">
+            {{ range . }}
+            <li>
+              <span class="programs-learning__icon">
+                {{ with $checkIcon }}
+                {{ $icon := . | fingerprint "sha256" }}
+                <img src="{{ $icon.RelPermalink }}" alt="" class="programs-learning__icon-img">
+                {{ end }}
+              </span>
+              <span>{{ . | markdownify }}</span>
+            </li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </div>
+        {{ with .image }}
+        <div class="programs-learning__image">
+          {{ $learningPhoto := resources.Get . }}
+          {{ with $learningPhoto }}
+          {{ $photo := . | fingerprint "sha256" }}
+          <img src="{{ $photo.RelPermalink }}" alt="AIMS Ghana student learning" class="programs-learning__photo">
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.explore }}
+  <section class="programs-explore">
+    <div class="programs-container">
+      <h2>{{ .title | markdownify }}</h2>
+      {{ with .chips }}
+      <div class="programs-explore__chips">
+        {{ range . }}
+        <a class="programs-explore__chip" href="{{ .link | relLangURL }}">{{ .title | markdownify }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+</div>
+
+{{ end }}

@@ -1,0 +1,35 @@
+{{ define "main" }}
+
+<section class="centre-president-title">
+  <div class="centre-president-page-container">
+    <h1>{{ .Title | markdownify }}</h1>
+  </div>
+</section>
+
+<section class="centre-president-profile">
+  <div class="centre-president-page-container centre-president-profile__inner">
+    {{ with .Params.message.paragraphs }}
+    <div class="centre-president-profile__copy">
+      {{ range . }}
+      <p>{{ . | markdownify }}</p>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ with .Params.president }}
+    <figure class="centre-president-card">
+      {{ $portrait := resources.Get .image }}
+      {{ if $portrait }}
+      {{ $portrait = $portrait | fingerprint "sha256" }}
+      <img src="{{ $portrait.RelPermalink }}" alt="{{ .name }}" class="centre-president-card__image">
+      {{ end }}
+      <figcaption class="centre-president-card__caption">
+        <h2>{{ .name | markdownify }}</h2>
+        <p>{{ .role | markdownify }}</p>
+      </figcaption>
+    </figure>
+    {{ end }}
+  </div>
+</section>
+
+{{ end }}

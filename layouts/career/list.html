@@ -1,0 +1,55 @@
+{{ define "main" }}
+
+{{ with .Params.hero }}
+<section class="admin-staff-hero">
+  <div class="admin-staff-container admin-staff-hero__inner">
+    <h1>{{ .title | markdownify }}</h1>
+    <p>{{ .content | markdownify }}</p>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.staff }}
+<section class="admin-staff-section">
+  <div class="admin-staff-container">
+    <div class="admin-staff-grid">
+      {{ range . }}
+      <article class="admin-staff-card">
+        <div class="admin-staff-card__media">
+          {{ $photo := resources.Get .image }}
+          {{ if $photo }}
+          {{ $photo = $photo | fingerprint "sha256" }}
+          <img src="{{ $photo.RelPermalink }}" alt="{{ .name }}" class="admin-staff-card__image">
+          {{ end }}
+        </div>
+
+        <div class="admin-staff-card__body">
+          <div>
+            <h2>{{ .name | markdownify }}</h2>
+            <p>{{ .role | markdownify }}</p>
+          </div>
+
+          {{ with $.Params.staff_social }}
+          <ul class="admin-staff-card__social" aria-label="{{ $.Title }} social links">
+            {{ range . }}
+            <li>
+              <a href="{{ .link | safeURL }}" title="{{ .title }}" aria-label="{{ .title }}">
+                {{ $iconResource := resources.Get .icon }}
+                {{ if $iconResource }}
+                {{ $icon := $iconResource | fingerprint "sha256" }}
+                <img src="{{ $icon.RelPermalink }}" alt="" class="admin-staff-card__social-icon">
+                {{ end }}
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

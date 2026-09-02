@@ -1,0 +1,64 @@
+<!-- DNS preconnect -->
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="preconnect" href="//ajax.googleapis.com" />
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin="anonymous" />
+<link rel="preconnect" href="https://use.fontawesome.com" crossorigin />
+<link rel="preconnect" href="//cdnjs.cloudflare.com" />
+<link rel="preconnect" href="//www.googletagmanager.com" />
+<link rel="preconnect" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+<link rel="dns-prefetch" href="https://use.fontawesome.com" />
+<link rel="dns-prefetch" href="//ajax.googleapis.com" />
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+<link rel="dns-prefetch" href="//www.googletagmanager.com" />
+<link rel="dns-prefetch" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="dns-prefetch" href="//connect.facebook.net" />
+<link rel="dns-prefetch" href="//platform.linkedin.com" />
+<link rel="dns-prefetch" href="//platform.twitter.com" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+
+<!-- Webfonts. Single source of truth: hugo.toml [params.variables]
+     font_primary (display) and font_secondary (body/UI). Keep this the ONLY
+     place fonts are requested — do not add hardcoded families here. -->
+{{ $pf := site.Params.variables.font_primary | default "Space+Grotesk:wght@500;700" }}
+{{ $sf := site.Params.variables.font_secondary }}
+{{ $fontURL := printf "https://fonts.googleapis.com/css2?family=%s" $pf }}
+{{ with $sf }}
+  {{ $fontURL = printf "%s&family=%s" $fontURL . }}
+{{ end }}
+{{ $fontURL = printf "%s&display=swap" $fontURL }}
+<link href="{{ $fontURL | safeURL }}" rel="stylesheet" />
+
+<!-- plugins + stylesheet -->
+{{ $styles := slice }}
+{{ range site.Params.plugins.css }}
+  {{ if findRE "^http" .link }}
+    <link
+      crossorigin="anonymous"
+      media="all"
+      rel="stylesheet"
+      href="{{ .link | relURL }}"
+      {{ .attributes | safeHTMLAttr }} />
+  {{ else }}
+    {{ $styles = $styles | append (resources.Get .link) }}
+  {{ end }}
+{{ end }}
+{{ $styles := $styles | append (resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "style.scss" . | toCSS) }}
+{{ $styles := $styles | resources.Concat "/css/style.css" }}
+
+
+<!-- Purge CSS in Production -->
+{{ if and hugo.IsProduction site.Params.purge_css }}
+  {{ $styles = $styles | css.PostCSS | fingerprint "sha256" }}
+  {{ $styles = $styles | resources.PostProcess }}
+{{ end }}
+
+
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" /> 
+
+{{/*  <style type="text/css">{{$styles.Content | safeCSS}}</style>  */}}

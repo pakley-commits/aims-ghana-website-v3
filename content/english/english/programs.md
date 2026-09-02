@@ -1,0 +1,80 @@
+---
+title: "Our Programs"
+subtitle: "Developing Africa's Next Generation of Scientific Leaders"
+description: "Explore AIMS Ghana programmes in mathematical sciences, teacher training, co-operative study, and doctoral research."
+draft: false
+layout: "programs"
+footer_variant: "dark"
+
+hero:
+  title: "Our Programs"
+  subtitle: "Developing Africa's Next Generation of Scientific Leaders"
+  content: |
+    At AIMS Ghana, our programmes combine world-class training, cutting-edge research, and practical problem-solving to equip Africa's youth with the mathematical and scientific tools to drive transformation across the continent.
+
+    Whether you are beginning your academic journey, deepening your research, or seeking a platform to innovate, AIMS provides a space to learn, grow, and lead.
+
+programs:
+  - title: "Master of Mathematical Sciences"
+    duration: "1 Year (Full-Time, Residential)"
+    partnership: "University of Ghana, UCC, KNUST"
+    link: "/products/product-1"
+  - title: "Masters in Mathematical Sciences for Teachers (MMST)"
+    duration: "1 Year (Full-Time, Residential)"
+    partnership: "University of Ghana, UCC, KNUST"
+    link: "/products/product-2"
+  - title: "Co-operative Master’s in Mathematical Sciences (Coop)"
+    duration: "1 Year (Full-Time, Residential)"
+    partnership: "University of Ghana, UCC, KNUST"
+    link: "/products/product-3"
+  - title: "PhD Programmes"
+    duration: "1 Year (Full-Time, Residential)"
+    partnership: "University of Ghana, UCC, KNUST"
+    link: "/products/product-4"
+
+learning:
+  eyebrow: "Improve your worklife"
+  title: "Learning at AIMS Ghana"
+  image: "images/programs/learning.png"
+  check_icon: "images/programs/check-circle.svg"
+  points:
+    - "Residential and fully equipped learning environments"
+    - "Global visiting faculty and tutors"
+    - "Full or partial scholarships for admitted students"
+    - "Multidisciplinary, gender-inclusive, and collaborative community"
+    - "Opportunities for internships, research placements, and entrepreneurship"
+
+program_link_icon:
+  stem: "images/programs/arrow-stem.svg"
+  head: "images/programs/arrow-head.svg"
+
+explore:
+  title: "Explore Academic Programmes"
+  chips:
+    - title: "Regular Master’s"
+      link: "/products/product-1"
+    - title: "CO-OP"
+      link: "/products/product-3"
+    - title: "Applications"
+      link: "/products/product-4"
+    - title: "MMST"
+      link: "/products/product-2"
+
+footer_social:
+  - title: "Twitter"
+    icon: "fab fa-twitter"
+    image: "images/footer-dark/twitter.svg"
+    link: "#!"
+  - title: "Facebook"
+    icon: "fab fa-facebook"
+    image: "images/footer-dark/facebook.svg"
+    link: "#!"
+  - title: "Instagram"
+    icon: "fab fa-instagram"
+    image: "images/footer-dark/instagram.svg"
+    link: "#!"
+  - title: "LinkedIn"
+    icon: "fab fa-linkedin"
+    image: "images/footer-dark/linkedin.svg"
+    link: "#!"
+---

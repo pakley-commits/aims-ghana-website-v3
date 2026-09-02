@@ -1,0 +1,766 @@
+{{ define "main" }}
+
+<!-- banner -->
+{{ with .Params.banner }}
+<section class="banner ">
+
+  <div class="container-fluid px-[100px] ">
+
+    <div class="row">
+      <div class="col-12 position-relative">
+        
+        {{ partial "image" (dict "Src" .image "Alt" "AIMS Ghana students studying mathematics in collaborative environment" "Class" "w-100") }}
+                <div class="banner-overlay rounded-3 top-0 w-100"></div>
+
+        <div class="banner-copy position-absolute bottom-0 text-white">
+          <h1 class="banner-copy__title text-white">{{ .title | markdownify }}</h1>
+          <p class="banner-copy__lead mb-4">{{ .content | markdownify }}</p>
+          <div class="mb-5">
+            {{ if .button.enable }}
+            {{ with .button }}
+            <a href="{{ .link | safeURL }}" title="{{ .label }}" class="btn btn-outline-light m-2">{{ .label }}</a>
+            {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+<!-- /banner -->
+
+
+
+
+<!-- mission -->
+{{ with .Params.mission }}
+{{ if .enable }}
+{{ range $i,$p := .mission_item }}
+<section class="section ">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6 {{if modBool $i 2}}order-lg-0{{end}} order-1">
+        <div class="pe-0 pe-lgy-5">
+          <!-- <h2 class="section-title h3">{{ .title | markdownify }}</h2> -->
+          <h3 class="mb-4 w-75" >{{ .content1 | markdownify }}</h3>
+          {{ if .button.enable }}
+          {{ with .button }}
+          <a href="{{ .link | relLangURL }}" title="{{ .label }}" class="btn-link">{{ .label }} <i class="fas fa-arrow-right"></i></a>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+      <div class="col-lg-6 {{if modBool $i 2}}order-lg-1{{end}} order-0">
+       <div class="pe-0 pe-lgy-5">
+          <!-- <h2 class="section-title h3">{{ .title | markdownify }}</h2> -->
+          <p class="mb-4">{{ .content2 | markdownify }}</p>
+          {{ if .button.enable }}
+          {{ with .button }}
+          <a href="{{ .link | relLangURL }}" title="{{ .label }}" class="btn-link">{{ .label }} <i class="fas fa-arrow-right"></i></a>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+{{ end }}
+<!-- /mission -->
+
+<!-- purpose -->
+{{ with .Params.purpose }}
+{{ if .enable }}
+{{ range $i,$p := .purpose_item }}
+<section class="section bg-light text-white">
+  <div class="container">
+    <div class="row  gy-5">
+      <div class="col-lg-6 {{if modBool $i 2}}order-lg-0{{end}} order-1">
+        <div class="pe-0 pe-lgy-5">
+          <h2 class="section-title text-white h3">{{ .title | markdownify }}</h2>
+         
+        </div>
+        <div class="pe-0 pe-lgy-5 w-75 ">
+          <!-- <h2 class="section-title h3">{{ .title | markdownify }}</h2> -->
+          <p class="mb-4">{{ .content| markdownify }}</p>
+          
+        </div>
+      </div>
+     
+        <div class="col-lg-6 text-center position-relative">
+        {{ partial "image" (dict "Src" .image "Alt" (printf "%s, %s" .person_name .person_title) "Class" "img-fluid rounded-4 shadow position-relative") }}
+        
+       
+      </div>
+       
+    
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+{{ end }}
+<!-- /purpose -->
+
+
+<!-- impact -->
+{{ with .Params.impact }}
+{{ if .enable }}
+<section class="section impact-section text-center py-10">
+  <div class="container">
+    <h3 class="section-title mb-5 text-start">{{ .title | markdownify }}</h3>
+    <hr>
+    <div class="row gy-5 gx-4 justify-content-center">
+      {{ range $i, $p := .impact_item }}
+      <div class="col-md-4 col-sm-6">
+        <div class="impact-card p-4 h-100">
+          <h3 class="impact-stat text-start display-5 fw-bold text-primary">{{ .stat }}</h3>
+          <p class="impact-text  text-start fw-medium mt-3">{{ .content | markdownify }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+
+<!-- /impact -->
+
+
+<!-- success_story -->
+
+
+{{ with .Params.success_story }}
+{{ if .enable }}
+<section class="section success-story bg-dark py-10">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+
+      <!-- IMAGE FIRST -->
+      <div class="col-lg-6  position-relative ">
+
+        <div class="position-relative  " style="height: 500px; overflow: hidden;"> 
+          {{ partial "image" (dict "Src" .image "Alt" (printf "%s, %s" .person_name .person_title) "Class" "w-100 h-100 object-fit-cover rounded-5 shadow") }}
+
+          <!-- DARK OVERLAY WITH NAME & TITLE -->
+          <div class="position-absolute bottom-0 start-0 w-100 rounded-bottom-5" 
+               style="background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 73.34%);
+; padding: 20px;">
+            <h5 class="mb-1 fw-semibold text-white">{{ .person_name }}</h5>
+            <p class="mb-0 small text-white">{{ .person_title }}</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TEXT SECOND -->
+      <div class="col-lg-6">
+        <div class="ps-lg-5">
+        {{ partial "image" (dict 
+    "Src" ("/images/quote.png" | relURL)
+    "Alt" ""
+    "Class" "quote-icon"
+    "AriaHidden" "true"
+) }}
+          <p class="fs-4 fw-medium mb-4 fst-italic text-black mt-2">
+            
+
+{{ .quote1 }}
+          </p>
+          <p class="fs-5 mb-4 u-text-muted">
+            {{ .quote2 }}
+          </p>
+          <a href="{{ .link | safeURL }}" class="btn  bg-white  text-light btn-lg rounded-pill" style="border: none; position: relative; padding-right: 2.5rem;">
+            Read more here
+            <span style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%) rotate(-45deg); display: inline-block;">
+    &#10132;
+  </span>
+          </a>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+
+
+<!-- success_story -->
+
+
+<!-- aims_model -->
+{{ with .Params.aims_model }}
+{{ if .enable }}
+<section class="section aims-model py-10 bg-light text-white">
+  <div class="container">
+    <div class="row align-items-start mb-5 g-2">
+
+      <!-- Left Text Column -->
+      <div class="col-lg-5 text-start">
+        <h2 class="text-white  mb-5 fw-medium">{{ .title }}</h2>
+        <h5 class="w-75 text-white fw-medium">{{ .content }}</h5>
+      </div>
+
+      <!-- Right Grid Column -->
+      <div class="col-lg-7">
+        <div class="row g-5">
+
+          {{ $models := slice .model1 .model2 .model3 .model4 }}
+          {{ range $model := $models }}
+          <div class=" d-flex col-md-6 text-black flex-grow-1">
+                    <div class="d-flex flex-column align-items-start bg-white w-100 px-3 py-4 rounded-3 flex-grow-1">
+
+
+              <!-- Blue Circle Check Icon -->
+              {{ partial "image" (dict 
+    "Src" ("/images/checkmark.svg" | relURL)
+    "Alt" ""
+    "Class" "quote-icon"
+    "AriaHidden" "true"
+) }}
+
+              <!-- Text -->
+              <div class="ms-3 flex-grow-1 text-start fs-5">
+                
+                  {{ $model | markdownify }}
+
+              </div>
+
+            </div>
+          </div>
+          {{ end }}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+
+
+<!-- aims_model -->
+
+
+
+<!-- Programs -->
+
+{{ with .Params.programs }}
+{{ if .enable }}
+<section class="section programs py-10 ">
+  <div class="container">
+    <div class="row  mb-5">
+      <div class="col-lg-8 text-start">
+        <h3 class="section-title mb-3  fw-semibold">Our Programs</h3>
+        <!-- <p class="text-secondary">{{ .intro }}</p> -->
+      </div>
+    </div>
+
+    <div class="accordion" id="programsAccordion">
+      {{ range $i, $item := .list }}
+            <hr>
+
+      <div class="accordion-item mb-3 border-0 rounded-3 overflow-hidden">
+        <h2 class="accordion-header" id="heading-{{ $i }}">
+          <button
+            class="accordion-button p-0 collapsed d-flex justify-content-between align-items-center bg-white"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapse-{{ $i }}"
+            aria-expanded="false"
+            aria-controls="collapse-{{ $i }}"
+          >
+            <h5 class="fw-semibold text-primary">{{ $item.title }}</h5>
+             <span class="arrow-icon ms-auto text-black">→</span>
+
+          </button>
+        </h2>
+        <div
+          id="collapse-{{ $i }}"
+          class="accordion-collapse collapse"
+          aria-labelledby="heading-{{ $i }}"
+          data-bs-parent="#programsAccordion"
+        >
+          <div class="accordion-body p-0 text-black">
+            {{ $item.description | markdownify }}
+          </div>
+          
+        </div>
+      </div>
+      {{ end }}
+    </div>
+          <hr>
+
+          <div class="text-start mt-4 d-flex gap-3">
+  <a href="/apply" class="btn btn-primary btn-lg  " style="border-radius:9px; white-space: nowrap;">
+    Apply Now
+  </a>
+
+  <a href="/programs" class="btn btn-outline-primary btn-lg  " style="border-radius:9px; white-space: nowrap;">
+    Explore Programs
+  </a>
+</div>
+
+
+  </div>
+</section>
+{{ end }}
+{{ end }}
+
+
+<!-- Programs -->
+
+
+
+
+
+
+
+
+{{ with .Params.research }}
+<section class="research py-10">
+  
+  <!-- Full-width image with dark overlay -->
+  <div class="position-relative w-100" style="height: 600px; ">
+    {{ partial "image" (dict "Src" .image "Alt" "Research image" "Class" "w-100 h-100 object-fit-cover") }}
+
+    <!-- Dark overlay with text -->
+    <div class="position-absolute bottom-0 start-0 w-100 h-100" style=" background: linear-gradient(180deg, rgba(0, 0, 0, 0) 8.32%, rgba(0, 0, 0, 0.85) 100%);
+;">
+<div class="w-50 d-flex flex-column align-items-start justify-content-end h-100 p-3 px-md-5 py-md-5">
+        
+      <h2 class="text-white  mb-4">{{ .title | markdownify }}</h2>
+
+
+        <p class="w-75 text-white text-start mb-0 u-text-lead">
+          {{ .content | markdownify }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+
+<!-- lecturers -->
+{{ with .Params.lecturers }}
+{{ if .enable }}
+<section class="lecturers-section">
+  <div class="lecturers-container">
+    <div class="lecturers-header">
+      {{ with .eyebrow }}
+      <p class="lecturers-eyebrow">{{ . | markdownify }}</p>
+      {{ end }}
+      <h2>{{ .title | markdownify }}</h2>
+      {{ with .content }}
+      <p class="lecturers-copy">{{ . | markdownify }}</p>
+      {{ end }}
+    </div>
+
+    {{ with .image }}
+    <div class="lecturers-map-wrap">
+      {{ partial "image" (dict "Src" . "Alt" $.Params.lecturers.image_alt "Class" "lecturers-map") }}
+    </div>
+    {{ end }}
+  </div>
+
+  {{ with .button }}
+  {{ if .enable }}
+  <div class="lecturers-action">
+    <a href="{{ .link | relLangURL }}" class="lecturers-button">
+      {{ .label | markdownify }}
+      <i class="fas fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+  {{ end }}
+  {{ end }}
+</section>
+{{ end }}
+{{ end }}
+<!-- /lecturers -->
+
+
+<!-- clients_logo_slider -->
+{{ if .Params.partners_logo_slider.enable }}
+{{ with .Params.partners_logo_slider }}
+<section class="section overflow-hidden bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="text-light">{{.title | markdownify}}</h2>
+      </div>
+      <div class="col-12">
+        <div class="swiper brand-carousel">
+          <div class="swiper-wrapper">
+            {{ range .logos }}
+            <div class="swiper-slide brand-item d-flex align-items-center justify-content-center">
+              {{ partial "image" (dict "Src" . "Alt" "Brands logo" "Size" "x35") }}
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+<!-- clients_logo_slider -->
+
+
+
+<!-- Our Alumni -->
+
+{{ with .Params.alumni }}
+{{ if .enable }}
+<section class="section alumni py-10 ">
+  <div class="container">
+    <!-- Section Title -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title fw-semibold mb-3">Alumni shaping Africa</h2>
+        <p class="text-muted w-50 mx-auto ">{{ .intro }}</p>
+      </div>
+    </div>
+
+    <!-- Alumni Grid -->
+    <div class="row g-4 justify-content-center">
+      {{ range first 3 .list }}
+      <div class="col-md-4 col-sm-6">
+        <div class="alumni-card position-relative overflow-hidden rounded-4 shadow-sm">
+          <!-- Image -->
+          {{ partial "image" (dict "Src" .image "Alt" .name "Class" "img-fluid w-100") }}
+
+          <!-- Overlay Info -->
+          <div class="alumni-overlay position-absolute bottom-0 start-0 w-100 text-white p-3">
+            <h5 class="mb-1 fw-semibold text-white ">{{ .name }}</h5>
+            <p class="mb-2 small">{{ .position }}</p>
+            <!-- <a href="{{ .link | safeURL }}" class="btn btn-sm btn-outline-light rounded-pill">
+              View Profile
+            </a> -->
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <!-- View More Button -->
+    <div class="text-center mt-5">
+      <!-- <a href="{{ .more_link | safeURL }}" class="btn btn-lg rounded-pill">
+        View More Alumni here 
+      </a> -->
+      <a href="{{ .more_link | safeURL }}" class="btn  bg-white  text-light btn-lg rounded-pill" style="border: none; position: relative; padding-right: 2.5rem;">
+            View More Alumni here 
+            <span style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%) rotate(-45deg); display: inline-block;">
+    &#10132;
+  </span>
+          </a>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+
+
+
+<!-- Our Alumni -->
+
+
+
+<section class="section latest-blog py-10 bg-dark">
+  <div class="container ">
+    <!-- Section Title -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title fw-semibold mb-3">Latest News</h2>
+        <!-- <p class="text-muted">Stay updated with our latest stories and announcements</p> -->
+      </div>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="row g-4 justify-content-center">
+      {{ $blogs := where .Site.RegularPages "Section" "blog" | last 3 }}
+      {{ range $blogs }}
+      <div class="col-md-3">
+        <div class="h-100">
+          <!-- Blog Image -->
+          {{ with .Params.image }}
+          <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="img-fluid rounded-3 mb-3 img-blog-height" loading="lazy">
+          {{ end }}
+
+          <!-- Author & Date -->
+          <div class="d-flex align-items-center mb-2 text-muted u-text-xs">
+            {{ with .Params.author }}
+            <i class="bi bi-person me-1"></i> {{ . }}
+            {{ end }}
+            <i class="bi bi-calendar3 ms-3 me-1"></i> {{ .Date.Format "Jan 2, 2006" }}
+          </div>
+
+          <!-- Blog Title -->
+          <h5 class="fw-semibold mb-2">{{ .Title }}</h5>
+
+          <!-- Excerpt / Description -->
+          <p class="text-muted u-text-sm">
+            {{ if .Params.description }}
+              {{ .Params.description }}
+            {{ else }}
+              {{ .Summary | plainify | truncate 120 }}
+            {{ end }}
+          </p>
+
+          <!-- Read More Link -->
+          <a href="{{ .RelPermalink }}" class="text-primary fw-medium" style="text-decoration: none;">
+            Read More →
+          </a>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+
+{{ with .Params.newsletter }}
+{{ if .enable }}
+<section class="newsletter-section container position-relative my-5 text-white">
+
+  {{ partial "image" (dict "Src" .background_image "Alt" .name "Class" "img-fluid w-100") }}
+
+  <!-- Centered Content -->
+  <div class="position-absolute top-50 start-50 translate-middle text-center w-100">
+
+    <h2 class="fw-semibold mb-4 text-white">{{ .title }}</h2>
+
+    <form class="row justify-content-center align-items-center w-75 mx-auto" action="{{ .form.action }}" method="post">
+      <div class="col-md-4">
+        <label for="newsletter-name" class="visually-hidden">{{ .form.name_placeholder }}</label>
+        <input type="text" id="newsletter-name" name="name" class="form-control form-control-lg bg-transparent border text-white"
+               style="border-color: white;" placeholder="{{ .form.name_placeholder }}" required aria-label="{{ .form.name_placeholder }}">
+      </div>
+
+      <div class="col-md-4 ">
+        <label for="newsletter-email" class="visually-hidden">{{ .form.email_placeholder }}</label>
+        <input type="email" id="newsletter-email" name="email" class="form-control form-control-lg bg-transparent border text-white "
+               style="border-color: white;" placeholder="{{ .form.email_placeholder }}" required aria-label="{{ .form.email_placeholder }}">
+      </div>
+
+      <div class="col-md-2 d-grid">
+        <button type="submit" class="btn btn-primary btn-lg"
+                style="background-color: #F2960C; border-radius: 9px; color: #1E1E1E; white-space: nowrap;" aria-label="{{ .form.button_text }}">
+          {{ .form.button_text }}
+        </button>
+      </div>
+    </form>
+
+  </div>
+
+</section>
+{{ end }}
+{{ end }}
+
+
+
+
+
+
+<!-- feature -->
+{{ with .Params.feature }}
+{{ if .enable }}
+<section class="section bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-4 mb-5 mb-xl-0">
+        <div class="pe-0 pe-xl-3">
+          <h2 class="section-title h3 mb-4">{{ .title | markdownify }}</h2>
+          <div class="content mb-4">
+            {{.content | markdownify}}
+          </div>
+          {{ if .button.enable }}
+          {{ with .button }}
+          <a href="{{ .link | safeURL }}" title="{{ .label }}" class="btn btn-outline-primary">{{ .label }}</a>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+      <div class="col-xl-8">
+        <div class="row gx-md-5 gy-5">
+          {{ range .feature_item }}
+            <div class="col-md-6">
+              <div class="feature-card is-hoverable bg-white rounded-1 d-block d-sm-flex">
+                <i class="icon {{.icon}} text-primary mb-4"></i>
+                <div class="block">
+                  <h4 class="mb-3 h5">{{ .name | title }}</h4>
+                  <p class="mb-0">{{ .content | markdownify }}</p>
+                </div>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+<!-- /feature -->
+
+<!-- intro_video -->
+{{ with .Params.intro_video }}
+{{ if .enable }}
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 text-center">
+        <h2 class="section-title h3">{{ .title | markdownify }}</h2>
+        <div class="content mb-5">
+          {{.content | markdownify}}
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-xl-9">
+        <div class="has-video rounded-2 shadow video-loader">
+          <button type="button" aria-label="video play button" class="video-loader-btn rounded-2" data-src="{{.video_url}}">
+            <i class="fas fa-play"></i>
+          </button>
+          {{ partial "image" (dict "Src" .video_thumbnail "Alt" "Video: {{.title}}" "Size" "850x" "Class" "w-100 video-thumb rounded-2") }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+<!-- /intro_video -->
+
+<!-- service -->
+{{ with .Params.service }}
+{{ if .enable }}
+{{ range $i,$p := .service_item }}
+<section class="section {{if modBool $i 2}}bg-light {{end}}">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6 {{if modBool $i 2}}order-lg-0{{end}} order-1">
+        <div class="pe-0 pe-lgy-5">
+          <h2 class="section-title h3">{{ .title | markdownify }}</h2>
+          <p class="mb-4">{{ .content | markdownify }}</p>
+          {{ if .button.enable }}
+          {{ with .button }}
+          <a href="{{ .link | relLangURL }}" title="{{ .label }}" class="btn-link">{{ .label }} <i class="fas fa-arrow-right"></i></a>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+      <div class="col-lg-6 {{if modBool $i 2}}order-lg-1{{end}} order-0">
+        {{$cl := gt (len .images) 1}}
+        {{if $cl}}<div class="swiper single-slider">{{end}}
+          {{if $cl}}<div class="swiper-wrapper">{{end}}
+            {{ $title:= .title }}
+            {{ range .images }}
+            <div class="swiper-slide">
+              {{ partial "image" (dict "Src" . "Alt" $title) }}
+            </div>
+            {{ end }}
+          {{if $cl}}</div>{{end}}
+          {{if $cl}}<div class="swiper-pagination"></div>{{end}}
+        {{if $cl}}</div>{{end}}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+{{ end }}
+<!-- /service -->
+
+{{with .Params.testimonials}}
+{{if .enable}}
+<section class="section ">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-6 mx-auto">
+        <div class="text-center">
+          <h2 class="section-title h3">{{.title | markdownify}}</h2>
+          <p>{{.content | markdownify}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+        <div class="swiper testimonial-carousel">
+          <div class="swiper-wrapper mb-3">
+            {{range .testimonials_quotes}}
+            <div class="swiper-slide text-center">
+              <p class="lead mb-5 text-dark">{{.quote}}</p>
+              {{ partial "image" (dict "Src" .image "Alt" .name "Size" "90x" "Class" "rounded-circle mb-3") }}
+              <h5 class="mb-1">{{.name | markdownify}}</h5>
+              <p>{{.designation | markdownify}}</p>
+            </div>
+            {{end}}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+{{end}}
+
+<!-- tools_intregrate -->
+{{ with .Params.tools_intregrate }}
+{{ if .enable }}
+<section class="section pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 text-center mx-auto">
+        <h2 class="section-title h3">{{ .title | markdownify }}</h2>
+        <p>{{.content | markdownify}}</p>
+      </div>
+      <div class="col-12 text-center">
+        {{ range .tools }}
+        <div class="is-hoverable p-4 shadow rounded-2 d-inline-block m-3" style="background-color: #fff;">
+          {{ partial "image" (dict "Src" . "Alt" . "Size" "x45" "Class" "w-100 rounded-2") }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  <div class="section pb-0">
+    {{ partial "image" (dict "Src" .image "Alt" "call to action" "Class" "w-100") }}
+  </div>
+</section>
+{{ end }}
+{{ end }}
+<!-- /tools_intregrate -->
+
+<!-- call to action -->
+{{ with .Params.call_to_action }}
+{{ if .enable }}
+<section class="section">
+  <div class="container">
+    <div class="row align-items-center justify-content-center text-center">
+      <div class="col-lgy-5 col-md-7">
+        <h2 class="section-title">{{ .title | markdownify }}</h2>
+        {{with .content }}<p class="mb-4">{{ . | markdownify }}</p>{{ end }}
+        {{ if .button.enable }}
+        {{ with .button }}
+        <a href="{{ .link | relLangURL }}" title="{{ .label }}" class="btn btn-primary">{{ .label }}</a>
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+<!-- /call to action -->
+
+{{ end }}

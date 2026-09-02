@@ -1,0 +1,4 @@
+######################## production configuration ####################
+# Set this to your production domain when deploying
+# Example: baseURL = "https://www.aimsghana.edu.gh/"
+baseURL = "https://www.aimsghana.edu.gh/"

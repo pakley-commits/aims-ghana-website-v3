@@ -1,0 +1,74 @@
+{{define "main"}}
+
+
+<!--responsive governance title and content section-->
+{{with .Params.governance}}
+<section class="section " style="background-color: #E4E4E7;">
+  <div class="container">
+    <div class="row gy-5">
+      <div class="col-lg-6 order-lg-0 order-1">
+        <div class="ms-5 mt-5 pe-lg-5">
+          <h1 class="section-title text-light h3">{{ .title | markdownify }}</h1>
+         
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-0 order-1">
+       <div class="pe-0 pe-lgy-5">
+          <!-- <h2 class="section-title h3">{{ .title | markdownify }}</h2> -->
+          <p class="mb-4 ps-5 text-black">{{ .content| markdownify }}</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}}
+
+
+{{with .Params.council }}
+<section class="mb-4" style="margin-top: 90px">
+  <div class="container">
+    <div class="d-flex flex-column align-items-center">
+      <div class="col-lg-12">
+        <h1 class="mb-4 text-center">{{.title | markdownify}}</h1>
+      </div>
+      <div class="w-75" style="height: 150x;">
+        <p class="text-center u-text-lead-static u-text-ink">{{.content | markdownify}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{{end}} 
+
+
+{{with .Params.team_members}}
+<section>
+  <div class="container mb-5">
+    <div class="row g-4 ">
+
+      {{range .}}
+      <div class="col-lg-4 col-md-6">
+        <div class="card bg-transparent border-0 mb-0 rounded-4 overflow-hidden" style="height: 375px">
+
+           {{ $img := resources.Get (printf "images/%s" .image )}}
+
+           <img src="{{ $img.RelPermalink }}" alt="{{ .name }}" class=" img-fluid rounded-4 w-100" style="height: 375px">
+
+           <div class="card-img-overlay overlay-text d-flex flex-column justify-content-end">
+            <h4 class="h5 text-white mb-0 "style="z-index: 2;">
+              {{ .name | markdownify }}
+            </h4>
+            <p class="ms-1 "style="z-index: 2; color: #D4D4D8;">
+              {{ .designation | markdownify }}
+            </p>
+           </div>
+        </div>
+      </div>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}
+
+
+{{end}}

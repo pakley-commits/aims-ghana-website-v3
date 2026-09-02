@@ -1,0 +1,128 @@
+// ===========================================================================
+// Design tokens
+// ---------------------------------------------------------------------------
+// Single source of truth for type, colour, spacing, radii and elevation.
+//
+// Font families are NOT declared here. They come from hugo.toml
+// [params.variables] and are interpolated by the theme's style.scss:
+//   font_primary   -> $font-primary   -> Space Grotesk (display / headings)
+//   font_secondary -> $font-secondary -> Inter         (body / UI / buttons / nav)
+//
+// Breakpoints are NOT declared here either. Use the theme mixins in
+// themes/bigspring-hugo/assets/scss/_mixins.scss:
+//   mobile-xs 400 / mobile 575 / tablet 767 / desktop 991 / desktop-lg 1199
+// ===========================================================================
+
+
+// --- Type families ---------------------------------------------------------
+$font-display: $font-primary;
+$font-body: $font-secondary;
+
+
+// --- Type scale ------------------------------------------------------------
+// The canonical step ladder. These name the sizes the site already uses, so
+// swapping a literal for its token is a pure alias with no visual change.
+// Components step down through the ladder inside the theme breakpoint mixins.
+$fs-display: 64px;
+$fs-h1: 56px;
+$fs-h2: 44px;
+$fs-h3: 36px;
+$fs-h4: 28px;
+$fs-h5: 24px;
+$fs-h6: 20px;
+$fs-lg: 17px; // lead paragraph
+$fs-body: 16px;
+$fs-sm: 14px;
+$fs-xs: 13px;
+
+// Fluid variants, for the blocks that already scale with the viewport rather
+// than stepping at breakpoints. Ranges match the ladder above.
+$fs-display-fluid: clamp(2.75rem, 4.8vw, 4rem); // 44 -> 64px
+$fs-h1-fluid: clamp(2.5rem, 4.4vw, 3.5rem); // 40 -> 56px
+$fs-h2-fluid: clamp(2rem, 2.5vw, 2.25rem); // 32 -> 36px
+$fs-h3-fluid: clamp(1.75rem, 2.25vw, 2.25rem); // 28 -> 36px
+$fs-lg-fluid: clamp(1rem, 2.5vw, 1.25rem); // 16 -> 20px
+
+
+// --- Weights ---------------------------------------------------------------
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+
+// --- Line heights ----------------------------------------------------------
+$lh-tight: 1.15;
+$lh-snug: 1.3;
+$lh-normal: 1.6;
+$lh-relaxed: 1.75;
+
+
+// --- Letter spacing --------------------------------------------------------
+$ls-eyebrow: 0.08em;
+$ls-tight: -0.02em;
+
+
+// --- Colour ----------------------------------------------------------------
+// Brand
+$c-maroon: $color-primary; // #800000
+$c-maroon-deep: #5c0000;
+$c-gold: #f2960c;
+
+// Text
+$c-ink: #18181b; // primary text on light
+$c-ink-strong: #0a0a0a;
+$c-muted: #52525b; // secondary text
+$c-slate: #49515b;
+
+// Surfaces and lines
+$c-white: #fff;
+$c-black: #000;
+$c-line: #e4e4e7;
+$c-surface: #f8fafc;
+$c-surface-alt: #f5f5f5;
+$c-surface-mute: #d9d9d9;
+
+// Dark sections
+$c-night: #090914;
+$c-night-soft: #1e1e1e;
+$c-night-ink: #161616;
+
+// Tints
+$c-info-tint: #dbeafe;
+$c-deep-navy: #101828;
+
+
+// --- Spacing (4px base) ----------------------------------------------------
+$s-1: 4px;
+$s-2: 8px;
+$s-3: 12px;
+$s-4: 16px;
+$s-5: 20px;
+$s-6: 24px;
+$s-7: 28px;
+$s-8: 32px;
+$s-10: 40px;
+$s-12: 48px;
+$s-14: 56px;
+$s-16: 64px;
+$s-20: 80px;
+
+// Section rhythm (vertical padding on full-width bands)
+$section-y-sm: 56px;
+$section-y: 72px;
+$section-y-lg: 96px;
+$section-y-xl: 124px;
+
+
+// --- Radii -----------------------------------------------------------------
+$r-sm: 8px;
+$r-md: 16px;
+$r-lg: 20px;
+$r-xl: 24px;
+$r-pill: 999px;
+
+
+// --- Elevation -------------------------------------------------------------
+$shadow-1: 0 2px 8px rgba(0, 0, 0, 0.06);
+$shadow-2: 0 8px 20px rgba(0, 0, 0, 0.15);

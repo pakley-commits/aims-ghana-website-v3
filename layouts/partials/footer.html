@@ -1,0 +1,116 @@
+{{ $footerVariant := .Params.footer_variant | default site.Params.footer_variant | default "light" }}
+{{ $footerDividerPath := "images/footer/divider.svg" }}
+{{ if eq $footerVariant "dark" }}
+  {{ $footerDividerPath = "images/footer-dark/divider.svg" }}
+{{ end }}
+{{ $footerSocial := site.Params.social }}
+{{ with .Params.footer_social }}
+  {{ $footerSocial = . }}
+{{ end }}
+
+<footer class="site-footer{{ if eq $footerVariant "dark" }} site-footer--dark{{ end }}">
+  {{ $footerDonateDot := resources.Get "images/footer/donate-dot.svg" }}
+  {{ $footerDivider := resources.Get $footerDividerPath }}
+  {{ $footerTaglineFirst := .Params.footer_tagline_first | default site.Params.footer_tagline_first | default "Africa’s Youth" }}
+  {{ $footerTaglineSecond := .Params.footer_tagline_second | default site.Params.footer_tagline_second | default "The Future of Science" }}
+  <div class="site-footer__container">
+    <div class="site-footer__top">
+      <h2 class="site-footer__tagline">
+        <span>{{ $footerTaglineFirst }}</span>
+        <span>{{ $footerTaglineSecond }}</span>
+      </h2>
+
+      {{ $footerDonateLink := site.Params.footer_donate_link | default site.Params.navigation_button.link }}
+      <a href="{{ $footerDonateLink | relLangURL }}" class="site-footer__donate">
+        <span class="site-footer__donate-dot" aria-hidden="true">
+          {{ with $footerDonateDot }}
+          {{ $dot := . | fingerprint "sha256" }}
+          <img src="{{ $dot.RelPermalink }}" alt="">
+          {{ end }}
+        </span>
+        <span>{{ site.Params.footer_donate_label | default "Donate" }}</span>
+      </a>
+    </div>
+
+    <div class="site-footer__divider" aria-hidden="true">
+      {{ with $footerDivider }}
+      {{ $divider := . | fingerprint "sha256" }}
+      <img src="{{ $divider.RelPermalink }}" alt="">
+      {{ end }}
+    </div>
+
+    <div class="site-footer__main">
+      <div class="site-footer__about">
+        <h3>{{ site.Params.footer_organization | default "African Institute for Mathematical Sciences" }}</h3>
+        <p>{{ site.Params.footer_content | markdownify }}</p>
+        {{ with site.Params.copyright }}
+        <p class="site-footer__copyright">{{ . | safeHTML }}</p>
+        {{ end }}
+
+        {{ with $footerSocial }}
+        <ul class="site-footer__social" aria-label="Social links">
+          {{ range . }}
+          {{ $social := . }}
+          {{ $socialImage := $social.image }}
+          {{ with $social.image_dark }}
+            {{ if eq $footerVariant "dark" }}
+              {{ $socialImage = . }}
+            {{ end }}
+          {{ end }}
+          <li>
+            <a href="{{ $social.link | safeURL }}" title="{{ $social.title }}" aria-label="{{ $social.title }}">
+              {{ with $socialImage }}
+                {{ $rawIcon := resources.Get . }}
+                {{ if $rawIcon }}
+                {{ $icon := $rawIcon | fingerprint "sha256" }}
+                <img src="{{ $icon.RelPermalink }}" alt="" class="site-footer__social-icon">
+                {{ else }}
+                <i class="{{ $social.icon }}" aria-hidden="true"></i>
+                {{ end }}
+              {{ else }}
+                <i class="{{ $social.icon }}" aria-hidden="true"></i>
+              {{ end }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      </div>
+
+      <div class="site-footer__links">
+        {{ if site.Menus.footer_left }}
+        <nav class="site-footer__nav" aria-label="{{ site.Params.footer_menu_left }}">
+          <h3>{{ site.Params.footer_menu_left }}</h3>
+          <ul>
+            {{ range site.Menus.footer_left }}
+            <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+            {{ end }}
+          </ul>
+        </nav>
+        {{ end }}
+
+        {{ if site.Menus.footer_middle }}
+        <nav class="site-footer__nav" aria-label="{{ site.Params.footer_menu_middle }}">
+          <h3>{{ site.Params.footer_menu_middle }}</h3>
+          <ul>
+            {{ range site.Menus.footer_middle }}
+            <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+            {{ end }}
+          </ul>
+        </nav>
+        {{ end }}
+
+        {{ if site.Menus.footer_right }}
+        <nav class="site-footer__nav" aria-label="{{ site.Params.footer_menu_right }}">
+          <h3>{{ site.Params.footer_menu_right }}</h3>
+          <ul>
+            {{ range site.Menus.footer_right }}
+            <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+            {{ end }}
+          </ul>
+        </nav>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</footer>
