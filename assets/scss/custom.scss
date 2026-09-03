@@ -2716,3 +2716,15 @@ $heading-scale: (
   line-height: 24px;
   font-weight: $fw-regular;
 }
+
+// Person names are arbitrary-length real data: on the Our Students grid,
+// "Mariel Ambratis-Fils Andrianavalona" was 31px wider than its 175px column
+// and pushed the whole page into horizontal scroll. Long tokens wrap rather
+// than overflow, on both card archetypes.
+.admin-staff-card__body h2,
+.admin-staff-card__body p,
+.governance-board-card__content h3,
+.governance-board-card__content p {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
