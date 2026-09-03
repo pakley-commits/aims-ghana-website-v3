@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/academics/mmst/"
 title: "MMST"
 description: "A two-year Master's of Mathematical Sciences for Teachers, strengthening mathematics teaching across Ghana."
 build_phase: 5

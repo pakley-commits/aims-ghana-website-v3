@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/academics/admissions/"
 title: "Admissions"
 description: "How to apply to AIMS Ghana, and what we look for in applicants."
 build_phase: 5

@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/academics/co-op/"
 title: "CO-OP"
 description: "The Co-operative Education Program, pairing academic training with placements in industry and research."
 build_phase: 5

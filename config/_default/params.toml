@@ -100,7 +100,7 @@ preloader = "" # use jpg, png, svg or gif format. example - "images/preloader.gi
 [navigation_button]
 enable = true
 label = "Apply"
-link = "academics/admissions/"
+link = "training/admissions/"
 
 # crisp chat
 # crisp chat module: https://github.com/gethugothemes/hugo-modules/tree/master/components/crisp-chat

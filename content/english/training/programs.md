@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/academics/programs/"
 title: "Our Programs"
 subtitle: "Developing Africa's Next Generation of Scientific Leaders"
 description: "Explore AIMS Ghana programmes in mathematical sciences, teacher training, co-operative study, and doctoral research."

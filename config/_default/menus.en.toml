@@ -2,7 +2,7 @@
 #
 # Two tiers, following the supplied Perimeter Institute pattern:
 #   utility : Careers / People / Contact / Donate (plus language + search)
-#   main    : About Us / Academics / Research / Outreach / Events / News
+#   main    : Home / About Us / Research / Training / Outreach / Events / News
 #
 # People and Careers live in the utility strip rather than the main bar, and
 # Events is a top-level section. Every URL here resolves to a real page.
@@ -30,6 +30,11 @@ url = "/donate/"
 weight = 4
 
 ################################ main menu ################################
+
+[[main]]
+name = "Home"
+url = "/"
+weight = 1
 
 [[main]]
 name = "About Us"
@@ -144,38 +149,38 @@ url = "/research/conferences/"
 weight = 9
 
 [[main]]
-name = "Academics"
+name = "Training"
 hasChildren = true
 weight = 30
 
 [[main]]
-parent = "Academics"
+parent = "Training"
 name = "Our Programs"
-url = "/academics/programs/"
+url = "/training/programs/"
 weight = 1
 
 [[main]]
-parent = "Academics"
+parent = "Training"
 name = "Regular Master's"
-url = "/academics/regular-masters/"
+url = "/training/regular-masters/"
 weight = 2
 
 [[main]]
-parent = "Academics"
+parent = "Training"
 name = "CO-OP"
-url = "/academics/co-op/"
+url = "/training/co-op/"
 weight = 3
 
 [[main]]
-parent = "Academics"
+parent = "Training"
 name = "MMST"
-url = "/academics/mmst/"
+url = "/training/mmst/"
 weight = 4
 
 [[main]]
-parent = "Academics"
+parent = "Training"
 name = "Admissions"
-url = "/academics/admissions/"
+url = "/training/admissions/"
 weight = 5
 
 [[main]]
@@ -225,7 +230,7 @@ url = "/research/conferences/"
 weight = 2
 
 [[main]]
-name = "News & Stories"
+name = "News"
 url = "/news/"
 weight = 60
 
@@ -242,8 +247,8 @@ url = "/who-we-are/"
 weight = 2
 
 [[footer_explore]]
-name = "Academics"
-url = "/academics/"
+name = "Training"
+url = "/training/"
 weight = 3
 
 [[footer_explore]]
@@ -257,13 +262,13 @@ url = "/outreach/"
 weight = 5
 
 [[footer_explore]]
-name = "News & Stories"
+name = "News"
 url = "/news/"
 weight = 6
 
 [[footer_quick]]
 name = "Apply"
-url = "/academics/admissions/"
+url = "/training/admissions/"
 weight = 1
 
 [[footer_quick]]

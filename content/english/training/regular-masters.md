@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/academics/regular-masters/"
 title: "Regular Master's"
 description: "An intensive one-year structured Master's degree in Mathematical Sciences, awarded in partnership with the University of Ghana, the University of Cape Coast and KNUST."
 build_phase: 5
