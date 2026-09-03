@@ -1,18 +1,9 @@
 ---
-title: "Visiting Researchers"
-description: "The visiting researcher programme."
+title: "Visiting Researcher Program"
+description: "The programme through which researchers visit AIMS Ghana."
 figma_frame: "Visiting Researcher Program"
-build_phase: 3
-build_status: "built"
-layout: "person-grid"
-card_variant: "stacked"
+build_phase: 6
+build_status: "awaiting-content"
+layout: "stub"
 draft: false
-
-hero:
-  title: "Visiting Researchers"
-  content: "Researchers visiting AIMS Ghana through our programmes."
-
-people:
-  - name: "Rosa Kreider"
-    image: "images/researchers/rosa-kreider.jpg"
 ---

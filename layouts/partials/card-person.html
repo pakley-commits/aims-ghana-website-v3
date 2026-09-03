@@ -39,12 +39,15 @@
 
 {{ if eq $variant "stacked" }}
 <article class="admin-staff-card">
+  {{/* The media box is omitted entirely when there is no portrait, rather
+       than left empty: the Academic Council has names but no photographs, and
+       an empty div would still reserve its height. */}}
+  {{ with $img }}
   <div class="admin-staff-card__media">
-    {{ with $img }}
     {{ $photo := . | fingerprint "sha256" }}
     <img src="{{ $photo.RelPermalink }}" alt="{{ $name }}" class="admin-staff-card__image" loading="lazy">
-    {{ end }}
   </div>
+  {{ end }}
 
   <div class="admin-staff-card__body">
     <div>
