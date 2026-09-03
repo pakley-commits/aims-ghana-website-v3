@@ -1,9 +1,35 @@
-# Main navigation for AIMS Ghana.
-# GENERATED from the URL taxonomy — every entry resolves to a real page.
-# Nav labels mirror the Figma section grouping:
-#   Home | Who we are | Academics | Research & Innovation | Outreach | News
+# Navigation for AIMS Ghana — GENERATED, do not edit by hand.
+#
+# Two tiers, following the supplied Perimeter Institute pattern:
+#   utility : Careers / People / Contact / Donate (plus language + search)
+#   main    : About Us / Academics / Research / Outreach / Events / News
+#
+# People and Careers live in the utility strip rather than the main bar, and
+# Events is a top-level section. Every URL here resolves to a real page.
 
-############################### main menu ###############################
+############################## utility strip ##############################
+
+[[utility]]
+name = "Careers"
+url = "/careers/"
+weight = 1
+
+[[utility]]
+name = "People"
+url = "/people/"
+weight = 2
+
+[[utility]]
+name = "Contact"
+url = "/contact/"
+weight = 3
+
+[[utility]]
+name = "Donate"
+url = "/donate/"
+weight = 4
+
+################################ main menu ################################
 
 [[main]]
 name = "Home"
@@ -11,94 +37,62 @@ url = "/"
 weight = 1
 
 [[main]]
-name = "Who we are"
-weight = 10
+name = "About Us"
 hasChildren = true
+weight = 10
 
 [[main]]
-parent = "Who we are"
+parent = "About Us"
 name = "About AIMS Ghana"
 url = "/who-we-are/about/"
 weight = 1
 
 [[main]]
-parent = "Who we are"
+parent = "About Us"
 name = "Message from the Centre President"
 url = "/who-we-are/centre-president/"
 weight = 2
 
 [[main]]
-parent = "Who we are"
+parent = "About Us"
 name = "Governance"
 url = "/who-we-are/governance/"
 weight = 3
 
 [[main]]
-parent = "Who we are"
+parent = "About Us"
 name = "Academic Council"
 url = "/who-we-are/academic-council/"
 weight = 4
 
 [[main]]
-parent = "Who we are"
-name = "Administrative Team"
-url = "/who-we-are/administrative-team/"
+parent = "About Us"
+name = "Our Centres"
+url = "/who-we-are/centres/"
 weight = 5
 
 [[main]]
-parent = "Who we are"
-name = "Lecturers"
-url = "/who-we-are/lecturers/"
+parent = "About Us"
+name = "Partnerships"
+url = "/who-we-are/partnerships/"
 weight = 6
 
 [[main]]
-parent = "Who we are"
-name = "Tutors"
-url = "/who-we-are/tutors/"
+parent = "About Us"
+name = "Policies"
+url = "/who-we-are/policies/"
 weight = 7
 
 [[main]]
-parent = "Who we are"
-name = "Our Students"
-url = "/who-we-are/students/"
+parent = "About Us"
+name = "Impact & Reports"
+url = "/who-we-are/impact-and-reports/"
 weight = 8
 
 [[main]]
-parent = "Who we are"
-name = "Alumni"
-url = "/who-we-are/alumni/"
-weight = 9
-
-[[main]]
-parent = "Who we are"
-name = "Partnerships"
-url = "/who-we-are/partnerships/"
-weight = 10
-
-[[main]]
-parent = "Who we are"
-name = "Policies"
-url = "/who-we-are/policies/"
-weight = 11
-
-[[main]]
-parent = "Who we are"
-name = "Impact & Reports"
-url = "/who-we-are/impact-and-reports/"
-weight = 12
-
-[[main]]
-parent = "Who we are"
-name = "Our Centres"
-url = "/who-we-are/centres/"
-weight = 13
-
-[[main]]
 name = "Academics"
-weight = 20
 hasChildren = true
-[main.params]
-isMenuLarge = true
+weight = 20
 
 [[main]]
 parent = "Academics"
@@ -131,68 +125,68 @@ url = "/academics/admissions/"
 weight = 5
 
 [[main]]
-name = "Research & Innovation"
-weight = 30
+name = "Research"
 hasChildren = true
+weight = 30
 
 [[main]]
-parent = "Research & Innovation"
+parent = "Research"
 name = "Research Centre"
 url = "/research/centre/"
 weight = 1
 
 [[main]]
-parent = "Research & Innovation"
+parent = "Research"
 name = "Research Areas"
 url = "/research/areas/"
 weight = 2
 
 [[main]]
-parent = "Research & Innovation"
+parent = "Research"
 name = "Research Chairs"
 url = "/research/chairs/"
 weight = 3
 
 [[main]]
-parent = "Research & Innovation"
-name = "Visiting Researchers"
-url = "/research/visiting-researchers/"
+parent = "Research"
+name = "Researchers"
+url = "/research/researchers/"
 weight = 4
 
 [[main]]
-parent = "Research & Innovation"
-name = "InnovAIMS"
-url = "/research/innovaims/"
+parent = "Research"
+name = "Visiting Researcher Program"
+url = "/research/visiting-researchers/"
 weight = 5
 
 [[main]]
-parent = "Research & Innovation"
-name = "Workshops & Conferences"
-url = "/research/conferences/"
+parent = "Research"
+name = "InnovAIMS"
+url = "/research/innovaims/"
 weight = 6
 
 [[main]]
-parent = "Research & Innovation"
-name = "Researchers"
-url = "/research/researchers/"
+parent = "Research"
+name = "Projects & Resources"
+url = "/research/projects-and-resources/"
 weight = 7
 
 [[main]]
-parent = "Research & Innovation"
-name = "Projects & Resources"
-url = "/research/projects-and-resources/"
+parent = "Research"
+name = "Publications"
+url = "/research/publications/"
 weight = 8
 
 [[main]]
-parent = "Research & Innovation"
-name = "Publications"
-url = "/research/publications/"
+parent = "Research"
+name = "Workshops & Conferences"
+url = "/research/conferences/"
 weight = 9
 
 [[main]]
 name = "Outreach"
-weight = 40
 hasChildren = true
+weight = 40
 
 [[main]]
 parent = "Outreach"
@@ -219,51 +213,50 @@ url = "/outreach/public-engagement/"
 weight = 4
 
 [[main]]
-name = "News"
+name = "Events"
+url = "/events/"
 weight = 50
-hasChildren = true
 
 [[main]]
-parent = "News"
+name = "News & Stories"
+hasChildren = true
+weight = 60
+
+[[main]]
+parent = "News & Stories"
 name = "Latest News"
 url = "/news/"
 weight = 1
 
 [[main]]
-parent = "News"
+parent = "News & Stories"
 name = "Impact Stories"
 url = "/news/impact-stories/"
 weight = 2
 
 [[main]]
-parent = "News"
-name = "Events"
-url = "/news/events/"
+parent = "News & Stories"
+name = "Listen & Watch"
+url = "/news/listen-and-watch/"
 weight = 3
 
 [[main]]
-parent = "News"
-name = "Listen & Watch"
-url = "/news/listen-and-watch/"
+parent = "News & Stories"
+name = "Press Releases"
+url = "/news/press-releases/"
 weight = 4
 
 [[main]]
-parent = "News"
-name = "Press Releases"
-url = "/news/press-releases/"
+parent = "News & Stories"
+name = "Newsletters"
+url = "/news/newsletters/"
 weight = 5
 
 [[main]]
-parent = "News"
-name = "Newsletters"
-url = "/news/newsletters/"
-weight = 6
-
-[[main]]
-parent = "News"
+parent = "News & Stories"
 name = "Media Resources"
 url = "/news/media-resources/"
-weight = 7
+weight = 6
 
 ############################## footer menus ##############################
 
@@ -273,7 +266,7 @@ url = "/"
 weight = 1
 
 [[footer_explore]]
-name = "Who We Are"
+name = "About Us"
 url = "/who-we-are/"
 weight = 2
 
@@ -283,7 +276,7 @@ url = "/academics/"
 weight = 3
 
 [[footer_explore]]
-name = "Research & Innovation"
+name = "Research"
 url = "/research/"
 weight = 4
 
@@ -339,7 +332,7 @@ weight = 3
 
 [[footer_connect]]
 name = "Events"
-url = "/news/events/"
+url = "/events/"
 weight = 4
 
 [[footer_connect]]

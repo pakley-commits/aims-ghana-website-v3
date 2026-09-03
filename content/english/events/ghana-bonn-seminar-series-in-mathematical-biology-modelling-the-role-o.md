@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/ghana-bonn-seminar-series-in-mathematical-biology-modelling-the-role-o/"
 title: "Ghana-Bonn Seminar Series in Mathematical Biology – Modelling the role of cell movement and transient signalling dynamics in balancing proliferation and differentiation"
 date: 2024-12-06
 description: "The development and maintenance of mutlicellular tissues depends on the regulated balance of cell proliferation and cell differentiation. This balance depends critically on intercellular signalling, that allows cells to coordinate their behaviour in space and time. While this bal"

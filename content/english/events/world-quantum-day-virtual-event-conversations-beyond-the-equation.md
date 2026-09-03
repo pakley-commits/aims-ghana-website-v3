@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/world-quantum-day-virtual-event-conversations-beyond-the-equation/"
 title: "World Quantum Day Virtual Event: Conversations Beyond the Equation"
 date: 2025-04-14
 description: "World Quantum Day 2025 is here and we’re excited to mark the occasion with a thought-provoking podcast session dedicated to the future of science and innovation!  Join our Dr. Prince K. Osei, and Dr. Angela Tabiri as they delve into the theme: “From Quantum Science to Quantum Tec"

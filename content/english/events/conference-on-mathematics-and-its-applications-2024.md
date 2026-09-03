@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/conference-on-mathematics-and-its-applications-2024/"
 title: "Conference on Mathematics and its Applications – 2024"
 date: 2024-09-16
 description: ""

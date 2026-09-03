@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/pitch-lounge-with-innovaims-2026/"
 title: "Pitch Lounge with InnovAIMS – 2026"
 date: 2026-03-04
 description: "Build Tech. Create Impact. Shape the Future. AIMS Ghana through InnovAIMS, invites young innovators to participate in the Pitch Lounge: a dynamic platform designed to spark technology-driven solutions to real societal challenges. On 9th April 2026 at AIMS Ghana, participants will"

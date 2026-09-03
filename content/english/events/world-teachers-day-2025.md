@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/world-teachers-day-2025/"
 title: "World Teachers Day – 2025"
 date: 2025-10-03
 description: "World Teachers’ Day, celebrated annually on October 3, commemorates the adoption of the 1966 ILO/UNESCO Recommendation concerning the Status of Teachers and the 1997 Recommendation concerning the Status of Higher Education Teaching Personnel. These landmark frameworks define the "

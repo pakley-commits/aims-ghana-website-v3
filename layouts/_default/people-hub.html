@@ -1,0 +1,43 @@
+{{ define "main" }}
+{{/*
+  People hub — the single People destination in the utility strip.
+  Each card links to a directory that already exists at its own URL; promoting
+  People into the nav added an entry point rather than moving any pages.
+  Counts are read from the target page's own `people` list, so they cannot
+  drift from what the directory actually shows.
+*/}}
+<section class="people-hub">
+  <div class="container">
+    <header class="people-hub__header">
+      <h1>{{ with .Params.hero }}{{ .title | default $.Title }}{{ else }}{{ .Title }}{{ end }}</h1>
+      {{ with .Params.hero }}{{ with .content }}<p>{{ . | markdownify }}</p>{{ end }}{{ end }}
+    </header>
+
+    {{ range .Params.groups }}
+    <section class="people-hub__group">
+      <h2>{{ .heading }}</h2>
+      <ul class="people-hub__grid">
+        {{ range .items }}
+        {{ $target := site.GetPage .url }}
+        <li class="people-hub__card">
+          <a href="{{ .url | relLangURL }}">
+            <span class="people-hub__name">{{ .name }}</span>
+            {{/* Directories predate the shared person-grid layout and name their
+                 list differently: Governance uses team_members, the
+                 Administrative Team uses staff, the rest use people. Count
+                 whichever the target page actually has. */}}
+            {{ with $target }}
+              {{ $list := .Params.people | default .Params.team_members | default .Params.staff | default slice }}
+              {{ $n := len $list }}
+              {{ if gt $n 0 }}<span class="people-hub__count">{{ $n }}</span>{{ end }}
+            {{ end }}
+          </a>
+          {{ with .note }}<p class="people-hub__note">{{ . }}</p>{{ end }}
+        </li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

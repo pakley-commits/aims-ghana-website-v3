@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/retreat-for-african-women-in-mathematical-sciences-rawams-2026/"
 title: "Retreat for African Women in Mathematical Sciences (RAWAMS) 2026"
 date: 2025-12-09
 description: ""

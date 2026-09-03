@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/world-science-day-for-peace-and-development-2025/"
 title: "World Science Day for Peace and Development – 2025"
 date: 2025-11-10
 description: "AIMS Ghana joined the global community in a virtual celebration of the World Science Day for Peace and Development, highlighting the essential role of science in building inclusive, resilient and sustainable societies. At AIMS Ghana, this celebration holds deep relevance. As a pa"

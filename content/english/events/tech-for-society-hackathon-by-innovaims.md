@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/tech-for-society-hackathon-by-innovaims/"
 title: "Tech for Society Hackathon by InnovAIMS"
 date: 2026-03-11
 description: "Build Tech. Create Impact. Shape the Future. This is a three-day innovation hackathon scheduled between 4th – 6th May 2026, bringing together young African talents to design technology-driven solutions to real societal challenges. Participants will collaborate, prototype and pitc"

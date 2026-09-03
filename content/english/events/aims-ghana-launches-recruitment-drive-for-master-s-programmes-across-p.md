@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/aims-ghana-launches-recruitment-drive-for-master-s-programmes-across-p/"
 title: "AIMS Ghana Launches Recruitment Drive for Master’s Programmes Across Partner Universities"
 date: 2026-02-23
 description: "The African Institute for Mathematical Sciences (AIMS) Ghana has launched a nationwide recruitment drive to attract talented graduates into its Regular Master’s in Mathematical Sciences and Cooperative Education (CO-OP) Master’s Programmes. As part of this initiative, a series of"

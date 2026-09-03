@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/solvex-with-innovaims/"
 title: "SolveX with InnovAIMS"
 date: 2025-06-09
 description: "Join a 5-day immersive bootcamp for young innovators solving real problems in: health, agric and climate"

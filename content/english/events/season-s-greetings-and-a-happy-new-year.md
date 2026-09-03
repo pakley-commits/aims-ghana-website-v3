@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/season-s-greetings-and-a-happy-new-year/"
 title: "Season’s Greetings and a Happy New Year!"
 date: 2024-12-20
 description: ""

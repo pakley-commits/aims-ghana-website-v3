@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/13th-graduation-ceremony-aims-ghana/"
 title: "13th Graduation Ceremony – AIMS Ghana"
 date: 2025-06-11
 description: "We celebrate academic excellence, innovation, and the future of science in Africa at the 13th Graduation Ceremony of the African Institute for Mathematical Sciences (AIMS) Ghana. This milestone event will honour the achievements of our 2024/25 graduating cohort, who are completin"

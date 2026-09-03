@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/imperial-aims-global-fellows-programme-gfp-addressing-heat-driven-cons/"
 title: "Imperial AIMS Global Fellows Programme (GFP) – Addressing Heat Driven Consequences of Climate Change in Cities"
 date: 2026-01-30
 description: ""

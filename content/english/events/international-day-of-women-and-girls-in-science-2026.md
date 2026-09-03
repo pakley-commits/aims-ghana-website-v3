@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/international-day-of-women-and-girls-in-science-2026/"
 title: "International Day of Women and Girls in Science – 2026"
 date: 2026-02-11
 description: "In celebration of the International Day of Women and Girls in Science 2026, the African Institute for Mathematical Sciences Ghana will mark the occasion as part of the IYQ Closing Ceremony, as the dates coincide. During a special session led by Angela Tabiri, participants will en"

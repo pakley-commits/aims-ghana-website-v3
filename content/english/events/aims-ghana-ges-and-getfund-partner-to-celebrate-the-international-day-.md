@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/aims-ghana-ges-and-getfund-partner-to-celebrate-the-international-day-/"
 title: "AIMS Ghana, GES and GETFund Partner to Celebrate the International Day of Mathematics 2026 – “I Can Do Maths” Campaign"
 date: 2026-03-10
 description: "Accra – Ghana, 12 March 2026 – The African Institute for Mathematical Sciences Ghana, in collaboration with the Ghana Education Service (National STEM Resource Unit) and the Ghana Education Trust Fund (GETFund), commemorate the International Day of Mathematics (IDM) 2026 under th"

@@ -81,3 +81,89 @@ title = "LinkedIn"
 icon = "fab fa-linkedin"
 image = "images/footer/linkedin.svg"
 link = ""
+
+# ---------------------------------------------------------------------
+# Restored: these blocks were dropped when the footer params were
+# rewritten in b5825ca. Hugo renders nothing for a missing param rather
+# than erroring, so the build stayed green while the nav CTA, the SEO
+# metadata and the cookie banner had all silently stopped rendering.
+# ---------------------------------------------------------------------
+
+[preloader]
+enable = true
+preloader = "" # use jpg, png, svg or gif format. example - "images/preloader.gif"
+
+# Navigation button
+
+# Main-bar call to action. Donate moved to the utility strip when the two-tier
+# navigation landed, so the primary button now points at admissions.
+[navigation_button]
+enable = true
+label = "Apply"
+link = "academics/admissions/"
+
+# crisp chat
+# crisp chat module: https://github.com/gethugothemes/hugo-modules/tree/master/components/crisp-chat
+
+[crisp_chat]
+enable = false
+crisp_website_id = "9aa449e1-9999-422a-938f-8567982eec6d" # replace this code with yours
+# Check this video tutorial to get your crisp website ID - https://www.youtube.com/watch?v=nW5UX6iVdFc
+
+# seo meta data for OpenGraph / Twitter Card
+
+[metadata]
+keywords = ["AIMS Ghana", "mathematical sciences", "Africa", "master's programme", "African Institute", "education", "research"]
+description = "AIMS Ghana empowers Africa's brightest minds in mathematical sciences through world-class training, research, and mentorship. Apply to our transformative master's programme."
+author = "AIMS Ghana"
+image = "images/logo.png"                           # this image will be used as fallback if a page has no image of its own
+
+# matomo tracking: see https://matomo.org/
+# matomo tracking module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/matomo-analytics
+
+[matomo]
+enable = false
+url = ""       # your matomo url
+id = ""        # your matomo id
+
+# baidu analytics: see https://tongji.baidu.com/
+# baidu analytics module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/baidu-analytics
+
+[baidu]
+enable = false
+analytics_id = "" # Your ID
+
+# plausible analytics: see https://plausible.io/
+# plausible analytics module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/plausible-analytics
+
+[plausible]
+enable = false
+domain = ""    # yourdomain.com
+
+# counter analytics: see https://counter.dev/setup.html
+# counter analytics module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/counter-analytics
+
+[counter]
+enable = false
+username = ""  # your username
+
+# site verifications
+# site verifications module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/site-verifications
+
+[site_verification]
+google = ""   # Your verification code
+bing = ""     # Your verification code
+baidu = ""    # Your verification code
+facebook = "" # Your verification code
+mastodon = "" # Your verification code
+
+# cookies
+# cookies module: https://github.com/gethugothemes/hugo-modules/tree/master/components/cookie-consent
+
+[cookies]
+enable = true
+expire_days = 2
+content = "This site uses cookies. By continuing to use this website, you agree to their use."
+button = "I Accept"
+
+############################# social site ########################

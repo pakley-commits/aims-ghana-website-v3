@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/announcing-aims-ghana-s-14th-graduation-ceremony/"
 title: "Announcing AIMS Ghana’s 14th Graduation Ceremony"
 date: 2026-06-16
 description: "AIMS Ghana is proud to announce its upcoming 14th Graduation Ceremony, a significant milestone that celebrates the brilliance, resilience, and achievements of its students. This occasion highlights the emergence of a new generation of African scientific leaders who are equipped a"

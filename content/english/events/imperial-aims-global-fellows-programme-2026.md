@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/imperial-aims-global-fellows-programme-2026/"
 title: "Imperial-AIMS Global Fellows Programme 2026"
 date: 2026-06-01
 description: "The African Institute for Mathematical Sciences, AIMS, in partnership with Imperial College London, will host the fourth AIMS-Imperial Global Fellows Programme (GFP) from 1–5 June 2026 in Accra, Ghana. The programme will be held at AIMS Ghana and will bring together doctoral rese"

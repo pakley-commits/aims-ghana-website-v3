@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/"
 title: "Events"
 description: "Upcoming and past events."
 figma_frame: "Events"

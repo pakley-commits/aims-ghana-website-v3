@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/aims-virtual-recruitment-information-session-refugees-and-displaced-pe/"
 title: "AIMS Virtual Recruitment Information Session (Refugees and Displaced Persons)"
 date: 2025-02-12
 description: "Are you a refugee or displaced person interested in applying for the Regular or CO-OP Master’s Programs? Join our virtual information session to learn more about the application process! Click for Zoom Link Meeting ID: 695 4681 8651Passcode: 711414"

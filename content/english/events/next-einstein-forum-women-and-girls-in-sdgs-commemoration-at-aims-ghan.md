@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/next-einstein-forum-women-and-girls-in-sdgs-commemoration-at-aims-ghan/"
 title: "Next Einstein Forum – Women and Girls in SDGs Commemoration at AIMS Ghana"
 date: 2024-10-09
 description: "We are excited to announce the Women and Girls in SDGs Forum, scheduled to take place on October 11, 2024, at the AIMS Ghana campus, in commemoration of the International Day of the Girl Child. In partnership with the Next Einstein Forum (NEF) and GirledUp Ghana, and with support"

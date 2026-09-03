@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/helping-teachers-teach-mathematics-conference-httmc-2026/"
 title: "Helping Teachers Teach Mathematics Conference – HTTMC 2026"
 date: 2026-02-23
 description: ""

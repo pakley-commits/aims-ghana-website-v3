@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/aims-ghana-qtedu-global-event/"
 title: "AIMS Ghana QTEdu Global Event"
 date: 2025-06-11
 description: "The AIMS Ghana QTEdu Global Event is a week-long celebration of innovation, collaboration and education. Theme: Accelerating Capacity Building to Advance Quantum Science & Technology With Ghana having played a pivotal role in the drafting and submission of the resolution that led"

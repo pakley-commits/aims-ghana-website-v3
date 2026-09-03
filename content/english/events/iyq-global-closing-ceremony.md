@@ -1,4 +1,6 @@
 ---
+aliases:
+  - "/news/events/iyq-global-closing-ceremony/"
 title: "IYQ Global Closing Ceremony"
 date: 2026-02-05
 description: "Join us in Accra for the closing of the International Year of Quantum Science ✨ On 10–11 February 2026, the IYQ Closing Ceremony, “Celebration and Reflection: The Quantum Legacy,” will be held at the Labadi Beach Hotel, convening the global community to reflect on 100 years of qu"
