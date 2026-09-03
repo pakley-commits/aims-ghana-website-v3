@@ -12,7 +12,8 @@
   Params:
     variant  "overlay" (default) | "stacked"
     name     required
-    role     optional supporting line
+    role     optional supporting line (maroon, per the design)
+    meta     optional third line, e.g. country (muted, smaller)
     image    asset path. Accepted with or without the leading "images/", since
              the two content files that feed this disagree on the convention.
     socials  optional slice of {title, icon, link} — stacked variant only
@@ -49,6 +50,7 @@
     <div>
       <h2>{{ $name | markdownify }}</h2>
       {{ with $role }}<p>{{ . | markdownify }}</p>{{ end }}
+      {{ with .meta }}<p class="admin-staff-card__meta">{{ . | markdownify }}</p>{{ end }}
     </div>
 
     {{ with .socials }}

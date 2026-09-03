@@ -2641,3 +2641,78 @@ $heading-scale: (
     color: $c-maroon;
   }
 }
+
+
+// ===========================================================================
+// Person directory (layouts/_default/person-grid.html)
+// One layout for every grid-of-people page. Cards are 280px wide in the
+// design (_Staff 280x434, _Team member 280x502), so the grid tracks are sized
+// from that rather than a fixed column count.
+// ===========================================================================
+
+.person-grid {
+  padding: $section-y-lg 0;
+}
+
+.person-grid__header {
+  max-width: 720px;
+  margin-bottom: $s-12;
+
+  h1 {
+    margin-bottom: $s-4;
+  }
+
+  p {
+    margin: 0;
+    color: $c-muted;
+    font-size: $fs-lg;
+  }
+}
+
+.person-grid__intro {
+  max-width: 720px;
+  margin-bottom: $s-12;
+  color: $c-muted;
+}
+
+.person-grid__grid {
+  display: grid;
+  gap: $s-10 $s-6;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+// The overlay card carries its own aspect ratio, so it needs no extra sizing.
+.person-grid__grid--overlay {
+  gap: $s-5;
+}
+
+.person-grid__empty {
+  margin: 0;
+  color: $c-muted;
+
+  a {
+    color: $c-maroon;
+  }
+}
+
+@include tablet {
+  .person-grid {
+    padding: $section-y 0;
+  }
+
+  .person-grid__grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: $s-8 $s-4;
+  }
+}
+
+// Third line on a stacked person card (country on the Alumni Wall). The design
+// uses #667085 at 16px; $c-muted is the nearest token.
+.admin-staff-card__meta {
+  margin: $s-1 0 0;
+  color: $c-muted;
+  font-family: $font-body;
+  font-size: $fs-body;
+  line-height: 24px;
+  font-weight: $fw-regular;
+}

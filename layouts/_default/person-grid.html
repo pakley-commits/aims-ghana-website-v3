@@ -1,0 +1,60 @@
+{{ define "main" }}
+{{/*
+  Person directory — one layout for every "grid of people" page in the
+  Who we are and Research sections: Alumni, Lecturers, Tutors, Our Students,
+  Research Chairs, Visiting Researchers.
+
+  Front matter:
+    title, description   page header
+    hero.title/.content  optional override for the header block
+    card_variant         "stacked" (default, Figma _Staff / _Team member)
+                         or "overlay" (Figma board)
+    people:              - name, role, image, [country]
+    people_social:       optional shared social links, stacked variant only
+
+  Cards come from partials/card-person.html, so this layout inherits whatever
+  the Governance and Administrative Team pages already use.
+*/}}
+
+{{ $variant := .Params.card_variant | default "stacked" }}
+{{ $people := .Params.people }}
+
+<section class="person-grid">
+  <div class="container">
+    <header class="person-grid__header">
+      <h1>{{ with .Params.hero }}{{ .title | default $.Title }}{{ else }}{{ .Title }}{{ end }}</h1>
+      {{ with .Params.hero }}
+        {{ with .content }}<p>{{ . | markdownify }}</p>{{ end }}
+      {{ else }}
+        {{ with .Description }}<p>{{ . }}</p>{{ end }}
+      {{ end }}
+    </header>
+
+    {{ with .Content }}
+    <div class="person-grid__intro">{{ . }}</div>
+    {{ end }}
+
+    {{ if $people }}
+    <div class="person-grid__grid person-grid__grid--{{ $variant }}">
+      {{ range $people }}
+      {{/* The design keeps these on separate lines: role in maroon at 18px,
+           country beneath it in muted grey at 16px. */}}
+      {{ partial "card-person.html" (dict
+          "variant" $variant
+          "name" .name
+          "role" .role
+          "meta" .country
+          "image" .image
+          "socials" $.Params.people_social) }}
+      {{ end }}
+    </div>
+    {{ else }}
+    {{/* Empty state rather than a bare heading over nothing. */}}
+    <p class="person-grid__empty">
+      This directory is being compiled. In the meantime,
+      <a href="{{ "/contact/" | relLangURL }}">get in touch</a> if you are looking for someone.
+    </p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
