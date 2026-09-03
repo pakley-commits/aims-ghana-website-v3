@@ -14,7 +14,10 @@ summaryLength = 10 # see https://gohugo.io/content-management/excerpts/
 disableLanguages = [
   "de", "zh-cn","fr"
 ] # example: ["de"] for disable deutsch language. see https://gohugo.io/content-management/multilingual/
-hasCJKLanguage = true # If hasCJKLanguage true, auto-detect Chinese/Japanese/Korean Languages in the content.
+# hasCJKLanguage is off: every CJK language is disabled above, and with it on
+# Hugo's .Summary miscounts on this content and panics with
+# "slice bounds out of range" while rendering the Academics pages.
+hasCJKLanguage = false
 
 ########################### Services #############################
 [services]

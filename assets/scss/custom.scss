@@ -2738,3 +2738,70 @@ $heading-scale: (
   border-radius: $r-lg;
   background: $c-surface;
 }
+
+// ===========================================================================
+// Programme / editorial page (layouts/_default/programme.html)
+// ===========================================================================
+
+.programme__header {
+  padding: $section-y-lg 0 $s-10;
+  background: $c-surface;
+
+  h1 {
+    margin-bottom: $s-4;
+  }
+}
+
+.programme__intro {
+  max-width: 760px;
+  margin: 0;
+  color: $c-muted;
+  font-size: $fs-lg;
+  line-height: $lh-relaxed;
+}
+
+.programme__body {
+  max-width: 760px;
+  padding: $s-12 0 $section-y-lg;
+
+  h2 {
+    margin-top: $s-12;
+  }
+
+  h3,
+  h4 {
+    margin-top: $s-10;
+  }
+
+  p,
+  li {
+    color: $c-muted;
+    line-height: $lh-relaxed;
+  }
+
+  ul {
+    padding-left: $s-5;
+  }
+
+  li {
+    margin-bottom: $s-2;
+  }
+
+  strong {
+    color: $c-ink;
+  }
+
+  a {
+    color: $c-maroon;
+  }
+}
+
+@include tablet {
+  .programme__header {
+    padding: $section-y 0 $s-8;
+  }
+
+  .programme__body {
+    padding: $s-8 0 $section-y;
+  }
+}

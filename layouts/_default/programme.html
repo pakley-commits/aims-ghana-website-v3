@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{/*
+  Programme / editorial page: a title header followed by imported copy.
+  Used by the Academics pages (Regular Master's, MMST, CO-OP) and available to
+  any page whose content is a body of prose rather than a grid.
+*/}}
+<article class="programme">
+  <header class="programme__header">
+    <div class="container">
+      <h1>{{ with .Params.hero }}{{ .title | default $.Title }}{{ else }}{{ .Title }}{{ end }}</h1>
+      {{ with .Params.hero }}{{ with .content }}<p class="programme__intro">{{ . | markdownify }}</p>{{ end }}{{ end }}
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="programme__body">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}
