@@ -32,11 +32,6 @@ weight = 4
 ################################ main menu ################################
 
 [[main]]
-name = "Home"
-url = "/"
-weight = 1
-
-[[main]]
 name = "About Us"
 hasChildren = true
 weight = 10
@@ -90,44 +85,9 @@ url = "/who-we-are/impact-and-reports/"
 weight = 8
 
 [[main]]
-name = "Academics"
-hasChildren = true
-weight = 20
-
-[[main]]
-parent = "Academics"
-name = "Our Programs"
-url = "/academics/programs/"
-weight = 1
-
-[[main]]
-parent = "Academics"
-name = "Regular Master's"
-url = "/academics/regular-masters/"
-weight = 2
-
-[[main]]
-parent = "Academics"
-name = "CO-OP"
-url = "/academics/co-op/"
-weight = 3
-
-[[main]]
-parent = "Academics"
-name = "MMST"
-url = "/academics/mmst/"
-weight = 4
-
-[[main]]
-parent = "Academics"
-name = "Admissions"
-url = "/academics/admissions/"
-weight = 5
-
-[[main]]
 name = "Research"
 hasChildren = true
-weight = 30
+weight = 20
 
 [[main]]
 parent = "Research"
@@ -184,6 +144,41 @@ url = "/research/conferences/"
 weight = 9
 
 [[main]]
+name = "Academics"
+hasChildren = true
+weight = 30
+
+[[main]]
+parent = "Academics"
+name = "Our Programs"
+url = "/academics/programs/"
+weight = 1
+
+[[main]]
+parent = "Academics"
+name = "Regular Master's"
+url = "/academics/regular-masters/"
+weight = 2
+
+[[main]]
+parent = "Academics"
+name = "CO-OP"
+url = "/academics/co-op/"
+weight = 3
+
+[[main]]
+parent = "Academics"
+name = "MMST"
+url = "/academics/mmst/"
+weight = 4
+
+[[main]]
+parent = "Academics"
+name = "Admissions"
+url = "/academics/admissions/"
+weight = 5
+
+[[main]]
 name = "Outreach"
 hasChildren = true
 weight = 40
@@ -214,49 +209,25 @@ weight = 4
 
 [[main]]
 name = "Events"
-url = "/events/"
+hasChildren = true
 weight = 50
 
 [[main]]
-name = "News & Stories"
-hasChildren = true
-weight = 60
-
-[[main]]
-parent = "News & Stories"
-name = "Latest News"
-url = "/news/"
+parent = "Events"
+name = "All Events"
+url = "/events/"
 weight = 1
 
 [[main]]
-parent = "News & Stories"
-name = "Impact Stories"
-url = "/news/impact-stories/"
+parent = "Events"
+name = "Workshops & Conferences"
+url = "/research/conferences/"
 weight = 2
 
 [[main]]
-parent = "News & Stories"
-name = "Listen & Watch"
-url = "/news/listen-and-watch/"
-weight = 3
-
-[[main]]
-parent = "News & Stories"
-name = "Press Releases"
-url = "/news/press-releases/"
-weight = 4
-
-[[main]]
-parent = "News & Stories"
-name = "Newsletters"
-url = "/news/newsletters/"
-weight = 5
-
-[[main]]
-parent = "News & Stories"
-name = "Media Resources"
-url = "/news/media-resources/"
-weight = 6
+name = "News & Stories"
+url = "/news/"
+weight = 60
 
 ############################## footer menus ##############################
 
