@@ -438,8 +438,12 @@ $heading-scale: (
 }
 
 .governance-board-card {
+  // No min-height: combined with aspect-ratio it gave the card a hard 303px
+  // minimum width, so at the top of each breakpoint band (e.g. 1200px with 4
+  // columns, 600px with 2) the row was wider than the viewport and the page
+  // scrolled sideways. The aspect ratio alone keeps the proportions while
+  // letting the card shrink with its grid column.
   position: relative;
-  min-height: 379px;
   aspect-ratio: 302.5 / 379;
   overflow: hidden;
   border-radius: $r-lg;
@@ -828,6 +832,26 @@ $heading-scale: (
 // a 69px navbar gave 100px.
 .navigation {
   padding: 7px 0;
+}
+
+// The theme centres each dropdown under its toggle
+// (left: 50%; transform: translateX(-50%)). Widening the logo to the design's
+// 216px pushed the nav right, so at ~992px the rightmost dropdown hung past
+// the viewport edge and the page scrolled sideways. Anchor the last menu to
+// the right instead of centring it; it cannot overflow from there.
+@media (min-width: 992px) {
+  .navbar .navbar-nav > .nav-item:last-child .dropdown-menu {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+}
+
+// Action rows wrap instead of overflowing. The Apply / Explore pair are both
+// white-space: nowrap, so on a narrow phone they were wider than the viewport.
+// (Pre-existing: the baseline overflowed by the same 10px at 360px.)
+.d-flex:has(> .btn-aims-primary) {
+  flex-wrap: wrap;
 }
 
 // The mobile toggler borrows the .h4 utility to size its icon, so it tracks
@@ -2449,5 +2473,158 @@ $heading-scale: (
     max-height: 56px;
     width: auto;
     object-fit: contain;
+  }
+}
+
+
+// ===========================================================================
+// Footer — transcribed from the Figma Footer component (318:2842)
+// Desktop: an about/contact block on the left, then four link columns.
+// Below the tablet breakpoint the four columns collapse into accordions and
+// the about block stays fully visible.
+// ===========================================================================
+
+.site-footer__main {
+  // Track sizes are the design's own column widths. Within the 1220px content
+  // area the about block is 370 wide with a 50px gap (hence the 420 track),
+  // and the four columns are 192 / 168 / 182 / 258 — Centres is widest because
+  // "AIMS Research and Innovation Centre" is long. Expressed as fr so they
+  // keep those proportions below 1440.
+  display: grid;
+  grid-template-columns: minmax(0, 420px) 192fr 168fr 182fr 258fr;
+  column-gap: 0;
+  row-gap: $s-12;
+  align-items: start;
+}
+
+.site-footer__about {
+  max-width: 370px;
+}
+
+.site-footer__contact {
+  margin: $s-5 0 0;
+  display: grid;
+  gap: $s-2;
+
+  // Label and value flow as one paragraph, as in the design ("Location: Kasa
+  // Global Villa, 1 Shoppers Street, Manet, Spintex, Accra, Ghana"). Flex items
+  // would wrap the value as a block and push it onto its own line.
+  div {
+    display: block;
+  }
+
+  dt {
+    display: inline;
+    margin-right: 0.3em; // dt and dd are adjacent in the markup, so the
+                         // rendered text would otherwise read "Location:Kasa"
+    color: $c-ink;
+    font-weight: $fw-bold;
+  }
+
+  dd {
+    display: inline;
+    margin: 0;
+    color: $c-muted;
+  }
+
+  a {
+    color: $c-muted;
+
+    &:hover {
+      color: $c-maroon;
+    }
+  }
+}
+
+.site-footer__links {
+  display: contents; // the four navs become direct children of the grid
+}
+
+// Desktop: no accordion. The static heading shows, the panel is always open.
+.site-footer__nav-toggle {
+  display: none;
+}
+
+.site-footer__nav-heading {
+  margin: 0 0 21px;
+  color: $c-ink;
+  font-family: $font-body;
+  font-size: $fs-body;
+  line-height: 24px;
+  font-weight: $fw-bold;
+}
+
+.site-footer__nav-panel {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// The design marks the current centre in maroon; the accessible label that
+// accompanies it is visually hidden, so this matches the design exactly.
+.site-footer__nav a.is-current-centre {
+  color: $c-maroon;
+}
+
+@include tablet {
+  .site-footer__main {
+    grid-template-columns: 1fr;
+    gap: $s-8;
+  }
+
+  .site-footer__links {
+    display: block;
+  }
+
+  .site-footer__nav {
+    border-bottom: 1px solid $c-line;
+  }
+
+  .site-footer__nav-heading {
+    margin: 0;
+  }
+
+  .site-footer__nav-static {
+    display: none;
+  }
+
+  .site-footer__nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 48px; // comfortable touch target
+    padding: $s-3 0;
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .site-footer__nav-chevron {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+    flex: 0 0 auto;
+  }
+
+  .site-footer__nav-panel {
+    display: none;
+    padding-bottom: $s-3;
+  }
+
+  .site-footer__nav:has(.site-footer__nav-toggle[aria-expanded="true"]) {
+    .site-footer__nav-panel {
+      display: block;
+    }
+
+    .site-footer__nav-chevron {
+      transform: rotate(-135deg);
+    }
   }
 }

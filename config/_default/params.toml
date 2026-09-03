@@ -38,99 +38,46 @@ footer_donate_link = "donate/"
 footer_organization = "African Institute for Mathematical Sciences"
 
 # Footer link-column headings, per the Figma Footer component.
-footer_menu_left = "Explore"
-footer_menu_middle = "Sitemap"
-footer_menu_right = "Connect"
+footer_menu_explore = "Explore"
+footer_menu_quick = "Quick links"
+footer_menu_connect = "Connect"
+footer_menu_centres = "Centres"
 
-# preloader
-# preloader module: https://github.com/gethugothemes/hugo-modules/tree/master/components/preloader
-[preloader]
-enable = true
-preloader = "" # use jpg, png, svg or gif format. example - "images/preloader.gif"
-
-# Navigation button
-[navigation_button]
-enable = true
-label = "Donate"
-link = "donate/"
-
-# crisp chat
-# crisp chat module: https://github.com/gethugothemes/hugo-modules/tree/master/components/crisp-chat
-[crisp_chat]
-enable = false
-crisp_website_id = "9aa449e1-9999-422a-938f-8567982eec6d" # replace this code with yours
-# Check this video tutorial to get your crisp website ID - https://www.youtube.com/watch?v=nW5UX6iVdFc
-
-# seo meta data for OpenGraph / Twitter Card
-[metadata]
-keywords = ["AIMS Ghana", "mathematical sciences", "Africa", "master's programme", "African Institute", "education", "research"]
-description = "AIMS Ghana empowers Africa's brightest minds in mathematical sciences through world-class training, research, and mentorship. Apply to our transformative master's programme."
-author = "AIMS Ghana"
-image = "images/logo.png"                           # this image will be used as fallback if a page has no image of its own
-
-# matomo tracking: see https://matomo.org/
-# matomo tracking module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/matomo-analytics
-[matomo]
-enable = false
-url = ""       # your matomo url
-id = ""        # your matomo id
-
-# baidu analytics: see https://tongji.baidu.com/
-# baidu analytics module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/baidu-analytics
-[baidu]
-enable = false
-analytics_id = "" # Your ID
-
-# plausible analytics: see https://plausible.io/
-# plausible analytics module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/plausible-analytics
-[plausible]
-enable = false
-domain = ""    # yourdomain.com
-
-# counter analytics: see https://counter.dev/setup.html
-# counter analytics module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/counter-analytics
-[counter]
-enable = false
-username = ""  # your username
-
-# site verifications
-# site verifications module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/site-verifications
-[site_verification]
-google = ""   # Your verification code
-bing = ""     # Your verification code
-baidu = ""    # Your verification code
-facebook = "" # Your verification code
-mastodon = "" # Your verification code
-
-# cookies
-# cookies module: https://github.com/gethugothemes/hugo-modules/tree/master/components/cookie-consent
-[cookies]
-enable = true
-expire_days = 2
-content = "This site uses cookies. By continuing to use this website, you agree to their use."
-button = "I Accept"
+# Contact lines, shown inside the left-hand block under the description.
+# telephone is intentionally empty: the spec carries "[Approved main telephone
+# number]" as a placeholder and the design shows no phone line, so nothing is
+# invented here and the row stays hidden until a real number is supplied.
+[footer_contact]
+location = "Kasa Global Villa, 1 Shoppers Street, Manet, Spintex, Accra, Ghana"
+telephone = ""
+email = "info@aims.edu.gh"
 
 ############################# social site ########################
+# The design shows four icons: Twitter, Facebook, Instagram, LinkedIn.
+# Only two URLs could be verified on aims.edu.gh; Instagram and LinkedIn have
+# no link anywhere on the live site, so they are left empty and the footer
+# skips them rather than shipping dead "#!" links. Fill these in and they
+# appear automatically.
 [[social]]
-title = "Twitter"
-icon = "fab fa-twitter" # fontawesome icon pack : https://fontawesome.com/icons/
+title = "X (Twitter)"
+icon = "fab fa-x-twitter"
 image = "images/footer/twitter.svg"
-link = "#!"
+link = "https://x.com/AIMSGhana"
 
 [[social]]
 title = "Facebook"
-icon = "fab fa-facebook" # fontawesome icon pack : https://fontawesome.com/icons/
+icon = "fab fa-facebook"
 image = "images/footer/facebook.svg"
-link = "#!"
+link = "https://www.facebook.com/AIMSGH"
 
 [[social]]
 title = "Instagram"
-icon = "fab fa-instagram" # fontawesome icon pack : https://fontawesome.com/icons/
+icon = "fab fa-instagram"
 image = "images/footer/instagram.svg"
-link = "#!"
+link = ""
 
 [[social]]
 title = "LinkedIn"
-icon = "fab fa-linkedin" # fontawesome icon pack : https://fontawesome.com/icons/
+icon = "fab fa-linkedin"
 image = "images/footer/linkedin.svg"
-link = "#!"
+link = ""

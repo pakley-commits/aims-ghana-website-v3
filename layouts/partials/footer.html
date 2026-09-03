@@ -8,6 +8,16 @@
   {{ $footerSocial = . }}
 {{ end }}
 
+{{/* Four link columns, transcribed from the Figma Footer component. On desktop
+     they sit to the right of the about/contact block; below the tablet
+     breakpoint each becomes a collapsed accordion. */}}
+{{ $columns := slice
+  (dict "id" "explore" "title" site.Params.footer_menu_explore "items" site.Menus.footer_explore)
+  (dict "id" "quick"   "title" site.Params.footer_menu_quick   "items" site.Menus.footer_quick)
+  (dict "id" "connect" "title" site.Params.footer_menu_connect "items" site.Menus.footer_connect)
+  (dict "id" "centres" "title" site.Params.footer_menu_centres "items" site.Menus.footer_centres)
+}}
+
 <footer class="site-footer{{ if eq $footerVariant "dark" }} site-footer--dark{{ end }}">
   {{ $footerDonateDot := resources.Get "images/footer/donate-dot.svg" }}
   {{ $footerDivider := resources.Get $footerDividerPath }}
@@ -42,15 +52,33 @@
     <div class="site-footer__main">
       <div class="site-footer__about">
         <h3>{{ site.Params.footer_organization | default "African Institute for Mathematical Sciences" }}</h3>
-        <p>{{ site.Params.footer_content | markdownify }}</p>
+        {{ with site.Params.footer_content }}<p>{{ . | markdownify }}</p>{{ end }}
+
+        {{ with site.Params.footer_contact }}
+        <dl class="site-footer__contact">
+          {{ with .location }}
+          <div><dt>Location:</dt><dd>{{ . }}</dd></div>
+          {{ end }}
+          {{ with .telephone }}
+          <div><dt>Telephone:</dt><dd><a href="tel:{{ replaceRE `[^0-9+]` `` . }}">{{ . }}</a></dd></div>
+          {{ end }}
+          {{ with .email }}
+          <div><dt>Email:</dt><dd><a href="mailto:{{ . }}">{{ . }}</a></dd></div>
+          {{ end }}
+        </dl>
+        {{ end }}
+
         {{ with site.Params.copyright }}
         <p class="site-footer__copyright">{{ . | safeHTML }}</p>
         {{ end }}
 
         {{ with $footerSocial }}
-        <ul class="site-footer__social" aria-label="Social links">
+        <ul class="site-footer__social" aria-label="Follow AIMS Ghana">
           {{ range . }}
           {{ $social := . }}
+          {{/* Entries without a link are skipped rather than rendered as dead
+               anchors; see the note in params.toml. */}}
+          {{ if $social.link }}
           {{ $socialImage := $social.image }}
           {{ with $social.image_dark }}
             {{ if eq $footerVariant "dark" }}
@@ -58,7 +86,8 @@
             {{ end }}
           {{ end }}
           <li>
-            <a href="{{ $social.link | safeURL }}" title="{{ $social.title }}" aria-label="{{ $social.title }}">
+            <a href="{{ $social.link | safeURL }}" title="{{ $social.title }}"
+               aria-label="{{ $social.title }}" rel="noopener">
               {{ with $socialImage }}
                 {{ $rawIcon := resources.Get . }}
                 {{ if $rawIcon }}
@@ -73,44 +102,66 @@
             </a>
           </li>
           {{ end }}
+          {{ end }}
         </ul>
         {{ end }}
       </div>
 
       <div class="site-footer__links">
-        {{ if site.Menus.footer_left }}
-        <nav class="site-footer__nav" aria-label="{{ site.Params.footer_menu_left }}">
-          <h3>{{ site.Params.footer_menu_left }}</h3>
-          <ul>
-            {{ range site.Menus.footer_left }}
-            <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+        {{ range $columns }}
+        {{ if .items }}
+        <nav class="site-footer__nav" aria-labelledby="footer-col-{{ .id }}">
+          {{/* Two headings, exactly one shown at a time by CSS: the button is
+               the accordion control below the tablet breakpoint, the static
+               heading is used on desktop where nothing collapses. display:none
+               removes the hidden one from the accessibility tree, so the title
+               is never announced twice. */}}
+          <h3 class="site-footer__nav-heading">
+            <button type="button"
+                    class="site-footer__nav-toggle"
+                    id="footer-col-{{ .id }}"
+                    aria-expanded="false"
+                    aria-controls="footer-panel-{{ .id }}">
+              <span>{{ .title }}</span>
+              <span class="site-footer__nav-chevron" aria-hidden="true"></span>
+            </button>
+            <span class="site-footer__nav-static">{{ .title }}</span>
+          </h3>
+          <ul id="footer-panel-{{ .id }}" class="site-footer__nav-panel">
+            {{ range .items }}
+            {{ $external := findRE `^https?://` .URL }}
+            {{/* The design marks AIMS Ghana as the current centre in maroon.
+                 Colour alone is not an accessible indicator, so a
+                 screen-reader-only label is added; the visual matches the
+                 design exactly. */}}
+            {{ $isCurrentCentre := and $external (eq .Name "AIMS Ghana") }}
+            <li>
+              <a href="{{ if $external }}{{ .URL }}{{ else }}{{ .URL | relLangURL }}{{ end }}"
+                 {{ if $external }}rel="noopener"{{ end }}
+                 {{ if $isCurrentCentre }}class="is-current-centre" aria-current="true"{{ end }}>
+                {{ .Name }}{{ if $isCurrentCentre }}<span class="visually-hidden"> (current centre)</span>{{ end }}
+              </a>
+            </li>
             {{ end }}
           </ul>
         </nav>
         {{ end }}
-
-        {{ if site.Menus.footer_middle }}
-        <nav class="site-footer__nav" aria-label="{{ site.Params.footer_menu_middle }}">
-          <h3>{{ site.Params.footer_menu_middle }}</h3>
-          <ul>
-            {{ range site.Menus.footer_middle }}
-            <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
-            {{ end }}
-          </ul>
-        </nav>
-        {{ end }}
-
-        {{ if site.Menus.footer_right }}
-        <nav class="site-footer__nav" aria-label="{{ site.Params.footer_menu_right }}">
-          <h3>{{ site.Params.footer_menu_right }}</h3>
-          <ul>
-            {{ range site.Menus.footer_right }}
-            <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
-            {{ end }}
-          </ul>
-        </nav>
         {{ end }}
       </div>
     </div>
   </div>
 </footer>
+
+<script type="application/javascript">
+  (function () {
+    // Footer column accordions. The buttons are only visible below the tablet
+    // breakpoint; above it CSS hides them and the panels are always open, so
+    // this handler is inert there.
+    document.querySelectorAll('.site-footer__nav-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      });
+    });
+  })();
+</script>

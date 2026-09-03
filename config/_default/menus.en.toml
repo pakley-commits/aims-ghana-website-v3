@@ -267,62 +267,117 @@ weight = 7
 
 ############################## footer menus ##############################
 
-[[footer_left]]
-name = "Who we are"
-url = "/who-we-are/"
+[[footer_explore]]
+name = "Home"
+url = "/"
 weight = 1
 
-[[footer_left]]
-name = "Academics"
-url = "/academics/"
+[[footer_explore]]
+name = "Who We Are"
+url = "/who-we-are/"
 weight = 2
 
-[[footer_left]]
-name = "Research & Innovation"
-url = "/research/"
+[[footer_explore]]
+name = "Academics"
+url = "/academics/"
 weight = 3
 
-[[footer_left]]
-name = "Outreach"
-url = "/outreach/"
+[[footer_explore]]
+name = "Research & Innovation"
+url = "/research/"
 weight = 4
 
-[[footer_middle]]
-name = "Our Centres"
-url = "/who-we-are/centres/"
+[[footer_explore]]
+name = "Outreach"
+url = "/outreach/"
+weight = 5
+
+[[footer_explore]]
+name = "News & Stories"
+url = "/news/"
+weight = 6
+
+[[footer_quick]]
+name = "Apply"
+url = "/academics/admissions/"
 weight = 1
 
-[[footer_middle]]
+[[footer_quick]]
 name = "FAQs"
 url = "/faqs/"
 weight = 2
 
-[[footer_middle]]
-name = "Newsroom"
-url = "/news/"
+[[footer_quick]]
+name = "Reports"
+url = "/who-we-are/impact-and-reports/"
 weight = 3
 
-[[footer_middle]]
-name = "Work at AIMS"
-url = "/careers/"
+[[footer_quick]]
+name = "Policies"
+url = "/who-we-are/policies/"
 weight = 4
 
-[[footer_right]]
-name = "News"
-url = "/news/"
+[[footer_quick]]
+name = "Work at AIMS"
+url = "/careers/"
+weight = 5
+
+[[footer_connect]]
+name = "Contact"
+url = "/contact/"
 weight = 1
 
-[[footer_right]]
-name = "Admissions"
-url = "/academics/admissions/"
+[[footer_connect]]
+name = "Partner with Us"
+url = "/who-we-are/partnerships/"
 weight = 2
 
-[[footer_right]]
+[[footer_connect]]
 name = "Donate"
 url = "/donate/"
 weight = 3
 
-[[footer_right]]
-name = "Contact Us"
-url = "/contact/"
+[[footer_connect]]
+name = "Events"
+url = "/news/events/"
 weight = 4
+
+[[footer_connect]]
+name = "Newsletter"
+url = "/news/newsletters/"
+weight = 5
+
+[[footer_connect]]
+name = "Media enquiries"
+url = "/news/media-resources/"
+weight = 6
+
+[[footer_centres]]
+name = "AIMS Network"
+url = "https://nexteinstein.org/"
+weight = 1
+
+[[footer_centres]]
+name = "AIMS Ghana"
+url = "https://aims.edu.gh/"
+weight = 2
+
+[[footer_centres]]
+name = "AIMS Rwanda"
+url = "https://aims.ac.rw/"
+weight = 3
+
+[[footer_centres]]
+name = "AIMS Senegal"
+url = "https://aims-senegal.org/"
+weight = 4
+
+[[footer_centres]]
+name = "AIMS South Africa"
+url = "https://aims.ac.za/"
+weight = 5
+
+[[footer_centres]]
+name = "AIMS Research and Innovation Centre"
+url = "https://research.nexteinstein.org/"
+weight = 6
