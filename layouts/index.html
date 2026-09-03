@@ -270,12 +270,15 @@
 
       <div class="accordion-item mb-3 border-0 rounded-3 overflow-hidden">
         <h2 class="accordion-header" id="heading-{{ $i }}">
+          {{/* The design shows the first programme open with its description
+               visible; the rest are collapsed. */}}
+          {{ $open := eq $i 0 }}
           <button
-            class="accordion-button p-0 collapsed d-flex justify-content-between align-items-center bg-white"
+            class="accordion-button p-0 d-flex justify-content-between align-items-center bg-white{{ if not $open }} collapsed{{ end }}"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapse-{{ $i }}"
-            aria-expanded="false"
+            aria-expanded="{{ if $open }}true{{ else }}false{{ end }}"
             aria-controls="collapse-{{ $i }}"
           >
             <h5 class=" text-primary">{{ $item.title }}</h5>
@@ -285,7 +288,7 @@
         </h2>
         <div
           id="collapse-{{ $i }}"
-          class="accordion-collapse collapse"
+          class="accordion-collapse collapse{{ if $open }} show{{ end }}"
           aria-labelledby="heading-{{ $i }}"
           data-bs-parent="#programsAccordion"
         >
@@ -480,16 +483,16 @@
     <!-- Section Title -->
     <div class="row justify-content-center mb-5">
       <div class="col-lg-8 text-center">
+        <p class="section-eyebrow">What goes on at AIMS Ghana</p>
         <h2 class="section-title mb-3">Latest News</h2>
-        <!-- <p class="text-muted">Stay updated with our latest stories and announcements</p> -->
       </div>
     </div>
 
     <!-- Blog Grid -->
     <div class="row g-4 justify-content-center">
-      {{ $blogs := where .Site.RegularPages "Section" "news" | last 3 }}
+      {{ $blogs := where .Site.RegularPages "Section" "news" | first 6 }}
       {{ range $blogs }}
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="h-100">
           <!-- Blog Image -->
           {{ with .Params.image }}
@@ -521,6 +524,14 @@
             Read More →
           </a>
         </div>
+      </div>
+      {{ end }}
+      {{ if not $blogs }}
+      <div class="col-12 text-center">
+        <p class="latest-blog__empty">
+          Stories and announcements will appear here.
+          <a href="/news/">Visit the newsroom</a>
+        </p>
       </div>
       {{ end }}
     </div>

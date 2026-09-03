@@ -2620,3 +2620,24 @@ $heading-scale: (
     }
   }
 }
+
+
+// Section eyebrow — the small maroon label above a section heading, e.g.
+// "What goes on at AIMS Ghana" over Latest News.
+.section-eyebrow {
+  margin: 0 0 $s-2;
+  color: $c-maroon;
+  font-family: $font-body;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  letter-spacing: $ls-eyebrow;
+}
+
+.latest-blog__empty {
+  margin: 0;
+  color: $c-muted;
+
+  a {
+    color: $c-maroon;
+  }
+}
