@@ -495,14 +495,6 @@ $heading-scale: (
   letter-spacing: 0;
 }
 
-// The Academic Council page builds the same card differently: an <h4> carrying
-// class="h5", which wins on specificity over the h4 ladder. Match it here so
-// both person cards share one name treatment.
-.card-img-overlay.overlay-text h4 {
-  font-family: $font-display;
-  font-size: 22px;
-  font-weight: $fw-regular;
-}
 
 .governance-board-card__content p {
   min-height: 40px;

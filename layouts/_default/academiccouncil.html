@@ -48,21 +48,7 @@
 
       {{range .}}
       <div class="col-lg-4 col-md-6">
-        <div class="card bg-transparent border-0 mb-0 rounded-4 overflow-hidden" style="height: 375px">
-
-           {{ $img := resources.Get (printf "images/%s" .image )}}
-
-           <img src="{{ $img.RelPermalink }}" alt="{{ .name }}" class=" img-fluid rounded-4 w-100" style="height: 375px">
-
-           <div class="card-img-overlay overlay-text d-flex flex-column justify-content-end">
-            <h4 class="h5 text-white mb-0 "style="z-index: 2;">
-              {{ .name | markdownify }}
-            </h4>
-            <p class="ms-1 "style="z-index: 2; color: #D4D4D8;">
-              {{ .designation | markdownify }}
-            </p>
-           </div>
-        </div>
+        {{ partial "card-person.html" (dict "variant" "overlay" "name" .name "role" .designation "image" .image) }}
       </div>
       {{end}}
     </div>

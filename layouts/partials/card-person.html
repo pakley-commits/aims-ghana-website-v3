@@ -1,0 +1,83 @@
+{{/*
+  Person card — the two archetypes in the design.
+
+    variant "overlay"  Figma `board` (300x375, radius 20): portrait fills the
+                       card, a gradient scrim carries the name and role.
+                       Used by Governance and Academic Council.
+
+    variant "stacked"  Figma `_Staff` (280x434, radius 20): portrait on top,
+                       name / role / social icons beneath.
+                       Used by the Administrative Team.
+
+  Params:
+    variant  "overlay" (default) | "stacked"
+    name     required
+    role     optional supporting line
+    image    asset path. Accepted with or without the leading "images/", since
+             the two content files that feed this disagree on the convention.
+    socials  optional slice of {title, icon, link} — stacked variant only
+
+  Replaces three separate implementations: team.html used BEM classes,
+  academiccouncil.html used Bootstrap card markup with inline height, z-index
+  and colour, and admin-staff.html had its own. They now share this markup and
+  one set of styles.
+*/}}
+
+{{ $variant := .variant | default "overlay" }}
+{{ $name := .name }}
+{{ $role := .role }}
+
+{{/* Resolve the image whichever way the path was written. */}}
+{{ $img := "" }}
+{{ with .image }}
+  {{ $img = resources.Get . }}
+  {{ if not $img }}
+    {{ $img = resources.Get (printf "images/%s" .) }}
+  {{ end }}
+{{ end }}
+
+{{ if eq $variant "stacked" }}
+<article class="admin-staff-card">
+  <div class="admin-staff-card__media">
+    {{ with $img }}
+    {{ $photo := . | fingerprint "sha256" }}
+    <img src="{{ $photo.RelPermalink }}" alt="{{ $name }}" class="admin-staff-card__image" loading="lazy">
+    {{ end }}
+  </div>
+
+  <div class="admin-staff-card__body">
+    <div>
+      <h2>{{ $name | markdownify }}</h2>
+      {{ with $role }}<p>{{ . | markdownify }}</p>{{ end }}
+    </div>
+
+    {{ with .socials }}
+    <ul class="admin-staff-card__social" aria-label="{{ $name }} social links">
+      {{ range . }}
+      <li>
+        <a href="{{ .link | safeURL }}" title="{{ .title }}" aria-label="{{ .title }}">
+          {{ $icon := resources.Get .icon }}
+          {{ with $icon }}
+          {{ $i := . | fingerprint "sha256" }}
+          <img src="{{ $i.RelPermalink }}" alt="" class="admin-staff-card__social-icon">
+          {{ end }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </div>
+</article>
+{{ else }}
+<article class="governance-board-card">
+  {{ with $img }}
+  {{ $photo := . | fingerprint "sha256" }}
+  <img src="{{ $photo.RelPermalink }}" alt="{{ $name }}" class="governance-board-card__image" loading="lazy">
+  {{ end }}
+  <div class="governance-board-card__overlay"></div>
+  <div class="governance-board-card__content">
+    <h3>{{ $name | markdownify }}</h3>
+    {{ with $role }}<p>{{ . | markdownify }}</p>{{ end }}
+  </div>
+</article>
+{{ end }}
