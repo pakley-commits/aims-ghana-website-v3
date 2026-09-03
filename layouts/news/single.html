@@ -1,0 +1,34 @@
+{{ define "main" }}
+<article class="news-article">
+  <header class="news-article__header">
+    <div class="container">
+      <p class="news-article__meta">
+        <a href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}</a>
+        <span aria-hidden="true">&middot;</span>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+      </p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="news-article__standfirst">{{ . }}</p>{{ end }}
+    </div>
+  </header>
+
+  {{ with .Params.image }}
+  {{ $img := resources.Get . }}
+  {{ with $img }}
+  {{ $i := .Fill "1220x560 Center" }}
+  <div class="container">
+    <img class="news-article__lead" src="{{ $i.RelPermalink }}" alt="" width="1220" height="560">
+  </div>
+  {{ end }}
+  {{ end }}
+
+  <div class="container">
+    <div class="news-article__body">
+      {{ .Content }}
+      {{ with .Params.source }}
+      <p class="news-article__source">Originally published at <a href="{{ . }}" rel="noopener">aims.edu.gh</a></p>
+      {{ end }}
+    </div>
+  </div>
+</article>
+{{ end }}
