@@ -1,0 +1,61 @@
+{{ define "main" }}
+{{/*
+  News section listing — used by /news/ and each of its sub-sections
+  (Events, Press Releases, Media Resources, and the still-empty Impact
+  Stories, Listen & Watch and Newsletters).
+
+  Cards follow the design's Blog post component: image, date, title, excerpt.
+  Sub-sections are surfaced alongside articles so /news/ links onward to them.
+*/}}
+{{ $pages := .RegularPagesRecursive }}
+{{ if .IsSection }}{{ $pages = .RegularPages }}{{ end }}
+{{ $paginator := .Paginate ($pages.ByDate.Reverse) 12 }}
+
+<section class="news-list">
+  <div class="container">
+    <header class="news-list__header">
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="news-list__intro">{{ . }}</p>{{ end }}
+    </header>
+
+    {{ with .Sections }}
+    <nav class="news-list__sections" aria-label="News sections">
+      {{ range . }}
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ end }}
+    </nav>
+    {{ end }}
+
+    {{ if $paginator.Pages }}
+    <div class="news-list__grid">
+      {{ range $paginator.Pages }}
+      <article class="news-card">
+        <div class="news-card__body">
+          <p class="news-card__meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+            {{ with .Params.posting_type }}<span class="posting-tag">{{ . }}</span>{{ end }}
+            {{ with .Params.location }}<span class="posting-loc">{{ . }}</span>{{ end }}
+          </p>
+          <h2 class="news-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ with .Description }}<p class="news-card__excerpt">{{ . }}</p>{{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="news-list__pager" aria-label="Pagination">
+      {{ with $paginator.Prev }}<a href="{{ .URL }}">&larr; Newer</a>{{ end }}
+      <span>Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+      {{ with $paginator.Next }}<a href="{{ .URL }}">Older &rarr;</a>{{ end }}
+    </nav>
+    {{ end }}
+
+    {{ else }}
+    <p class="news-list__empty">
+      No openings are listed at the moment.
+    </p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

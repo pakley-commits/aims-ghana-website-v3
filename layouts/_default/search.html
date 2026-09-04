@@ -1,0 +1,107 @@
+{{ define "main" }}
+{{/*
+  Site search. Runs against /index.json, which the home page already emits as a
+  JSON output format — no external service and no index to keep in sync.
+  The utility-strip search box submits here with ?q=, so a query typed there
+  lands on a results page that can be linked and shared.
+*/}}
+<section class="search-page">
+  <div class="container">
+    <header class="search-page__header">
+      <h1>{{ .Title }}</h1>
+      <form class="search-page__form" role="search" action="{{ .RelPermalink }}" method="get">
+        <label for="q" class="visually-hidden">Search AIMS Ghana</label>
+        <input id="q" name="q" type="search" placeholder="Search AIMS Ghana" autocomplete="off" autofocus>
+        <button type="submit" class="btn btn-aims-primary">Search</button>
+      </form>
+      <p class="search-page__status" id="search-status" role="status" aria-live="polite">
+        Type a query to search across news, programmes, people and research.
+      </p>
+    </header>
+
+    <ol class="search-page__results" id="search-results"></ol>
+  </div>
+</section>
+
+<script type="application/javascript">
+  (function () {
+    var results = document.getElementById('search-results');
+    var status = document.getElementById('search-status');
+    var input = document.getElementById('q');
+    var index = null;
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    // A short excerpt around the first hit tells the reader why a page matched.
+    function excerpt(text, term) {
+      var t = (text || '').replace(/\s+/g, ' ');
+      var i = t.toLowerCase().indexOf(term.toLowerCase());
+      if (i < 0) return escapeHtml(t.slice(0, 180)) + (t.length > 180 ? '&hellip;' : '');
+      var start = Math.max(0, i - 70);
+      var slice = t.slice(start, start + 200);
+      var safe = escapeHtml(slice);
+      var re = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+      return (start > 0 ? '&hellip;' : '') + safe.replace(re, '<mark>$1</mark>') +
+             (start + 200 < t.length ? '&hellip;' : '');
+    }
+
+    function render(term, matches) {
+      results.innerHTML = '';
+      if (!matches.length) {
+        status.textContent = 'No results for “' + term + '”. Try a different word, or browse the newsroom.';
+        return;
+      }
+      status.textContent = matches.length + (matches.length === 1 ? ' result' : ' results') +
+                           ' for “' + term + '”';
+      matches.forEach(function (m) {
+        var li = document.createElement('li');
+        li.className = 'search-result';
+        li.innerHTML =
+          '<a class="search-result__title" href="' + escapeHtml(m.permalink) + '">' +
+          escapeHtml(m.title) + '</a>' +
+          '<p class="search-result__excerpt">' + excerpt(m.contents, term) + '</p>' +
+          '<p class="search-result__path">' + escapeHtml(m.permalink) + '</p>';
+        results.appendChild(li);
+      });
+    }
+
+    function search(term) {
+      if (!term) {
+        results.innerHTML = '';
+        status.textContent = 'Type a query to search across news, programmes, people and research.';
+        return;
+      }
+      var q = term.toLowerCase();
+      var matches = index.filter(function (e) {
+        return (e.title || '').toLowerCase().indexOf(q) > -1 ||
+               (e.contents || '').toLowerCase().indexOf(q) > -1;
+      }).sort(function (a, b) {
+        // Title matches first: they are almost always what was meant.
+        var at = (a.title || '').toLowerCase().indexOf(q) > -1 ? 0 : 1;
+        var bt = (b.title || '').toLowerCase().indexOf(q) > -1 ? 0 : 1;
+        return at - bt;
+      });
+      render(term, matches.slice(0, 50));
+    }
+
+    var term = new URLSearchParams(window.location.search).get('q') || '';
+    if (term) input.value = term;
+
+    status.textContent = 'Loading search index…';
+    fetch('{{ "index.json" | relLangURL }}')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        index = data;
+        search(term);
+        input.addEventListener('input', function () { search(input.value.trim()); });
+      })
+      .catch(function () {
+        status.textContent = 'Search is unavailable right now. Please use the navigation instead.';
+      });
+  })();
+</script>
+{{ end }}
