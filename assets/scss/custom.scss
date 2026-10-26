@@ -2300,7 +2300,9 @@ $heading-scale: (
 
 /* Blog/article image height */
 .img-blog-height {
+  width: 100%;
   height: 200px;
+  object-fit: cover;
 }
 
 /* Skip to main content link - visible on focus, hidden otherwise */
