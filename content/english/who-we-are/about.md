@@ -2,7 +2,7 @@
 title: "About Us"
 subtitle: ""
 # meta description
-description: "This is meta description"
+description: "The West African hub of the AIMS Network and a UNESCO Category II Centre of Excellence, offering fully funded postgraduate programmes since 2012."
 figma_frame: "About AIMS Ghana"
 build_phase: 5
 build_status: "partial"

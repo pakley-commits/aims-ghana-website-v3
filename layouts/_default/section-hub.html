@@ -1,0 +1,53 @@
+{{ define "main" }}
+{{/*
+  Section landing page — Who We Are, Research, Training, Outreach. No Figma
+  frame exists for these, so the page is a plain index of the section.
+  Cards follow the main-menu dropdown named by `hub_menu`, in its order and
+  with its labels, so the landing page cannot drift from the nav. Pages in the
+  section that the dropdown leaves out (the people directories under Who We
+  Are) follow in a second group headed by `hub_more`.
+*/}}
+{{ $self := .RelPermalink }}
+{{ $items := slice }}
+{{ range site.Menus.main }}
+  {{ if eq .Name $.Params.hub_menu }}
+    {{ range .Children }}
+      {{ if ne .URL $self }}{{ $items = $items | append (dict "name" .Name "url" .URL) }}{{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $listed := slice }}
+{{ range $items }}{{ $listed = $listed | append .url }}{{ end }}
+{{ $more := slice }}
+{{ range .RegularPages.ByTitle }}
+  {{ if not (in $listed .RelPermalink) }}{{ $more = $more | append (dict "name" .Title "url" .RelPermalink) }}{{ end }}
+{{ end }}
+
+<section class="section-hub">
+  <div class="container">
+    <header class="section-hub__header">
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    </header>
+
+    {{ range $i, $group := slice $items $more }}
+    {{ with $group }}
+    <section class="section-hub__group">
+      {{ if $i }}<h2>{{ $.Params.hub_more | default "More in this section" }}</h2>{{ end }}
+      <ul class="section-hub__grid">
+        {{ range . }}
+        <li>
+          <a class="section-hub__card" href="{{ .url | relLangURL }}">
+            <span class="section-hub__name">{{ .name }} <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            {{ with site.GetPage .url }}{{ with .Description }}<span class="section-hub__desc">{{ . }}</span>{{ end }}{{ end }}
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -3294,6 +3294,80 @@ $heading-scale: (
 }
 
 // ===========================================================================
+// Section landing pages — Who We Are, Research, Training, Outreach.
+// Same card language as the People hub, with the target page's description.
+// ===========================================================================
+
+.section-hub { padding: $section-y-lg 0; }
+
+.section-hub__header {
+  max-width: 720px;
+  margin-bottom: $s-12;
+
+  h1 { margin-bottom: $s-4; }
+  p { margin: 0; color: $c-muted; font-size: $fs-lg; }
+}
+
+.section-hub__group {
+  margin-bottom: $s-12;
+
+  h2 {
+    margin: 0 0 $s-5;
+    font-size: $fs-h5;
+  }
+}
+
+.section-hub__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $s-4;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.section-hub__card {
+  display: flex;
+  flex-direction: column;
+  gap: $s-2;
+  height: 100%;
+  padding: $s-5 $s-6;
+  border: 1px solid $c-line;
+  border-radius: $r-lg;
+  background: $c-surface;
+  color: $c-ink;
+  text-decoration: none;
+
+  i {
+    margin-left: $s-1;
+    font-size: $fs-xs;
+    color: $c-maroon;
+  }
+
+  &:hover {
+    border-color: $c-maroon;
+
+    .section-hub__name { color: $c-maroon; }
+  }
+}
+
+.section-hub__name {
+  font-family: $font-display;
+  font-size: $fs-h6;
+  font-weight: $fw-medium;
+  line-height: $lh-snug;
+}
+
+.section-hub__desc {
+  color: $c-muted;
+  font-size: $fs-sm;
+}
+
+@include tablet {
+  .section-hub { padding: $section-y 0; }
+}
+
+// ===========================================================================
 // Search results
 // ===========================================================================
 
