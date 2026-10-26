@@ -3,6 +3,9 @@
 /resources/_gen/
 .hugo_build.lock
 
+# Cloudflare Pages deploy cache
+.wrangler/
+
 # OS / editor
 .DS_Store
 Thumbs.db

@@ -123,6 +123,18 @@ $heading-scale: (
   border-radius: 0;
 }
 
+// Bottom scrim, behind the hero headline and lead. The photograph is brightest
+// exactly where the copy sits (the chalkboard and the light shirts), so white
+// type on the bare image loses contrast. Same treatment as the top scrim —
+// full-bleed, square-cornered, fading out at its inner edge — but taller,
+// because it carries two lines of display type plus the lead and the button.
+.banner-overlay--bottom {
+  top: auto;
+  bottom: 0;
+  height: 55%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+}
+
 
 // /* Navbar white override — place at bottom of custom.scss */
 // header.navigation,
@@ -2963,6 +2975,94 @@ $heading-scale: (
   font-size: $fs-sm;
 }
 
+// Careers listing — Figma "Careers list": 4-up grid, 40px column / 60px row gap.
+.careers-list__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 60px 40px;
+}
+
+.career-card {
+  display: flex;
+  flex-direction: column;
+  gap: $s-3;
+}
+
+.career-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  color: $c-muted;
+  font-size: $fs-sm;
+  line-height: 24px;
+}
+
+.career-card__lead {
+  display: flex;
+  align-items: center;
+  gap: $s-2;
+}
+
+.career-card__tag {
+  padding: 1px $s-2;
+  border-radius: $r-pill;
+  background: color-mix(in srgb, #{$c-maroon} 10%, transparent);
+  color: $c-maroon;
+}
+
+.career-card__loc { text-align: right; }
+
+.career-card__title {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-size: $fs-h5;
+  line-height: 30px;
+  letter-spacing: -1px;
+
+  a {
+    color: $c-ink;
+    text-decoration: none;
+
+    &:hover { color: $c-maroon; }
+  }
+}
+
+.career-card__rule {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid $c-line;
+}
+
+.career-card__excerpt {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  color: $c-muted;
+  font-size: $fs-h6;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+@include desktop-lg {
+  .careers-list__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@include desktop {
+  .careers-list__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: $s-10 $s-6; }
+}
+
+@include mobile {
+  .careers-list__grid { grid-template-columns: 1fr; }
+}
+
 @include tablet {
   .news-list { padding: $section-y 0; }
   .news-list__grid { grid-template-columns: 1fr; gap: $s-8; }
@@ -3272,24 +3372,4 @@ $heading-scale: (
 @include tablet {
   .search-page { padding: $section-y 0; }
   .search-page__form { flex-direction: column; }
-}
-
-// Career postings carry a type and a location rather than an image.
-.posting-tag,
-.posting-loc {
-  display: inline-block;
-  margin-left: $s-2;
-  padding: 1px 8px;
-  border-radius: $r-pill;
-  font-size: $fs-xs;
-}
-
-.posting-tag {
-  background: color-mix(in srgb, #{$c-maroon} 10%, transparent);
-  color: $c-maroon;
-}
-
-.posting-loc {
-  border: 1px solid $c-line;
-  color: $c-muted;
 }

@@ -1,44 +1,30 @@
 {{ define "main" }}
-{{/*
-  News section listing — used by /news/ and each of its sub-sections
-  (Events, Press Releases, Media Resources, and the still-empty Impact
-  Stories, Listen & Watch and Newsletters).
-
-  Cards follow the design's Blog post component: image, date, title, excerpt.
-  Sub-sections are surfaced alongside articles so /news/ links onward to them.
-*/}}
+{{/* Careers listing — Figma "Careers list": 4-up grid of Career Cards (meta, title, rule, clamped excerpt). */}}
 {{ $pages := .RegularPagesRecursive }}
 {{ if .IsSection }}{{ $pages = .RegularPages }}{{ end }}
 {{ $paginator := .Paginate ($pages.ByDate.Reverse) 12 }}
 
-<section class="news-list">
+<section class="news-list careers-list">
   <div class="container">
     <header class="news-list__header">
       <h1>{{ .Title }}</h1>
       {{ with .Description }}<p class="news-list__intro">{{ . }}</p>{{ end }}
     </header>
 
-    {{ with .Sections }}
-    <nav class="news-list__sections" aria-label="News sections">
-      {{ range . }}
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      {{ end }}
-    </nav>
-    {{ end }}
-
     {{ if $paginator.Pages }}
-    <div class="news-list__grid">
+    <div class="careers-list__grid">
       {{ range $paginator.Pages }}
-      <article class="news-card">
-        <div class="news-card__body">
-          <p class="news-card__meta">
-            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
-            {{ with .Params.posting_type }}<span class="posting-tag">{{ . }}</span>{{ end }}
-            {{ with .Params.location }}<span class="posting-loc">{{ . }}</span>{{ end }}
-          </p>
-          <h2 class="news-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-          {{ with .Description }}<p class="news-card__excerpt">{{ . }}</p>{{ end }}
-        </div>
+      <article class="career-card">
+        <p class="career-card__meta">
+          <span class="career-card__lead">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan. 2006" }}</time>
+            {{ with .Params.posting_type }}<span class="career-card__tag">{{ . }}</span>{{ end }}
+          </span>
+          {{ with .Params.location }}<span class="career-card__loc">{{ . }}</span>{{ end }}
+        </p>
+        <h2 class="career-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <hr class="career-card__rule">
+        {{ with .Description }}<p class="career-card__excerpt">{{ . }}</p>{{ end }}
       </article>
       {{ end }}
     </div>
