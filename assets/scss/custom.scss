@@ -96,8 +96,25 @@ body {
   background-color: transparent;
 
   h2 {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    padding-bottom: 16px;
     font-size: clamp(28px, 3vw, 36px);
+    font-weight: $fw-bold;
     line-height: $lh-tight;
+    color: $c-maroon;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 64px;
+      height: 4px;
+      border-radius: 2px;
+      background-color: $c-gold;
+      content: "";
+    }
   }
 
   img {
