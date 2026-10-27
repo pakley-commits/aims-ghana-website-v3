@@ -22,20 +22,21 @@
 <!-- purpose -->
 {{ with .Params.about }}
 
-<section class="section bg-light text-white">
-  <div class=" container container-wrapper mx-auto">
-    <div class="row  gy-5">
+{{ $aboutImage := resources.Get .image }}
+<section class="about-intro-banner section text-white">
+  <img class="about-intro-banner__image" src="{{ $aboutImage.RelPermalink }}" alt="" aria-hidden="true">
+  <div class="about-intro-banner__overlay" aria-hidden="true"></div>
+  <div class="container container-wrapper mx-auto position-relative">
+    <div class="row gy-5 align-items-center">
       <div class="col-lg-6 order-lg-0 order-0">
         <div class="pe-0 pe-lgy-5">
           <h1 class="section-title text-white h3">{{ .title | markdownify }}</h1>
-         
         </div>
       </div>
       <div class="col-lg-6 order-lg-1 order-1">
-       <div class="pe-0 pe-lgy-5">
+        <div class="pe-0 pe-lgy-5">
           <!-- <h2 class="section-title h3">{{ .title | markdownify }}</h2> -->
-          <p class="mb-4">{{ .content| markdownify }}</p>
-          
+          <p class="mb-0">{{ .content | markdownify }}</p>
         </div>
       </div>
     </div>
@@ -107,22 +108,21 @@
 <!--mission-model -->
 <!-- mission-model -->
 {{ with .Params.mission_model }}
-<section class="mission-model py-5 ">
+<section class="mission-model py-5">
   <div class="container container-wrapper px-lg-5 mx-auto">
     <div class="row">
-
-      <!-- Mission Column -->
-      <div class="col-lg-6 mb-4 mb-lg-0">
-        <h2 class="mb-3">{{ .mission_title | markdownify }}</h2>
-        <p class="mb-0 w-75">{{ .mission_text | markdownify }}</p>
-      </div>
-
-      <!-- Vision For Africa Column -->
-      <div class="col-lg-6">
-        <h2 class="mb-3">{{ .vision_title | markdownify }}</h2>
-        <p class="mb-0 w-75">{{ .vision_text | markdownify }}</p>
-      </div>
-
+      <article class="col-lg-6 mb-4 mb-lg-0">
+        <div class="mission-model__card mission-model__card--mission">
+          <h2 class="mb-3">{{ .mission_title | markdownify }}</h2>
+          <p class="mb-0">{{ .mission_text | markdownify }}</p>
+        </div>
+      </article>
+      <article class="col-lg-6">
+        <div class="mission-model__card mission-model__card--vision">
+          <h2 class="mb-3">{{ .vision_title | markdownify }}</h2>
+          <p class="mb-0">{{ .vision_text | markdownify }}</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -131,8 +131,8 @@
 
 <!--Core values -->
 {{ with .Params.corevalues }}
-<section class="core-values py-5" style="background-color: #D9D9D9; justify-content: center;">
-  <div class="container container-wrapper mt-5 mx-auto">
+<section class="core-values pt-4 pb-5" style="background-color: #D9D9D9; justify-content: center;">
+  <div class="container container-wrapper mx-auto">
     <h2 class=" mb-3">{{ .title | markdownify }}</h2>
 
     <div class="row g-5">
@@ -141,9 +141,9 @@
       {{ range .values }}
        {{ $img := resources.Get (printf "images/%s" .image) }}
       <div class="col-6 col-md-3">
-        <div class="core-value-box text-black d-flex text-center p-3 flex-column align-items-center justify-content-center" style="height: 240px; background-color: #FFFFFF ; border-radius: 24px;">
-          <img src = "{{ $img.RelPermalink }}" alt = "{{ .name }}" class = "img-fluid mb-3" >
-          <span class="fs-5 fw-bold">{{ .name }}</span>
+        <div class="core-value-box text-black d-flex text-center p-3 flex-column align-items-center justify-content-center">
+          <img src="{{ $img.RelPermalink }}" alt="" class="img-fluid mb-3" aria-hidden="true">
+          <span>{{ .name }}</span>
         </div>
       </div>
       {{ end }}
@@ -157,23 +157,23 @@
  <!--AIMS model section-->
  {{with .Params.aims_model}}
   {{if .enable}}
- <section class="section">
+ <section class="aims-model section">
   <div class="container  container-wrapper mx-auto">
     <div class="row align-items-start">
-      <div class="col-lg-4 col-md-12 mb-4 ">
-        <h2 class="section-title h3 text-light">{{.model_title | markdownify}}</h2>
-        <p class="mb-4 text-black w-75">{{.model_text | markdownify}}</p>
+      <div class="aims-model__intro col-lg-4 col-md-12 mb-4">
+        <h2 class="aims-model__title section-title h3">{{.model_title | markdownify}}</h2>
+        <p class="mb-0">{{.model_text | markdownify}}</p>
       </div>
 
   <!-- AIMS model grid -->
-      <div class="col-lg-8 col-md-10">
-        <div class="row g-3 d-flex">
+      <div class="col-lg-8 col-md-12">
+        <div class="aims-model__grid row g-3">
           {{range .model}}
             {{$img := resources.Get (printf "images/%s" .icon)}}
-          <div class="col-6 mx-auto">
-            <div class="card p-4 rounded-2 border h-100 ">
-              <p class="mb-0 flex text-black align-items-center">
-                <img src="{{$img.RelPermalink}}" alt="icon" class="me-2" style="height: 24px;">
+          <div class="col-12 col-md-6">
+            <div class="aims-model__card h-100">
+              <img src="{{$img.RelPermalink}}" alt="" aria-hidden="true">
+              <p class="mb-0">
                 {{.brief | markdownify}}</p>
             </div>
           </div>

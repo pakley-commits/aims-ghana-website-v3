@@ -66,7 +66,7 @@ corevalues:
 aims_model: 
   enable: true
   model_title: "THE AIMS MODEL"
-  model_text: "The AIMS model is a pan-African innovation in higher education designed to identify and nurture Africa's most promising graduates. It offers;"
+  model_text: "The AIMS model is a pan-African innovation in higher education designed to identify and nurture Africa's most promising graduates. It offers:"
 
   model:
     - brief: "A __broad research-driven curriculum__ blending mathematics, computing and real-world applications."
@@ -78,7 +78,7 @@ aims_model:
     - brief: "__Close mentorship__ through resident tutors and visiting international lecturers."
       icon: "check-circle.png"
     
-    - brief: "__Full or partial schorloarships__ covering tuition, housing, meals, and study materials."
+    - brief: "__Full or partial scholarships__ covering tuition, housing, meals, and study materials."
       icon: "check-circle.png"
 
 # founders_quote
