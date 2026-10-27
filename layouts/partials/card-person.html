@@ -74,7 +74,7 @@
   </div>
 </article>
 {{ else }}
-<article class="governance-board-card">
+<article class="governance-board-card" tabindex="0">
   {{ with $img }}
   {{ $photo := . | fingerprint "sha256" }}
   <img src="{{ $photo.RelPermalink }}" alt="{{ $name }}" class="governance-board-card__image" loading="lazy">
