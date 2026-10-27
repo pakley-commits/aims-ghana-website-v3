@@ -5,6 +5,15 @@
 // The theme sets body to $font-primary (Space Grotesk). Body copy belongs on
 // the body face; headings keep Space Grotesk from the theme's _typography.scss.
 // ---------------------------------------------------------------------------
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 body {
   font-family: $font-body;
   font-size: $fs-body;
