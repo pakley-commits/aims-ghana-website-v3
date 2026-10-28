@@ -21,8 +21,8 @@ $dark: {{.dark | default "#1b2229"}};
 // Font Variables
 $font-size: {{.font_size | default "16px"}};
 $font-scale: {{.font_scale | default "1.25"}};
-$font-primary: '{{replace (replaceRE ":[ital,]*[ital@]*[wght@]*[0-9,;.]+" "" .font_primary | default "Lato") "+" " "}}', {{.font_primary_type | default "sans-serif"}};
-$font-secondary: '{{replace (replaceRE ":[ital,]*[ital@]*[wght@]*[0-9,;.]+" "" .font_secondary | default "Lato") "+" " "}}', {{.font_secondary_type | default "sans-serif"}};
+$font-primary: '{{replace (replaceRE ":[ital,]*[ital@]*[wght@]*[0-9,;.]+" "" .font_primary | default "Inter") "+" " "}}', {{.font_primary_type | default "sans-serif"}};
+$font-secondary: '{{replace (replaceRE ":[ital,]*[ital@]*[wght@]*[0-9,;.]+" "" .font_secondary | default "Inter") "+" " "}}', {{.font_secondary_type | default "sans-serif"}};
 $font-icon: '{{.font_icon | default "Font Awesome 6 Free"}}';
 {{ end }}
 

@@ -5,7 +5,7 @@
 //
 // Font families are NOT declared here. They come from hugo.toml
 // [params.variables] and are interpolated by the theme's style.scss:
-//   font_primary   -> $font-primary   -> Space Grotesk (display / headings)
+//   font_primary   -> $font-primary   -> Inter (display / headings)
 //   font_secondary -> $font-secondary -> Inter         (body / UI / buttons / nav)
 //
 // Breakpoints are NOT declared here either. Use the theme mixins in

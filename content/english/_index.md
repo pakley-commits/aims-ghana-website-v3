@@ -5,7 +5,8 @@ build_status: "partial"
 draft: false
 ####################### Banner #########################
 banner:
-  title : "In Africa’s Youth the Future of Science"
+  title : "In Africa’s youth, the future of science."
+  content: "We prepare talented graduates to lead research and solve challenges shaping Africa's future."
   image : "images/home_hero.png"
   #content : "Create a best strategic tool, share it with your team and ensure it’s on track with intuitive dashboards. <br> Simple enough with the sophistication and flexibility to meet the needs of large enterprises"
   #button:

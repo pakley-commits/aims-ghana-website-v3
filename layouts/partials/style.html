@@ -25,11 +25,13 @@
 <!-- Webfonts. Single source of truth: hugo.toml [params.variables]
      font_primary (display) and font_secondary (body/UI). Keep this the ONLY
      place fonts are requested — do not add hardcoded families here. -->
-{{ $pf := site.Params.variables.font_primary | default "Space+Grotesk:wght@500;700" }}
+{{ $pf := site.Params.variables.font_primary | default "Inter:wght@400;500;600;700" }}
 {{ $sf := site.Params.variables.font_secondary }}
 {{ $fontURL := printf "https://fonts.googleapis.com/css2?family=%s" $pf }}
 {{ with $sf }}
-  {{ $fontURL = printf "%s&family=%s" $fontURL . }}
+  {{ if ne $pf . }}
+    {{ $fontURL = printf "%s&family=%s" $fontURL . }}
+  {{ end }}
 {{ end }}
 {{ $fontURL = printf "%s&display=swap" $fontURL }}
 <link href="{{ $fontURL | safeURL }}" rel="stylesheet" />

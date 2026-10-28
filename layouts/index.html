@@ -1,28 +1,33 @@
 {{ define "main" }}
+{{ $heroLead := "" }}
+{{ with .Params.mission }}
+  {{ with index .mission_item 0 }}
+    {{ $heroLead = .content2 }}
+  {{ end }}
+{{ end }}
+<div class="home-page">
 
 <!-- banner -->
 {{ with .Params.banner }}
-<section class="banner ">
+<section class="banner home-hero">
 
   <div class="container-fluid px-0">
 
     <div class="row g-0">
       <div class="col-12 position-relative">
         
-        {{ partial "image" (dict "Src" .image "Alt" "AIMS Ghana students studying mathematics in collaborative environment" "Class" "w-100" "DisplayXL" "1440x" "Loading" "eager") }}
-                <div class="banner-overlay top-0 w-100"></div>
+        {{ partial "image" (dict "Src" .image "Alt" "AIMS Ghana students working together on mathematical research" "Class" "home-hero__image" "DisplayXL" "1800x" "Loading" "eager") }}
+                <div class="banner-overlay home-hero__top-scrim"></div>
         <div class="banner-overlay banner-overlay--bottom w-100"></div>
 
-        <div class="banner-copy position-absolute bottom-0 start-0 w-100 text-white">
-          <div class="container">
+        <div class="banner-copy home-hero__copy position-absolute bottom-0 start-0 w-100 text-white">
+          <div class="container home-hero__content">
+            <p class="home-eyebrow home-hero__eyebrow">AIMS Ghana · Mathematical sciences for Africa</p>
             <h1 class="banner-copy__title text-white">{{ .title | markdownify }}</h1>
-            <p class="banner-copy__lead mb-4">{{ .content | markdownify }}</p>
-            <div class="mb-5">
-              {{ if .button.enable }}
-              {{ with .button }}
-              <a href="{{ .link | safeURL }}" title="{{ .label }}" class="btn btn-outline-light m-2">{{ .label }}</a>
-              {{ end }}
-              {{ end }}
+            <p class="banner-copy__lead home-hero__lead mb-4">{{ with .content }}{{ . | markdownify }}{{ else }}{{ $heroLead | markdownify }}{{ end }}</p>
+            <div class="home-hero__actions">
+              <a href="/training/programs/" class="home-button home-button--gold">Explore our programmes <span aria-hidden="true">↗</span></a>
+              <a href="/training/admissions/" class="home-button home-button--light">Apply to AIMS Ghana <span aria-hidden="true">↗</span></a>
             </div>
           </div>
         </div>
@@ -40,30 +45,16 @@
 {{ with .Params.mission }}
 {{ if .enable }}
 {{ range $i,$p := .mission_item }}
-<section class="section ">
+<section class="home-intro">
   <div class="container">
-    <div class="row align-items-center gy-5">
-      <div class="col-lg-6 {{if modBool $i 2}}order-lg-0{{end}} order-0">
-        <div class="pe-0 pe-lgy-5">
-          <!-- <h2 class="section-title h3">{{ .title | markdownify }}</h2> -->
-          <h3 class="mb-4 w-75" >{{ .content1 | markdownify }}</h3>
-          {{ if .button.enable }}
-          {{ with .button }}
-          <a href="{{ .link | relLangURL }}" title="{{ .label }}" class="btn-link">{{ .label }} <i class="fas fa-arrow-right"></i></a>
-          {{ end }}
-          {{ end }}
-        </div>
+    <div class="home-intro__grid">
+      <div class="home-intro__statement">
+        <p class="home-eyebrow">Who we are</p>
+        <h2>{{ .content1 | markdownify }}</h2>
       </div>
-      <div class="col-lg-6 {{if modBool $i 2}}order-lg-1{{end}} order-1">
-       <div class="pe-0 pe-lgy-5">
-          <!-- <h2 class="section-title h3">{{ .title | markdownify }}</h2> -->
-          <p class="mb-4">{{ .content2 | markdownify }}</p>
-          {{ if .button.enable }}
-          {{ with .button }}
-          <a href="{{ .link | relLangURL }}" title="{{ .label }}" class="btn-link">{{ .label }} <i class="fas fa-arrow-right"></i></a>
-          {{ end }}
-          {{ end }}
-        </div>
+      <div class="home-intro__body">
+        <p>{{ .content2 | markdownify }}</p>
+        <a class="home-text-link" href="/who-we-are/about/">Discover AIMS Ghana <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </div>
@@ -77,28 +68,19 @@
 {{ with .Params.purpose }}
 {{ if .enable }}
 {{ range $i,$p := .purpose_item }}
-<section class="section bg-light text-white">
+<section class="home-purpose">
   <div class="container">
-    <div class="row  gy-5">
-      <div class="col-lg-6 {{if modBool $i 2}}order-lg-0{{end}} order-0">
-        <div class="pe-0 pe-lgy-5">
-          <h2 class="section-title text-white h3">{{ .title | markdownify }}</h2>
-         
-        </div>
-        <div class="pe-0 pe-lgy-5 w-75 ">
-          <!-- <h2 class="section-title h3">{{ .title | markdownify }}</h2> -->
-          <p class="mb-4">{{ .content| markdownify }}</p>
-          
-        </div>
+    <div class="home-purpose__grid">
+      <div class="home-purpose__copy">
+        <p class="home-eyebrow">Our purpose</p>
+        <h2>{{ .title | markdownify }}</h2>
+        <p>{{ .content | markdownify }}</p>
+        <a class="home-text-link" href="/who-we-are/about/">Learn about our mission <span aria-hidden="true">↗</span></a>
       </div>
-     
-        <div class="col-lg-6 text-center position-relative order-1">
-        {{ partial "image" (dict "Src" .image "Alt" (printf "%s, %s" .person_name .person_title) "Class" "img-fluid rounded-4 shadow position-relative") }}
-        
-       
+      <div class="home-purpose__media">
+        {{ partial "image" (dict "Src" .image "Alt" "A group of young women collaborating on science and technology" "Class" "home-purpose__image") }}
+        <div class="home-purpose__image-note"><span>01</span> Young minds. Shared possibility.</div>
       </div>
-       
-    
     </div>
   </div>
 </section>
@@ -111,16 +93,19 @@
 <!-- impact -->
 {{ with .Params.impact }}
 {{ if .enable }}
-<section class="section impact-section text-center py-10">
+<section class="home-impact">
   <div class="container">
-    <h3 class="section-title mb-5 text-start">{{ .title | markdownify }}</h3>
-    <hr>
-    <div class="row gy-5 gx-4 justify-content-center">
+    <div class="home-section-heading">
+      <p class="home-eyebrow">A growing community</p>
+      <h2>{{ .title | markdownify }}</h2>
+      <p>Numbers that reflect a stronger scientific future for Africa.</p>
+    </div>
+    <div class="row home-impact__grid">
       {{ range $i, $p := .impact_item }}
-      <div class="col-md-4 col-sm-6">
-        <div class="impact-card p-4 h-100">
-          <h3 class="impact-stat text-start display-5 text-primary">{{ .stat }}</h3>
-          <p class="impact-text  text-start fw-medium mt-3">{{ .content | markdownify }}</p>
+      <div class="col-md-4 col-sm-6 home-impact__item">
+        <div class="impact-card h-100">
+          <h3 class="impact-stat">{{ .stat }}</h3>
+          <p class="impact-text">{{ .content | markdownify }}</p>
         </div>
       </div>
       {{ end }}
@@ -138,54 +123,23 @@
 
 {{ with .Params.success_story }}
 {{ if .enable }}
-<section class="section success-story bg-dark py-10">
+<section class="home-president">
   <div class="container">
-    <div class="row align-items-center gy-5">
-
-      <!-- IMAGE FIRST -->
-      <div class="col-lg-6  position-relative ">
-
-        <div class="position-relative  " style="height: 500px; overflow: hidden;"> 
-          {{ partial "image" (dict "Src" .image "Alt" (printf "%s, %s" .person_name .person_title) "Class" "w-100 h-100 object-fit-cover rounded-5 shadow") }}
-
-          <!-- DARK OVERLAY WITH NAME & TITLE -->
-          <div class="position-absolute bottom-0 start-0 w-100 rounded-bottom-5" 
-               style="background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 73.34%);
-; padding: 20px;">
-            <h5 class="mb-1 text-white">{{ .person_name }}</h5>
-            <p class="mb-0 small text-white">{{ .person_title }}</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- TEXT SECOND -->
-      <div class="col-lg-6">
-        <div class="ps-lg-5">
-        {{ partial "image" (dict 
-    "Src" ("/images/quote.png" | relURL)
-    "Alt" ""
-    "Class" "quote-icon"
-    "AriaHidden" "true"
-) }}
-          <p class="fs-4 fw-medium mb-4 fst-italic text-black mt-2">
-            
-
-{{ .quote1 }}
-          </p>
-          <p class="fs-5 mb-4 u-text-muted">
-            {{ .quote2 }}
-          </p>
-          <a href="{{ .link | safeURL }}" class="btn btn-white-arrow btn-lg">
-            Read more here
-            <span class="arrow-icon" aria-hidden="true">
-    &#10132;
-  </span>
-          </a>
-          
+    <div class="home-president__grid">
+      <div class="home-president__photo">
+        {{ partial "image" (dict "Src" .image "Alt" (printf "Portrait of %s, %s" .person_name .person_title) "Class" "home-president__image") }}
+        <div class="home-president__caption">
+          <h3>{{ .person_name }}</h3>
+          <p>{{ .person_title }}</p>
         </div>
       </div>
 
+      <div class="home-president__copy">
+        <p class="home-eyebrow">A message from our Centre President</p>
+        <blockquote>{{ .quote1 }}</blockquote>
+        <p class="home-president__detail">{{ .quote2 }}</p>
+        <a href="{{ .link | safeURL }}" class="home-button home-button--light">Meet our Centre President <span aria-hidden="true">&#8599;</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -199,48 +153,25 @@
 <!-- aims_model -->
 {{ with .Params.aims_model }}
 {{ if .enable }}
-<section class="section aims-model py-10 bg-light text-white">
+<section class="home-model">
   <div class="container">
-    <div class="row align-items-start mb-5 g-2">
-
-      <!-- Left Text Column -->
-      <div class="col-lg-5 text-start">
-        <h2 class="text-white  mb-5 fw-medium">{{ .title }}</h2>
-        <h5 class="w-75 text-white fw-medium">{{ .content }}</h5>
+    <div class="home-model__heading">
+      <div>
+        <p class="home-eyebrow">Learning, research, community</p>
+        <h2>{{ .title }}</h2>
       </div>
-
-      <!-- Right Grid Column -->
-      <div class="col-lg-7">
-        <div class="row g-5">
-
-          {{ $models := slice .model1 .model2 .model3 .model4 }}
-          {{ range $model := $models }}
-          <div class=" d-flex col-md-6 text-black flex-grow-1">
-                    <div class="d-flex flex-column align-items-start bg-white w-100 px-3 py-4 rounded-3 flex-grow-1">
-
-
-              <!-- Blue Circle Check Icon -->
-              {{ partial "image" (dict 
-    "Src" ("/images/checkmark.svg" | relURL)
-    "Alt" ""
-    "Class" "quote-icon"
-    "AriaHidden" "true"
-) }}
-
-              <!-- Text -->
-              <div class="ms-3 flex-grow-1 text-start fs-5">
-                
-                  {{ $model | markdownify }}
-
-              </div>
-
-            </div>
-          </div>
-          {{ end }}
-
-        </div>
+      <p>{{ .content }}</p>
+    </div>
+    <div class="row home-model__grid">
+      {{ $models := slice .model1 .model2 .model3 .model4 }}
+      {{ range $i, $model := $models }}
+      <div class="col-md-6 home-model__item">
+        <article class="home-model__card">
+          <span class="home-model__number">0{{ add $i 1 }}</span>
+          <div>{{ $model | markdownify }}</div>
+        </article>
       </div>
-
+      {{ end }}
     </div>
   </div>
 </section>
@@ -256,26 +187,27 @@
 
 {{ with .Params.programs }}
 {{ if .enable }}
-<section class="section programs py-10 ">
+<section class="home-programs">
   <div class="container">
-    <div class="row  mb-5">
-      <div class="col-lg-8 text-start">
-        <h3 class="section-title mb-3">Our Programs</h3>
-        <!-- <p class="text-secondary">{{ .intro }}</p> -->
+    <div class="home-programs__heading">
+      <div>
+        <p class="home-eyebrow">Study at AIMS Ghana</p>
+        <h2>Our programmes</h2>
       </div>
+      <p>{{ .intro }}</p>
     </div>
 
     <div class="accordion" id="programsAccordion">
       {{ range $i, $item := .list }}
             <hr>
 
-      <div class="accordion-item mb-3 border-0 rounded-3 overflow-hidden">
+      <div class="accordion-item home-programs__item">
         <h2 class="accordion-header" id="heading-{{ $i }}">
           {{/* The design shows the first programme open with its description
                visible; the rest are collapsed. */}}
           {{ $open := eq $i 0 }}
           <button
-            class="accordion-button p-0 d-flex justify-content-between align-items-center bg-white{{ if not $open }} collapsed{{ end }}"
+            class="accordion-button home-programs__toggle{{ if not $open }} collapsed{{ end }}"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapse-{{ $i }}"
@@ -293,7 +225,7 @@
           aria-labelledby="heading-{{ $i }}"
           data-bs-parent="#programsAccordion"
         >
-          <div class="accordion-body p-0 text-black">
+          <div class="accordion-body home-programs__description">
             {{ $item.description | markdownify }}
           </div>
           
@@ -304,11 +236,11 @@
           <hr>
 
           <div class="text-start mt-4 d-flex gap-3">
-  <a href="/training/admissions/" class="btn btn-primary btn-lg btn-aims-primary">
+  <a href="/training/admissions/" class="home-button home-button--maroon">
     Apply Now
   </a>
 
-  <a href="/training/programs/" class="btn btn-outline-primary btn-lg btn-aims-primary">
+  <a href="/training/programs/" class="home-text-link">
     Explore Programs
   </a>
 </div>
@@ -330,23 +262,24 @@
 
 
 {{ with .Params.research }}
-<section class="research py-10">
+<section class="research py-10 home-research">
   
   <!-- Full-width image with dark overlay -->
-  <div class="position-relative w-100" style="height: 600px; ">
-    {{ partial "image" (dict "Src" .image "Alt" "Research image" "Class" "w-100 h-100 object-fit-cover") }}
+  <div class="position-relative w-100 home-research__frame">
+    {{ partial "image" (dict "Src" .image "Alt" "AIMS Ghana researchers and students discussing mathematical models" "Class" "w-100 h-100 object-fit-cover home-research__image") }}
 
     <!-- Dark overlay with text -->
-    <div class="position-absolute bottom-0 start-0 w-100 h-100" style=" background: linear-gradient(180deg, rgba(0, 0, 0, 0) 8.32%, rgba(0, 0, 0, 0.85) 100%);
-;">
-<div class="w-50 d-flex flex-column align-items-start justify-content-end h-100 p-3 px-md-5 py-md-5">
+    <div class="position-absolute bottom-0 start-0 w-100 h-100 home-research__shade">
+      <div class="home-research__content">
         
+      <p class="home-eyebrow">Research with real-world reach</p>
       <h2 class="text-white  mb-4">{{ .title | markdownify }}</h2>
 
 
-        <p class="w-75 text-white text-start mb-0 u-text-lead">
+        <p class="text-white text-start mb-4 u-text-lead">
           {{ .content | markdownify }}
         </p>
+        <a href="/research/" class="home-button home-button--gold">Explore our research <span aria-hidden="true">&#8599;</span></a>
       </div>
     </div>
   </div>
@@ -395,11 +328,12 @@
 <!-- clients_logo_slider -->
 {{ if .Params.partners_logo_slider.enable }}
 {{ with .Params.partners_logo_slider }}
-<section class="section overflow-hidden partners-section">
+<section class="section overflow-hidden partners-section home-partners">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center mb-5">
-        <h2 class="text-light">{{.title | markdownify}}</h2>
+        <p class="home-eyebrow">In partnership</p>
+        <h2>{{.title | markdownify}}</h2>
       </div>
       <div class="col-12">
         <div class="swiper brand-carousel">
@@ -425,11 +359,12 @@
 
 {{ with .Params.alumni }}
 {{ if .enable }}
-<section class="section alumni py-10 ">
+<section class="section alumni py-10 home-alumni">
   <div class="container">
     <!-- Section Title -->
     <div class="row justify-content-center mb-5">
       <div class="col-lg-8 text-center">
+        <p class="home-eyebrow">A network of changemakers</p>
         <h2 class="section-title mb-3">Alumni shaping Africa</h2>
         <p class="text-muted w-50 mx-auto ">{{ .intro }}</p>
       </div>
@@ -479,13 +414,13 @@
 
 
 
-<section class="section latest-blog py-10 bg-dark">
+<section class="section latest-blog py-10 home-news">
   <div class="container ">
     <!-- Section Title -->
     <div class="row justify-content-center mb-5">
       <div class="col-lg-8 text-center">
-        <p class="section-eyebrow">What goes on at AIMS Ghana</p>
-        <h2 class="section-title mb-3">Latest News</h2>
+        <p class="home-eyebrow">What goes on at AIMS Ghana</p>
+        <h2 class="section-title mb-3">Latest news</h2>
       </div>
     </div>
 
@@ -494,12 +429,12 @@
       {{ $blogs := where .Site.RegularPages "Section" "news" | first 6 }}
       {{ range $blogs }}
       <div class="col-md-4">
-        <div class="h-100">
+        <article class="home-news__card h-100">
           <!-- Blog Image -->
           {{ with .Params.image }}
           {{ with resources.Get . }}
           {{ $i := .Fill "800x400 Center" }}
-          <img src="{{ $i.RelPermalink }}" alt="" class="img-fluid rounded-3 mb-3 img-blog-height" loading="lazy" width="800" height="400">
+          <img src="{{ $i.RelPermalink }}" alt="" class="img-fluid home-news__image mb-3" loading="lazy" width="800" height="400">
           {{ end }}
           {{ end }}
 
@@ -512,10 +447,10 @@
           </div>
 
           <!-- Blog Title -->
-          <h5 class=" mb-2">{{ .Title }}</h5>
+          <h3 class="mb-2">{{ .Title }}</h3>
 
           <!-- Excerpt / Description -->
-          <p class="text-muted u-text-sm">
+          <p class="home-news__excerpt u-text-sm">
             {{ if .Params.description }}
               {{ .Params.description }}
             {{ else }}
@@ -524,10 +459,10 @@
           </p>
 
           <!-- Read More Link -->
-          <a href="{{ .RelPermalink }}" class="text-primary fw-medium text-decoration-none">
+          <a href="{{ .RelPermalink }}" class="home-text-link">
             Read More →
           </a>
-        </div>
+        </article>
       </div>
       {{ end }}
       {{ if not $blogs }}
@@ -545,29 +480,30 @@
 
 {{ with .Params.newsletter }}
 {{ if .enable }}
-<section class="newsletter-section container position-relative my-5 text-white">
+<section class="newsletter-section home-newsletter position-relative text-white">
 
-  {{ partial "image" (dict "Src" .background_image "Alt" .name "Class" "img-fluid w-100") }}
+  {{ partial "image" (dict "Src" .background_image "Alt" "" "Class" "home-newsletter__background" "AriaHidden" "true") }}
 
-  <!-- Centered Content -->
-  <div class="position-absolute top-50 start-50 translate-middle text-center w-100">
+  <div class="home-newsletter__content">
 
-    <h2 class=" mb-4 text-white">{{ .title }}</h2>
+    <p class="home-eyebrow">Stay connected</p>
+    <h2>{{ .title }}</h2>
+    <p>{{ .subtitle }}</p>
 
-    <form class="row justify-content-center align-items-center w-75 mx-auto" action="{{ .form.action }}" method="post">
-      <div class="col-md-4">
+    <form class="home-newsletter__form" action="{{ .form.action }}" method="post">
+      <div>
         <label for="newsletter-name" class="visually-hidden">{{ .form.name_placeholder }}</label>
         <input type="text" id="newsletter-name" name="name" class="form-control form-control-lg bg-transparent border text-white"
                style="border-color: white;" placeholder="{{ .form.name_placeholder }}" required aria-label="{{ .form.name_placeholder }}">
       </div>
 
-      <div class="col-md-4 ">
+      <div>
         <label for="newsletter-email" class="visually-hidden">{{ .form.email_placeholder }}</label>
         <input type="email" id="newsletter-email" name="email" class="form-control form-control-lg bg-transparent border text-white "
                style="border-color: white;" placeholder="{{ .form.email_placeholder }}" required aria-label="{{ .form.email_placeholder }}">
       </div>
 
-      <div class="col-md-2 d-grid">
+      <div>
         <button type="submit" class="btn btn-lg btn-newsletter" aria-label="{{ .form.button_text }}">
           {{ .form.button_text }}
         </button>
@@ -779,4 +715,5 @@
 {{ end }}
 <!-- /call to action -->
 
+ </div>
 {{ end }}
