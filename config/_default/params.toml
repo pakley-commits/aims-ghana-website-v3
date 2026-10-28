@@ -53,15 +53,11 @@ telephone = ""
 email = "info@aims.edu.gh"
 
 ############################# social site ########################
-# The design shows four icons: Twitter, Facebook, Instagram, LinkedIn.
-# Only two URLs could be verified on aims.edu.gh; Instagram and LinkedIn have
-# no link anywhere on the live site, so they are left empty and the footer
-# skips them rather than shipping dead "#!" links. Fill these in and they
-# appear automatically.
+# Verified AIMS Ghana social profiles shown in the footer across the site.
 [[social]]
-title = "X (Twitter)"
+title = "X"
 icon = "fab fa-x-twitter"
-image = "images/footer/twitter.svg"
+image = "images/footer/x.svg"
 link = "https://x.com/AIMSGhana"
 
 [[social]]
@@ -71,16 +67,22 @@ image = "images/footer/facebook.svg"
 link = "https://www.facebook.com/AIMSGH"
 
 [[social]]
-title = "Instagram"
-icon = "fab fa-instagram"
-image = "images/footer/instagram.svg"
-link = ""
-
-[[social]]
 title = "LinkedIn"
 icon = "fab fa-linkedin"
 image = "images/footer/linkedin.svg"
-link = ""
+link = "https://www.linkedin.com/company/aims-ghana/"
+
+[[social]]
+title = "YouTube"
+icon = "fab fa-youtube"
+image = "images/footer/youtube.svg"
+link = "https://www.youtube.com/channel/UC219D5ltAO-htICtCeiEdng"
+
+[[social]]
+title = "Instagram"
+icon = "fab fa-instagram"
+image = "images/footer/instagram.svg"
+link = "https://www.instagram.com/aimsghana/"
 
 # ---------------------------------------------------------------------
 # Restored: these blocks were dropped when the footer params were

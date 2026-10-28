@@ -65,21 +65,4 @@ explore:
     - title: "MMST"
       link: "/academics/mmst/"
 
-footer_social:
-  - title: "Twitter"
-    icon: "fab fa-twitter"
-    image: "images/footer-dark/twitter.svg"
-    link: "#!"
-  - title: "Facebook"
-    icon: "fab fa-facebook"
-    image: "images/footer-dark/facebook.svg"
-    link: "#!"
-  - title: "Instagram"
-    icon: "fab fa-instagram"
-    image: "images/footer-dark/instagram.svg"
-    link: "#!"
-  - title: "LinkedIn"
-    icon: "fab fa-linkedin"
-    image: "images/footer-dark/linkedin.svg"
-    link: "#!"
 ---

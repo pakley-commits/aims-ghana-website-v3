@@ -56,6 +56,8 @@
 {{ if and hugo.IsProduction site.Params.purge_css }}
   {{ $styles = $styles | css.PostCSS | fingerprint "sha256" }}
   {{ $styles = $styles | resources.PostProcess }}
+{{ else }}
+  {{ $styles = $styles | fingerprint "sha256" }}
 {{ end }}
 
 
