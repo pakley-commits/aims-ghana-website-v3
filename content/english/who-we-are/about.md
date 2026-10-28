@@ -24,7 +24,7 @@ excellence:
   title: "AIMS Ghana is a UNESCO Category II Centre of Excellence"
   content: |
     Additionally, AIMS Ghana Master’s programs are accredited by the National Accreditation Board (Ghana). Since its inception, AIMS Ghana has graduated over 500 students, 33% of them being women.
-  image: "/images/Rectangle 605.png"
+  image: "images/unesco-centre-of-excellence.png"
   
 # vision
 
