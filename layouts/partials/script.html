@@ -21,7 +21,9 @@
 
 <!-- main script X-->
 {{ $scripts = $scripts | append (resources.Get "js/script.js") }}
+{{ $scripts = $scripts | append (resources.Get "js/navigation.js") }}
 {{ $scripts = $scripts | append (resources.Get "js/mission-model-scroll.js") }}
+{{ $scripts = $scripts | append (resources.Get "js/core-values-reveal.js") }}
 {{ $scripts = $scripts | resources.Concat "js/scripts.js" }}
 {{ if hugo.IsProduction }}
 {{ $scripts = $scripts | minify | fingerprint }}

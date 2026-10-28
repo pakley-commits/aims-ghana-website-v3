@@ -36,12 +36,10 @@
   </div>
 </div>
 
-<header class="navigation {{ if .IsHome }}navigation-transparent position-absolute top-0 start-0 w-100 {{ else }}navigation-solid{{ end }} " style="z-index:1000;">
+<header class="navigation {{ if .IsHome }}navigation-transparent position-absolute top-0 start-0 w-100 {{ else }}navigation-solid{{ end }}">
+  <button type="button" class="mobile-navigation-backdrop" data-menu-backdrop aria-label="Close navigation menu" tabindex="-1"></button>
   <div class="container">
-    <!-- navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-      <!-- navbar brand/logo -->
-     
+    <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Main">
       <a class="navbar-brand" href="{{ site.BaseURL | relLangURL }}">
         {{/* Home puts a transparent nav over the dark hero, so it uses the
              white logo (site.Params.logo). Every interior page uses the white
@@ -78,17 +76,10 @@
           {{ end }}
         </select>
         {{ end }}
-        <!-- navbar toggler -->
-        <!-- <button aria-label="navbar toggler" class="navbar-toggler border-0 h4 mb-0" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#navigation">
-          <i class="fas fa-bars"></i>
-          <i class="fa-solid fa-xmark"></i>
-        </button> -->
-
-        <button aria-label="navbar toggler" class="navbar-toggler border-0 h4 mb-0 {{ if .IsHome }} text-white {{ end }}" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#navigation">
-  <i class="fas fa-bars"></i>
-  <i class="fa-solid fa-xmark"></i>
-</button>
-
+        <button aria-label="Open navigation" class="navbar-toggler border-0 h4 mb-0 {{ if .IsHome }} text-white {{ end }}" type="button" data-menu-toggle aria-expanded="false" aria-controls="navigation">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
 
         {{ if site.Params.theme_switcher }}
         <div class="theme-switcher d-inline-block d-lg-none">
@@ -105,30 +96,42 @@
         {{ end }}
       </div>
 
-      <div class="collapse navbar-collapse text-center " id="navigation">
-        <ul class="navbar-nav mx-auto">
-          <!-- menu active -->
+      <div class="primary-navigation" id="navigation">
+        <form class="primary-navigation__mobile-search" role="search" action="{{ "/search/" | relLangURL }}" method="get">
+          <label for="mobile-site-search-input" class="visually-hidden">Search AIMS Ghana</label>
+          <input id="mobile-site-search-input" type="search" name="q" placeholder="Search AIMS Ghana" autocomplete="off">
+          <button type="submit" aria-label="Search">
+            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
+              <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="13.5" y1="13.5" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </form>
+
+        <div class="primary-navigation__content">
+        <ul class="navbar-nav">
           {{ $currentPage := . }}
           {{ range site.Menus.main }}
           {{ $menuURL := .URL | absLangURL }}
           {{ $pageURL:= $currentPage.Permalink | absLangURL }}
           {{ $active := eq $menuURL $pageURL }}
           {{ if .HasChildren }}
-          <li class="nav-item dropdown {{if .Params.isMenuLarge}}dropdown-lg {{end}}
-          {{- range .Children -}}
-          {{- $childURL := .URL | absLangURL -}}
-          {{- $active := eq $childURL $pageURL -}}
-          {{- if $active }}active{{ end -}}
-          {{- end -}}">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ .Name }}
-            </a>
-            <ul class="dropdown-menu bg-white text-black">
+          {{ $activeChild := false }}
+          {{ range .Children }}
+            {{ if eq (.URL | absLangURL) $pageURL }}{{ $activeChild = true }}{{ end }}
+          {{ end }}
+          {{ $menuId := printf "primary-menu-%s" (.Name | urlize) }}
+          <li class="nav-item dropdown {{ if $activeChild }}active{{ end }}">
+            <button class="nav-link nav-submenu-toggle" type="button" data-nav-submenu-toggle aria-expanded="false" aria-controls="{{ $menuId }}">
+              <span>{{ .Name }}</span>
+              <span class="nav-chevron" aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown-menu" id="{{ $menuId }}">
               {{ range .Children }}
               {{ $childURL := .URL | absLangURL }}
               {{ $active := eq $childURL $pageURL }}
               <li>
-                <a class="dropdown-item {{ if $active }}active{{ end }}" {{if findRE `^http` .URL}}target="_blank" rel="noopener" {{end}}
+                <a class="dropdown-item {{ if $active }}active{{ end }}" {{ if $active }}aria-current="page"{{ end }} {{if findRE `^http` .URL}}target="_blank" rel="noopener" {{end}}
                 href="{{if findRE `^#` .URL}}{{if not $.IsHome}}{{site.BaseURL | relLangURL}}{{end}}{{.URL}}{{else}}{{.URL | relLangURL}}{{end}}">{{.Pre}}{{ .Name }}{{.Post}}</a>
               </li>
               {{ end }}
@@ -136,54 +139,37 @@
           </li>
           {{ else }}
           <li class="nav-item {{ if $active }}active{{ end }}">
-            <a class="nav-link" {{if findRE `^http` .URL}}target="_blank" rel="noopener" {{end}}
+            <a class="nav-link" {{ if $active }}aria-current="page"{{ end }} {{if findRE `^http` .URL}}target="_blank" rel="noopener" {{end}}
               href="{{if findRE `^#` .URL}}{{if not $.IsHome}}{{site.BaseURL | relLangURL}}{{end}}{{.URL}}{{else}}{{.URL | relLangURL}}{{end}}">{{.Name}}</a>
           </li>
           {{ end }}
           {{ end }}
         </ul>
 
-        <!-- Language List -->
+        {{ if site.Params.navigation_button.enable }}
+        <a href="{{ site.Params.navigation_button.link | relLangURL }}" class="primary-navigation__action btn btn-sm btn-primary">
+          <span>{{ site.Params.navigation_button.label }}</span>
+          <span class="primary-navigation__action-dot" aria-hidden="true"></span>
+        </a>
+        {{ end }}
+
         {{ if .IsTranslated }}
-        <select class="me-1 border-0 d-none d-lg-inline-block" id="select-language" onchange="location = this.value;">
-          {{ $siteLanguages := site.Languages}}
-          {{ $pageLang := .Page.Lang}}
+        <select class="primary-navigation__language" id="select-language" aria-label="Choose language" onchange="location = this.value;">
+          {{ $siteLanguages := site.Languages }}
+          {{ $pageLang := .Page.Lang }}
           {{ range .Page.AllTranslations }}
-          {{ $translation := .}}
+          {{ $translation := . }}
           {{ range $siteLanguages }}
           {{ if eq $translation.Lang .Lang }}
-          {{ $selected := false }}
-          {{ if eq $pageLang .Lang}}
-          <option id="{{ $translation.Language }}" value="{{ $translation.RelPermalink }}" selected>{{ .LanguageName }}
-          </option>
-          {{ else }}
-          <option id="{{ $translation.Language }}" value="{{ $translation.RelPermalink }}">{{ .LanguageName }}</option>
-          {{ end }}
+          <option id="{{ $translation.Language }}" value="{{ $translation.RelPermalink }}" {{ if eq $pageLang .Lang }}selected{{ end }}>{{ .LanguageName }}</option>
           {{ end }}
           {{ end }}
           {{ end }}
         </select>
         {{ end }}
 
-        {{ if site.Params.navigation_button.enable }}
-        <!-- navigation btn -->
-        <a href="{{ site.Params.navigation_button.link | relLangURL }}"
-   class="btn btn-sm btn-primary ms-lg-4 mt-2 mt-lg-0 py-2 px-3 d-inline-flex align-items-center gap-2 items-center my-2"
->
-
-  <span style="display:inline-block;">{{ site.Params.navigation_button.label }}</span>
-
-  <span style="display:inline-block; width:25px; height:25px; background:#F2960C; border-radius:50%;"></span>
-</a>
-
-
-
-        </a>
-        {{ end }}
-
         {{ if site.Params.theme_switcher }}
-        <!-- theme switcher -->
-        <div class="theme-switcher d-none d-lg-inline-block ">
+        <div class="theme-switcher primary-navigation__theme-switcher">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="20" height="20" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000">
             <mask id="m">
               <circle class="masker" cx="7.5" cy="7.5" r="8.5" fill="#fff" />
@@ -195,6 +181,13 @@
           </svg>
         </div>
         {{ end }}
+        </div>
+
+        <nav class="primary-navigation__quick-links" aria-label="Quick links">
+          {{ range site.Menus.utility }}
+          <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+          {{ end }}
+        </nav>
       </div>
     </nav>
   </div>

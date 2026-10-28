@@ -1,4 +1,4 @@
-{{ $footerVariant := .Params.footer_variant | default site.Params.footer_variant | default "light" }}
+{{ $footerVariant := .Params.footer_variant | default site.Params.footer_variant | default "dark" }}
 {{ $footerDividerPath := "images/footer/divider.svg" }}
 {{ if eq $footerVariant "dark" }}
   {{ $footerDividerPath = "images/footer-dark/divider.svg" }}
