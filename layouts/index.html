@@ -26,7 +26,7 @@
             <h1 class="banner-copy__title text-white">{{ .title | markdownify }}</h1>
             <p class="banner-copy__lead home-hero__lead mb-4">{{ with .content }}{{ . | markdownify }}{{ else }}{{ $heroLead | markdownify }}{{ end }}</p>
             <div class="home-hero__actions">
-              <a href="/training/programs/" class="home-button home-button--gold">Explore our programmes <span aria-hidden="true">↗</span></a>
+              <a href="/training/programs/" class="home-button home-button--maroon">Explore our programmes <span aria-hidden="true">↗</span></a>
               <a href="/training/admissions/" class="home-button home-button--light">Apply to AIMS Ghana <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -102,7 +102,7 @@
     </div>
     <div class="row home-impact__grid">
       {{ range $i, $p := .impact_item }}
-      <div class="col-md-4 col-sm-6 home-impact__item">
+      <div class="col-6 col-md-4 home-impact__item">
         <div class="impact-card h-100">
           <h3 class="impact-stat">{{ .stat }}</h3>
           <p class="impact-text">{{ .content | markdownify }}</p>
@@ -279,7 +279,7 @@
         <p class="text-white text-start mb-4 u-text-lead">
           {{ .content | markdownify }}
         </p>
-        <a href="/research/" class="home-button home-button--gold">Explore our research <span aria-hidden="true">&#8599;</span></a>
+        <a href="/research/" class="home-button home-button--maroon">Explore our research <span aria-hidden="true">&#8599;</span></a>
       </div>
     </div>
   </div>
@@ -373,7 +373,7 @@
     <!-- Alumni Grid -->
     <div class="row g-4 justify-content-center">
       {{ range first 3 .list }}
-      <div class="col-md-4 col-sm-6">
+      <div class="col-6 col-md-4">
         <div class="alumni-card position-relative overflow-hidden rounded-4 shadow-sm">
           <!-- Image -->
           {{ partial "image" (dict "Src" .image "Alt" .name "Class" "img-fluid w-100") }}
@@ -428,7 +428,7 @@
     <div class="row g-4 justify-content-center">
       {{ $blogs := where .Site.RegularPages "Section" "news" | first 6 }}
       {{ range $blogs }}
-      <div class="col-md-4">
+      <div class="col-6 col-md-4">
         <article class="home-news__card h-100">
           <!-- Blog Image -->
           {{ with .Params.image }}
@@ -480,9 +480,7 @@
 
 {{ with .Params.newsletter }}
 {{ if .enable }}
-<section class="newsletter-section home-newsletter position-relative text-white">
-
-  {{ partial "image" (dict "Src" .background_image "Alt" "" "Class" "home-newsletter__background" "AriaHidden" "true") }}
+<section class="newsletter-section home-newsletter position-relative">
 
   <div class="home-newsletter__content">
 
@@ -493,14 +491,14 @@
     <form class="home-newsletter__form" action="{{ .form.action }}" method="post">
       <div>
         <label for="newsletter-name" class="visually-hidden">{{ .form.name_placeholder }}</label>
-        <input type="text" id="newsletter-name" name="name" class="form-control form-control-lg bg-transparent border text-white"
-               style="border-color: white;" placeholder="{{ .form.name_placeholder }}" required aria-label="{{ .form.name_placeholder }}">
+        <input type="text" id="newsletter-name" name="name" class="form-control form-control-lg border"
+               placeholder="{{ .form.name_placeholder }}" required aria-label="{{ .form.name_placeholder }}">
       </div>
 
       <div>
         <label for="newsletter-email" class="visually-hidden">{{ .form.email_placeholder }}</label>
-        <input type="email" id="newsletter-email" name="email" class="form-control form-control-lg bg-transparent border text-white "
-               style="border-color: white;" placeholder="{{ .form.email_placeholder }}" required aria-label="{{ .form.email_placeholder }}">
+        <input type="email" id="newsletter-email" name="email" class="form-control form-control-lg border"
+               placeholder="{{ .form.email_placeholder }}" required aria-label="{{ .form.email_placeholder }}">
       </div>
 
       <div>
